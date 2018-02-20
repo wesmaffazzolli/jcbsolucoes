@@ -8,10 +8,6 @@
 # General
 --------------------------------------------------------------*/
 
-/* Customizações */
-
-
-
 body {
   background: #fff;
   color: #666666;
@@ -19,12 +15,12 @@ body {
 }
 
 a {
-  color: #18d26e;
+  color: #fafafa;
   transition: 0.5s;
 }
 
 a:hover, a:active, a:focus {
-  color: #18d36e;
+  color: #FF9900;
   outline: none;
   text-decoration: none;
 }
@@ -45,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 .back-to-top {
   position: fixed;
   display: none;
-  background: #18d26e;
+  background: #FF9900;
   color: #fff;
   display: inline-block;
   width: 44px;
@@ -74,25 +70,36 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+
+/* Customização */
+
+.my-logo {
+    width: 100px;
+    height: 100px;
+}
+
+/* Customização */
+
+
 #header {
-  padding: 30px 0;
-  height: 92px;
+  padding: 0px 0;
+  height: 102px;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   transition: all 0.5s;
   z-index: 997;
+    background-color: #fafafa;
+    border-bottom: 1px solid #D8D8D8;
 }
 
-#header.header-scrolled {
+/*#header.header-scrolled {
   background: rgba(0, 0, 0, 0.9);
-  /*padding: 20px 0;
-  height: 72px;*/
-  padding: 25px 0;
-  height: 90px;
+  padding: 20px 0;
+  height: 72px;
   transition: all 0.5s;
-}
+}*/
 
 #header #logo {
   float: left;
@@ -100,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1024px) {
   #header #logo {
-    padding-left: 60px;
+    padding-left: 150px;
   }
 }
 
@@ -130,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 28px;
   }
   #header #logo img {
-    max-height: 40px;
+    /*max-height: 40px;*/
   }
 }
 
@@ -337,7 +344,21 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1024px) {
   #nav-menu-container {
+    padding-top: 40px;
+    padding-right: 200px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #nav-menu-container {
     padding-right: 60px;
+  }
+}
+
+/* Ajuste */
+@media (min-width: 768px) {
+  #nav-menu-container {
+    padding-top: 40px;
   }
 }
 
@@ -352,7 +373,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 8px 10px 8px;
   text-decoration: none;
   display: inline-block;
-  color: #fff;
+  color: #333;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 13px;
@@ -361,7 +382,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu li:hover > a, .nav-menu > .menu-active > a {
-  color: #18d26e;
+  color: #FF9900;
 }
 
 .nav-menu > li {
@@ -389,7 +410,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu ul li:hover > a {
-  color: #18d26e;
+  color: #FF9900;
 }
 
 .nav-menu ul ul {
@@ -402,7 +423,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   top: 0;
   z-index: 999;
-  margin: 20px 20px 0 0;
+  margin: 30px 20px 0 0;
   border: 0;
   background: none;
   font-size: 24px;
@@ -413,7 +434,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav-toggle i {
-  color: #fff;
+  color: #FF9900;
 }
 
 @media (max-width: 768px) {
@@ -429,7 +450,8 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 18px;
   bottom: 0;
   z-index: 998;
-  background: rgba(0, 0, 0, 0.8);
+  /*background: rgba(0, 0, 0, 0.8);*/
+    background: #FAFAFA;
   left: -260px;
   width: 260px;
   overflow-y: auto;
@@ -447,7 +469,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav ul li a {
-  color: #fff;
+  color: #333;
   font-size: 13px;
   text-transform: uppercase;
   overflow: hidden;
@@ -462,7 +484,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav ul li a:hover {
-  color: #fff;
+  color: #FF9900;
 }
 
 #mobile-nav ul li li {
