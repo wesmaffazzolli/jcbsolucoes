@@ -12,18 +12,17 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Início</a></li>
-         <li class="menu-has-children"><a href="#about">Sobre Nós</a>
+          <li class="menu-active"><a href="index.php#intro">Início</a></li>
+         <li class="menu-has-children"><a href="index.php#about">Sobre Nós</a>
             <ul>
-              <li><a href="#call-to-action">Nossa história</a></li>
-              <li><a href="#facts">Nossos números</a></li>
-              <li><a href="#clients">Clientes</a></li>
+              <li><a href="index.php#call-to-action">Nossa história</a></li>
+              <li><a href="index.php#facts">Nossos números</a></li>
+              <li><a href="index.php#clients">Clientes</a></li>
             </ul>
           </li>
           <li><a href="services.php">Serviços</a></li>
-          <li><a href="novidades/index.html">Novidades</a></li>
-          <li><a href="#contact">Contato</a></li>
-          <li><a href="login.php"><i class="material-icons">vpn_key</i></a></li>
+          <li><a href="index.php#portfolio">Novidades</a></li>
+          <li><a href="index.php#contact">Contato</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>

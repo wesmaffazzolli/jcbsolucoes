@@ -85,62 +85,92 @@
     ============================-->
     <section id="about">
       <div class="container">
+          <header class="section-header">
+               <h3>Sobre nós</h3>
+          </header>
+           <div class="row">
+               <div class="col-md-6">
+                   <h3 class="about-title-content">Institucional</h3>  
+                    <p>Buscar soluções que se adaptem a cada necessidade e que possam ser implementadas com segurança, agilidade, responsabilidade técnica e com alta performance em qualidade na prestação de serviços, são os principais objetivos da JCB Soluções Industriais. Uma empresa especializada em fornecimento de mão de obra especializada, treinamentos em Segurança, Saúde e Meio Ambiente (SMS) e na prestação de serviços envolvendo técnicas em alpinismo industrial, predial e limpeza técnica aérea e em espaços confinados.</p>
+                </div>
+                <div class="col-md-6 align-items-center">
+                   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="padding-top:30px;">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Missão</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Visão</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Objetivos</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Buscar sempre soluções que contribuam efetivamente para o crescimento sustentável dos nossos clientes, parceiros e da própria JCB Soluções Industriais.</div>
+                      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">Ser referência nas soluções apresentadas nas atividades de capacitação em SMS,  gerenciamento de risco e na prestação de serviços.</div>
+                      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">Buscar soluções que se adaptem a cada necessidade e que possam ser implementadas com segurança, agilidade, responsabilidade técnica e com alta performance em qualidade na prestação de serviços, são os principais objetivos da JCB Soluções Industriais</div>
+                    </div>
+                </div>
+          </div>
+    </div>
+</section><!-- #about -->
+    
+   <!--==========================
+      Timeline
+    ============================-->
+    <section id="call-to-action" class="wow fadeIn">
+      <div class="container">
+          <?php include "includes/timeline.php"; ?>
+      </div>
+    </section><!-- #call-to-action -->
+    
+    <!--==========================
+      Facts Section
+    ============================-->
+    <section id="facts"  class="wow fadeIn">
+      <div class="container">
 
         <header class="section-header">
-          <h3>Sobre nós</h3>
-          <p>Buscar soluções que se adaptem a cada necessidade e que possam ser implementadas com segurança, agilidade, responsabilidade técnica e com alta performance em qualidade na prestação de serviços, são os principais objetivos da JCB Soluções Industriais. Uma empresa especializada em fornecimento de mão de obra especializada, treinamentos em Segurança, Saúde e Meio Ambiente (SMS) e na prestação de serviços envolvendo técnicas em alpinismo industrial, predial e limpeza técnica aérea e em espaços confinados.</p>
+          <h3>A JCB em números</h3>
+          <p>Uma história fundada em competência e dedicação:</p>
         </header>
 
-        <div class="row about-cols">
+        <div class="row counters">
 
-          <div class="col-md-4 wow fadeInUp">
-            <div class="about-col">
-              <div class="img">
-                <img src="img/about-mission.jpg" alt="" class="img-fluid">
-                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-              </div>
-              <h2 class="title"><a href="#">Nossa Missão</a></h2>
-              <p>
-                Buscar sempre soluções que contribuam efetivamente para o crescimento sustentável dos nossos clientes, parceiros e da própria JCB Soluções Industriais.
-              </p>
-            </div>
-          </div>
+  				<div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">274</span>
+            <p>Clients</p>
+  				</div>
 
-          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="about-col">
-              <div class="img">
-                <img src="img/about-plan.jpg" alt="" class="img-fluid">
-                <div class="icon"><i class="ion-ios-list-outline"></i></div>
-              </div>
-              <h2 class="title"><a href="#">Objetivos</a></h2>
-              <p>
-                Buscar soluções que se adaptem a cada necessidade e que possam ser implementadas com segurança, agilidade, responsabilidade técnica e com alta performance em qualidade na prestação de serviços, são os principais objetivos da JCB Soluções Industriais
-              </p>
-            </div>
-          </div>
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">421</span>
+            <p>Projects</p>
+  				</div>
 
-          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="about-col">
-              <div class="img">
-                <img src="img/about-vision.jpg" alt="" class="img-fluid">
-                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
-              </div>
-              <h2 class="title"><a href="#">Visão</a></h2>
-              <p>
-                Ser referência nas soluções apresentadas nas atividades de capacitação em SMS,  gerenciamento de risco e na prestação de serviços.
-              </p>
-            </div>
-          </div>
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">1,364</span>
+            <p>Hours Of Support</p>
+  				</div>
 
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">18</span>
+            <p>Hard Workers</p>
+  				</div>
+
+  			</div>
+
+        <div class="facts-img">
+          <img src="img/imagem3.jpg" alt="" class="img-fluid">
         </div>
 
       </div>
-    </section><!-- #about -->
+    </section><!-- #facts -->
+    
 
     <!--==========================
       SERVIÇOS
     ============================-->
-    <section id="services">
+    <!--<section id="services">
       <div class="container">
 
         <header class="section-header wow fadeInUp">
@@ -171,7 +201,7 @@
             <p class="description">Em parceria com a empresa F9, a JCB Soluções Industriais instalou o banner para a reinauguração do Palácio Iguaçu, sede do governo estadual do Paraná. <a href="">Confira a matéria na Gazeta do Povo</a></p>
           </div>
           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <!--<div class="icon"><i class="ion-ios-speedometer-outline"></i></div>-->
+            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
             <div class="icon"><i class="ion-ios-people-outline"></i></div>
             <h4 class="title"><a href="">Mão de Obra especializada em SMS</a></h4>
             <p class="description">Supervisão e Resgate técnico em altura e espaços confinados, Observadores de espaços confinados, Médico do Trabalho, Técnico e Auxiliar em Enfermagem do Trabalho, Engenheiro, Técnico e Auxiliar de Segurança no Trabalho e Bombeiro industrial. <a href="">Saiba mais</a></p>
@@ -202,7 +232,7 @@
     <!--==========================
       Portfolio Section
     ============================-->
-    <section id="portfolio"  class="section-bg" >
+    <!--<section id="portfolio"  class="section-bg" >
       <div class="container">
 
         <header class="section-header">
@@ -400,15 +430,12 @@
         <div class="row contact-info">
 
           <div class="col-md-4">
-            <div class="contact-address">
+            <!--<div class="contact-address">
               <i class="ion-ios-location-outline"></i>
               <h3>Endereço</h3>
               <address>R. Lídia Wosch, 155, Santa Candida, Curitiba - PR - Brasil</address>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="contact-phone">
+            </div>-->
+            <div class="contact-address">
               <i class="ion-ios-telephone-outline"></i>
               <h3>Telefone</h3>
               <p><a href="tel:4132570454">(41) 3257-0454</a></p>
@@ -417,10 +444,21 @@
           </div>
 
           <div class="col-md-4">
-            <div class="contact-email">
+            <div class="contact-phone">
               <i class="ion-ios-email-outline"></i>
               <h3>Email</h3>
               <p><a href="mailto:info@example.com">contato@jcb.com.br</a></p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-email">
+              <i class="ion-ios-person-outline"></i>
+              <h3>Redes Sociais</h3>
+              <div class="social-links">
+                <a href="https://www.facebook.com/jcbsolucoes/" class="facebook"><i class="fa fa-facebook" style="font-size: 26px;"></i></a>
+                <a href="#" class="instagram"><i class="fa fa-instagram" style="font-size: 30px; padding: 10px;"></i></a>
+            </div>
             </div>
           </div>
 

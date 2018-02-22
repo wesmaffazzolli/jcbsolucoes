@@ -26,6 +26,12 @@
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
+  
+  <!-- Timeline -->
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: BizPage

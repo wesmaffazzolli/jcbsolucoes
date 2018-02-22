@@ -2,7 +2,7 @@
     Footer
   ============================-->
   <footer id="footer">
-    <div class="footer-top">
+    <!--<div class="footer-top">
       <div class="container">
         <div class="row">
 
@@ -48,15 +48,15 @@
             <form action="" method="post">
               <input type="email" name="email"><input type="submit"  value="Subscribe">
             </form>
-          </div>-->
+          </div>
 
         </div>
       </div>
-    </div>
+    </div>-->
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>JCB Soluções Industriais</strong>. All Rights Reserved
+          &copy; Copyright <strong>JCB Soluções Industriais 2018.</strong> Todos os direitos reservados.
       </div>
       <div class="credits">
         <!--
