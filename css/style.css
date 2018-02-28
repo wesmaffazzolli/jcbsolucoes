@@ -329,6 +329,62 @@ h1, h2, h3, h4, h5, h6 {
     height: 100px;
 }
 
+.top-logo-area .bg img {
+    position: relative;
+    width: 60.5%;
+    left: -23%;
+    top: -5%;
+}
+
+.top-logo-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 22.8%;
+    z-index: 6666;
+}
+
+.top-logo-area img.bg-img {
+    width: 100%;
+    float: left;
+    position: relative;
+    z-index: 1;
+}
+
+.top-logo-area .bg {
+    float: left;
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+.top-logo-area img.bg-img {
+    width: 100%;
+}
+    
+.top-logo-area .bg img {
+    width: 60.5%;
+}}
+
+@media (max-width: 1024px) {
+.top-logo-area img.bg-img {
+    width: 270px;
+}
+    
+.top-logo-area .bg img {
+    width: 170px;
+    left: -18%;
+    top: -5%;
+}
+    
+}
+
 /* Customização */
 
 
@@ -357,9 +413,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 1024px) {
-  #header #logo {
+  /*#header #logo {
     padding-left: 150px;
-  }
+  }*/
 }
 
 #header #logo h1 {
@@ -601,9 +657,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 1024px) {
-  #nav-menu-container {
+  /*#nav-menu-container {
     padding-right: 60px;
-  }
+  }*/
 }
 
 /* Ajuste */
@@ -713,6 +769,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0;
   list-style: none;
+  position: relative;
+  top: 200px;
 }
 
 #mobile-nav ul li {

@@ -4,10 +4,18 @@
   <header id="header">
     <div class="container-fluid">
 
-      <div id="logo" class="pull-left">
+      <!--<div id="logo" class="pull-left">-->
+       <div id="logo" class="top-logo-area">
+       <img class="bg-img" src="img/top-logo-area.png" alt="" title="" />
+       <div class="bg">
+          <!-- Logo principal -->
+           <a title="JCB" href="">
+               <img src="img/logo-jcb.png" width="200" height="200" alt="">
+           </a>
+       </div>
         <!--<h1><a href="#intro" class="scrollto">BizPage</a></h1>-->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="#intro"><img class="my-logo" src="img/logo-jcb.png" alt="" title="" /></a>
+        <!--<a href="#intro"><img class="my-logo" src="img/logo-jcb.png" alt="" title="" /></a>-->
       </div>
 
       <nav id="nav-menu-container">
