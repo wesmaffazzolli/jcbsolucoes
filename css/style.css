@@ -322,7 +322,7 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 
-/* Customização */
+/* Customização Logo principal */
 
 .my-logo {
     width: 100px;
@@ -385,6 +385,20 @@ h1, h2, h3, h4, h5, h6 {
     
 }
 
+/* Customização Logo mobile */
+@media (max-width: 768px) {
+.top-logo-area img.bg-img {
+    width: 220px;
+}
+    
+.top-logo-area .bg img {
+    width: 135px;
+    left: -18%;
+    top: -5%;
+}
+    
+}
+
 /* Customização */
 
 
@@ -412,10 +426,10 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
 }
 
-@media (min-width: 1024px) {
-  /*#header #logo {
-    padding-left: 150px;
-  }*/
+@media (max-width: 768px) {
+  #header {
+    height: 72px;
+  }
 }
 
 #header #logo h1 {
@@ -502,7 +516,13 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   #intro h2 {
-    font-size: 28px;
+    font-size: 20px;
+    margin-top: 90px;
+  }
+    
+    #intro p {
+    width: 50%;
+    font-size: 14px;
   }
 }
 
@@ -656,12 +676,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 1024px) {
-  /*#nav-menu-container {
-    padding-right: 60px;
-  }*/
-}
-
 /* Ajuste */
 @media (min-width: 768px) {
   #nav-menu-container {
@@ -747,6 +761,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   #mobile-nav-toggle {
     display: inline;
+    margin-top: 15px;
   }
 }
 
@@ -760,7 +775,7 @@ h1, h2, h3, h4, h5, h6 {
   /*background: rgba(0, 0, 0, 0.8);*/
     background: #FAFAFA;
   left: -260px;
-  width: 260px;
+  width: 240px;
   overflow-y: auto;
   transition: 0.4s;
 }
