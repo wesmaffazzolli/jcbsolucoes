@@ -1,11 +1,14 @@
 <?php include "includes/header.php"; ?>
  
-<?php include "includes/navigation.php"; ?>
-  
-   <div class="container" style="margin-top:150px;">
+<?php //include "includes/navigation.php"; ?>
+  <section id="login">
+   <div class="container container-space">
        <div class="row">
-            <div class="col-lg-4">
-                <div class="panel panel-default">
+            <div class="col-md-4 login-separator">
+            <img class="my-logo" src="img/logo-jcb.png" alt="">
+            </div>
+            <div class="col-md-6">
+            <div class="panel panel-default col-login">
               <div class="panel-heading"><h3 class="panel-title"><strong>Acesso Interno</strong></h3></div>
                   <div class="panel-body">
                    <form role="form">
@@ -18,9 +21,11 @@
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
                       </div>
                       <button type="submit" class="btn btn-sm btn-default">Acessar</button>
+                      <a href="index.php">Voltar</a>
                     </form>
                   </div>
                 </div>
             </div>
         </div>
-</div>
+    </div>
+</section>

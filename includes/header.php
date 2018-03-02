@@ -32,6 +32,10 @@
   
   <!-- Google Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Timeline 2 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="js/script.js"></script>
 
   <!-- =======================================================
     Theme Name: BizPage

@@ -3,79 +3,68 @@
  <!--==========================
     INÍCIO
   ============================-->
-  <section id="intro">
-    <div class="intro-container">
-      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-
-        <ol class="carousel-indicators"></ol>
-
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top:102px;">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+        </ol>
         <div class="carousel-inner" role="listbox">
-
-          <div class="carousel-item active" style="background-image: url('img/intro-carousel/imagem2.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div class="carousel-item active" style="background-image: url('img/intro-carousel/imagem2.jpg')">
+            <div class="carousel-caption d-none d-md-block">
                 <h2>Mão-de-obra Especializada</h2>
                 <p>Profissionais treinados para atuar com agilidade, responsabilidade técnica e com alta perfomance. Conheça mais nossos serviços!</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
-              </div>
             </div>
           </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem6.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
+          <!-- Slide Two - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem6.jpg')">
+            <div class="carousel-caption d-none d-md-block">
                 <h2>Técnicas de Acesso por Corda</h2>
                 <p>Execução de atividades classificadas como alpinismo industrial: Tratamento e pintura industrial, montagem, remoção, instalação e reparos industriais, inspeções técnicas e limpeza técnica especializada.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
-              </div>
             </div>
           </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem7.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
+          <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem7.jpg')">
+            <div class="carousel-caption d-none d-md-block">
                 <h2>Tratamento ST3 e Pintura Industrial</h2>
                 <p>Serviços executados pela equipe da JCB Soluções Industriais.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
-              </div>
             </div>
           </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem8.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Conscientização Câncer de Mama</h2>
-                <p>Durante a parada na Vale Uberaba a JCB Soluções promoveu a campanha de Conscientização Cancer de Mama. Foi um dia muito especial para toda a nossa equipe.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem5.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
+                    <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem5.jpg')">
+            <div class="carousel-caption d-none d-md-block">
                 <h2>Instalação e Manutenção de Banners e Similares</h2>
                 <p>Em parceria com a empresa F9, a JCB Soluções Industriais instalou o banner para a reinauguração do Palácio Iguaçu, sede do governo estadual do Paraná.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
-              </div>
             </div>
           </div>
-
+                    <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem8.jpg')">
+            <div class="carousel-caption d-none d-md-block">
+                <h2>Conscientização Câncer de Mama</h2>
+                <p>Durante a parada na Vale Uberaba a JCB Soluções promoveu a campanha de Conscientização Cancer de Mama. Foi um dia muito especial para toda a nossa equipe.</p>
+            </div>
+          </div>
+                    <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem6.jpg')">
+            <div class="carousel-caption d-none d-md-block">
+                <h2>Técnicas de Acesso por Corda</h2>
+                <p>Execução de atividades classificadas como alpinismo industrial: Tratamento e pintura industrial, montagem, remoção, instalação e reparos industriais, inspeções técnicas e limpeza técnica especializada.</p>
+            </div>
+          </div>
         </div>
-
-        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-
-        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-
       </div>
-    </div>
-  </section><!-- #intro -->
 
   <main id="main">
 
@@ -131,17 +120,17 @@
 		<div class="events-wrapper">
 			<div class="events">
 				<ol>
-					<li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a></li>
-					<li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
-					<li><a href="#0" data-date="20/04/2014">20 Mar</a></li>
-					<li><a href="#0" data-date="20/05/2014">20 May</a></li>
-					<li><a href="#0" data-date="09/07/2014">09 Jul</a></li>
-					<li><a href="#0" data-date="30/08/2014">30 Aug</a></li>
-					<li><a href="#0" data-date="15/09/2014">15 Sep</a></li>
-					<li><a href="#0" data-date="01/11/2014">01 Nov</a></li>
-					<li><a href="#0" data-date="10/12/2014">10 Dec</a></li>
-					<li><a href="#0" data-date="19/01/2015">29 Jan</a></li>
-					<li><a href="#0" data-date="03/03/2015">3 Mar</a></li>
+					<li><a href="#0" data-date="16/01/2014" class="selected">Jan/2006</a></li>
+					<li><a href="#0" data-date="28/02/2014">Feb/2007</a></li>
+					<li><a href="#0" data-date="20/04/2014">Mar/2008</a></li>
+					<li><a href="#0" data-date="20/05/2014">Maio/2009</a></li>
+					<li><a href="#0" data-date="09/07/2014">Jul/2009</a></li>
+					<li><a href="#0" data-date="30/08/2014">Ago/2010</a></li>
+					<li><a href="#0" data-date="15/09/2014">Set/2011</a></li>
+					<li><a href="#0" data-date="01/11/2014">Out/2012</a></li>
+					<li><a href="#0" data-date="10/12/2014">Nov/2013</a></li>
+					<li><a href="#0" data-date="19/01/2015">Janeiro/2018</a></li>
+					<li><a href="#0" data-date="03/03/2015">Fevereiro/2018</a></li>
 				</ol>
 
 				<span class="filling-line" aria-hidden="true"></span>
@@ -157,8 +146,8 @@
 	<div class="events-content">
 		<ol>
 			<li class="selected" data-date="16/01/2014">
-				<h2>Horizontal Timeline</h2>
-				<em>January 16th, 2014</em>
+				<h2>Fundação JCB Soluções Industriais</h2>
+				<em>16 dejaneiro de 2006</em>
 				<p>	
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
 				</p>
@@ -171,6 +160,7 @@
 				<p>	
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
 				</p>
+				<img src="img/imagem3.jpg" style="margin: 30px auto; display:block;" alt="">
 			</li>
 
 			<li data-date="20/04/2014">
