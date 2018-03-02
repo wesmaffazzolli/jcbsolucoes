@@ -14,9 +14,9 @@
           <div class="carousel-item active" style="background-image: url('img/intro-carousel/imagem2.jpg');">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2>Mão de obra Especializada</h2>
+                <h2>Mão-de-obra Especializada</h2>
                 <p>Profissionais treinados para atuar com agilidade, responsabilidade técnica e com alta perfomance. Conheça mais nossos serviços!</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Saiba mais</a>
+                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
               </div>
             </div>
           </div>
@@ -26,7 +26,7 @@
               <div class="carousel-content">
                 <h2>Técnicas de Acesso por Corda</h2>
                 <p>Execução de atividades classificadas como alpinismo industrial: Tratamento e pintura industrial, montagem, remoção, instalação e reparos industriais, inspeções técnicas e limpeza técnica especializada.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Saiba Mais</a>
+                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
               <div class="carousel-content">
                 <h2>Tratamento ST3 e Pintura Industrial</h2>
                 <p>Serviços executados pela equipe da JCB Soluções Industriais.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Saiba Mais</a>
+                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
               <div class="carousel-content">
                 <h2>Conscientização Câncer de Mama</h2>
                 <p>Durante a parada na Vale Uberaba a JCB Soluções promoveu a campanha de Conscientização Cancer de Mama. Foi um dia muito especial para toda a nossa equipe.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Saiba Mais</a>
+                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
               <div class="carousel-content">
                 <h2>Instalação e Manutenção de Banners e Similares</h2>
                 <p>Em parceria com a empresa F9, a JCB Soluções Industriais instalou o banner para a reinauguração do Palácio Iguaçu, sede do governo estadual do Paraná.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Saiba Mais</a>
+                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
               </div>
             </div>
           </div>
@@ -95,19 +95,19 @@
                 <div class="col-md-6 align-items-center">
                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="padding-top:30px;">
                       <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Missão</a>
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" style="color: #fafafa; width:150px;">&rarr; Missão</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Visão</a>
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false" style="color: #fafafa; width:150px;">&rarr; Visão</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Objetivos</a>
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false" style="color: #fafafa; width:150px;">&rarr; Objetivos</a>
                       </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
-                      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Buscar sempre soluções que contribuam efetivamente para o crescimento sustentável dos nossos clientes, parceiros e da própria JCB Soluções Industriais.</div>
-                      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">Ser referência nas soluções apresentadas nas atividades de capacitação em SMS,  gerenciamento de risco e na prestação de serviços.</div>
-                      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">Buscar soluções que se adaptem a cada necessidade e que possam ser implementadas com segurança, agilidade, responsabilidade técnica e com alta performance em qualidade na prestação de serviços, são os principais objetivos da JCB Soluções Industriais</div>
+                      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><p>Buscar sempre soluções que contribuam efetivamente para o crescimento sustentável dos nossos clientes, parceiros e da própria JCB Soluções Industriais.</p></div>
+                      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><p>Ser referência nas soluções apresentadas nas atividades de capacitação em SMS,  gerenciamento de risco e na prestação de serviços.</p></div>
+                      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"><p>Buscar soluções que se adaptem a cada necessidade e que possam ser implementadas com segurança, agilidade, responsabilidade técnica e com alta performance em qualidade na prestação de serviços, são os principais objetivos da JCB Soluções Industriais.</p></div>
                     </div>
                 </div>
           </div>
@@ -138,22 +138,22 @@
 
   				<div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up">274</span>
-            <p>Clients</p>
+            <p>Clientes</p>
   				</div>
 
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up">421</span>
-            <p>Projects</p>
+            <p>Projetos</p>
   				</div>
 
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up">1,364</span>
-            <p>Hours Of Support</p>
+            <p>Horas de Suporte</p>
   				</div>
 
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up">18</span>
-            <p>Hard Workers</p>
+            <p>Funcionários</p>
   				</div>
 
   			</div>
@@ -423,18 +423,24 @@
 
         <div class="section-header">
           <h3>Contato</h3>
-          <p>Entre em contato conosco via telefone ou nos envie uma mensagem no email abaixo. Preencha o formulário que a mensagem será enviada automaticamente para nós</p>
+          <p>Entre em contato conosco via telefone ou nos envie uma mensagem preenchendo o formulário abaixo.</p>
         </div>
 
-        <div class="row contact-info">
+        <div class="row contact-info"> <!-- Linha 1 contato -->
 
-          <div class="col-md-4">
-            <!--<div class="contact-address">
+          <div class="col-md-6">
+            <div class="contact-address">
               <i class="ion-ios-location-outline"></i>
               <h3>Endereço</h3>
               <address>R. Lídia Wosch, 155, Santa Candida, Curitiba - PR - Brasil</address>
-            </div>-->
+            </div>
             <div class="contact-address">
+
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="contact-phone">
               <i class="ion-ios-telephone-outline"></i>
               <h3>Telefone</h3>
               <p><a href="tel:4132570454">(41) 3257-0454</a></p>
@@ -442,27 +448,31 @@
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="contact-phone">
+        </div> <!-- Fim linha 1 contato -->
+        
+        <div class="row contact-info"> <!-- Linha 2 contato -->
+
+          <div class="col-md-6">
+            <div class="contact-address">
               <i class="ion-ios-email-outline"></i>
               <h3>Email</h3>
-              <p><a href="mailto:info@example.com">contato@jcb.com.br</a></p>
+              <p><a href="mailto:info@example.com">comercial@jcbsolucoes.com.br</a></p>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="contact-email">
+          <div class="col-md-6">
+            <div class="contact-phone">
               <i class="ion-ios-person-outline"></i>
               <h3>Redes Sociais</h3>
               <div class="social-links">
-                <a href="https://www.facebook.com/jcbsolucoes/" class="facebook"><i class="fa fa-facebook" style="font-size: 26px;"></i></a>
+                <a href="https://www.facebook.com/jcbsolucoes/" class="facebook"><i class="fa fa-facebook" style="font-size: 26px; padding: 10px;"></i></a>
                 <a href="#" class="instagram"><i class="fa fa-instagram" style="font-size: 30px; padding: 10px;"></i></a>
                 <a href="https://pt.linkedin.com/company/jcb-solu-es-industriais" class="linkedin"><i class="fa fa-linkedin" style="font-size: 30px; padding: 10px;"></i></a>
             </div>
             </div>
           </div>
 
-        </div>
+        </div> <!-- Fim Linha 2 contato -->
 
         <div class="form">
           <div id="sendmessage">A sua mensagem foi enviada. Obrigado!</div>
@@ -478,6 +488,14 @@
                 <div class="validation"></div>
               </div>
             </div>
+            <div class="form-group">
+                <select class="form-control">
+                  <option value="" disabled selected>Departamento</option>
+                  <option value="cm">Comercial</option>
+                  <option value="rh">Recursos Humanos</option>
+                  <option value="dr">Diretoria</option>
+                </select>
+           </div>
             <div class="form-group">
               <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
               <div class="validation"></div>

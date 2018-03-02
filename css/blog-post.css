@@ -6,4 +6,19 @@
 
 body {
   padding-top: 160px;
+  background-color: #fafafa;
+}
+
+/* Main Blog page */
+
+.btn-jcb {
+    font-size: 26px;
+    color: #fff; !important
+    background-color: #FF9900; !important
+    border-color: #FF9900; !important
+}
+
+.categorias {
+    color: #333;
+    transition: 0.5s;
 }

@@ -1,5 +1,5 @@
 <?php include "includes-blog/header.php"; ?>
-<?php include "includes-blog/navigation.php"; ?>
+<?php include "includes/navigation.php"; ?>
 
 
 
@@ -12,18 +12,18 @@
         <div class="col-lg-8">
 
           <!-- Title -->
-          <h1 class="mt-4">Post Title</h1>
+          <h1 class="mt-4">Título da Novidade</h1>
 
           <!-- Author -->
           <p class="lead">
-            by
-            <a href="#">Start Bootstrap</a>
+            por
+            <a href="#" style="color: #FF9900;">Eduardo</a>
           </p>
 
           <hr>
 
           <!-- Date/Time -->
-          <p>Posted on January 1, 2018 at 12:00 PM</p>
+          <p>Postado em 12 de março de 2018</p>
 
           <hr>
 
@@ -58,13 +58,13 @@
         <div class="col-md-4">
 
           <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Search</h5>
+          <div class="card">
+            <h5 class="card-header">Pesquisar</h5>
             <div class="card-body">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input type="text" class="form-control" placeholder="Pesquisar notícia...">
                 <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
+                  <button class="btn" type="button" style="background-color: #FF9900; border-color: #FF9900; font-size:16px;"><i class="material-icons" style="font-size: 26px; color: #fff;">search</i></button>
                 </span>
               </div>
             </div>
@@ -72,54 +72,45 @@
 
           <!-- Categories Widget -->
           <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
+           <h5 class="card-header">Categorias</h5>
             <div class="card-body">
               <div class="row">
                 <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
+                  <ul class="list-unstyled mb-0 categorias" >
                     <li>
-                      <a href="#">Web Design</a>
+                      <a href="#" style="color: #FF9900;">Treinametos</a>
                     </li>
                     <li>
-                      <a href="#">HTML</a>
+                      <a href="#" style="color: #FF9900;">Normas</a>
                     </li>
                     <li>
-                      <a href="#">Freebies</a>
+                      <a href="#" style="color: #FF9900;">Ajustes</a>
                     </li>
                   </ul>
                 </div>
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="#">JavaScript</a>
+                      <a href="#" style="color: #FF9900;">Cursos</a>
                     </li>
                     <li>
-                      <a href="#">CSS</a>
+                      <a href="#" style="color: #FF9900;">Serviços</a>
                     </li>
                     <li>
-                      <a href="#">Tutorials</a>
+                      <a href="#" style="color: #FF9900;">Campanhas</a>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Side Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-            </div>
           </div>
-
-        </div>
 
       </div>
       <!-- /.row -->
-      <?php include "includes-blog/footer.php"; ?>
 
     </div>
     <!-- /.container -->
 
+<?php include "includes-blog/footer.php"; ?>
 
