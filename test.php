@@ -6,649 +6,603 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
+  <link rel="stylesheet" href="lib/jquery/jquery.min.js">
+  <link rel="stylesheet" href="lib/jquery/jquery-migrate.min.js">
+  <link rel="stylesheet" href="lib/jquery-blog/jquery.js">
 </head>
 
 
 <style>
+/* -------------------------------- 
 
-$bg: #289ecb;
-$line: #b2e9ff;
-$wrapper: #e4f0f4;
+Primary style
 
-$t1: .6s ease;
+-------------------------------- */
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-%clearfix {
-  content: "";
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 100%;
+  font-family: "Droid Serif", serif;
+  color: #7f8c97;
+  background-color: #e9f0f5;
+}
+/*
+a {
+  color: #acb7c0;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}*/
+
+/* -------------------------------- 
+
+Modules - reusable parts of our design
+
+-------------------------------- */
+.cd-container {
+  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.cd-container::after {
+  /* clearfix */
+  content: '';
   display: table;
   clear: both;
 }
 
-html {
-  font-family: 'Oxygen', sans-serif;
-}
+/* -------------------------------- 
 
-*,
-*:after,
-*:before {
-  box-sizing: border-box;
-}
-    
-img {
-  width: auto;
-  height: auto;
-  max-height: 100%;
-}
+Main components 
 
-h3 {
-  font-size: 40px;
-  margin-top: 0;
-  font-weight: 300;
+-------------------------------- */
+/*header {
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  background: #303e49;
 }
+header h1 {
+  color: #ffffff;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+@media only screen and (min-width: 1170px) {
+  header {
+    height: 300px;
+    line-height: 300px;
+  }
+  header h1 {
+    font-size: 24px;
+    font-size: 1.5rem;
+  }
+}*/    
 
-/*** The timeline styles and structure ***/
-.tl-wrapper {
-  background: $wrapper;
-  min-height: 1px;
+#cd-timeline {
   position: relative;
+  padding: 2em 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
-
-.timeline {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  li {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    &:after {
-      @extend %clearfix;
-    }
-  }
-}
-
-/*** The items ***/
-.tl-item {
-  visibility: hidden;
-  overflow: hidden;
-  z-index: 0;
-  .tl-copy {
-    transition: $t1;
-    //opacity: 0;
-    transform: translate3d(60%,0,0);
-  }
-  .tl-image {
-    transition: $t1;
-    //opacity: .5;
-    transform: translate3d(0,-100%,0);
-  }
-}
-
-.tl-item.tl-active {
-  visibility: visible;
-  z-index: 10;
-  .tl-copy {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  .tl-image {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-
-.tl-image {
-  float: left;
-  width: 70%;
-  img {
-    display: block;
-  }
-}
-
-.tl-copy {
-  width: 30%;
-  height: 100%;
+#cd-timeline::before {
+  /* this is the vertical line */
+  content: '';
   position: absolute;
   top: 0;
-  right: 0;
-  
-  padding: 16px;
-  padding: 1rem;
-  background: $bg;
-  color: #fff;
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 30px;
-    left: -19px;
-    
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 21px 20px 21px 0;
-    border-color: transparent $bg transparent transparent;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #d7e4ed;
+}
+@media only screen and (min-width: 1170px) {
+  #cd-timeline {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+  #cd-timeline::before {
+    left: 50%;
+    margin-left: -2px;
   }
 }
 
-/*** The arrows for the items ***/
-.tl-items-arrow-left,
-.tl-items-arrow-right {
+.cd-timeline-block {
+  position: relative;
+  margin: 2em 0;
+}
+.cd-timeline-block::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.cd-timeline-block:first-child {
+  margin-top: 0;
+}
+.cd-timeline-block:last-child {
+  margin-bottom: 0;
+}
+@media only screen and (min-width: 1170px) {
+  .cd-timeline-block {
+    margin: 4em 0;
+  }
+  .cd-timeline-block:first-child {
+    margin-top: 0;
+  }
+  .cd-timeline-block:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cd-timeline-img {
   position: absolute;
-  top: 50%;
-  width: 22px;
+  top: 0;
+  left: 0;
+  width: 40px;
   height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+}
+.cd-timeline-img img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  left: 50%;
   top: 50%;
-  margin-top: -40px;
-  z-index: 100;
-  &:before,
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 28px;
-    height: 2px;
-    background: #fff;
-  }
+  margin-left: -12px;
+  margin-top: -12px;
 }
-.tl-items-arrow-left {
-  left: 0;
-  &:before {
-    top: 0;
-    transform-origin: top right;
-    transform: rotate(-45deg);
-  }
-  &:after {
-    bottom: 0;
-    transform-origin: bottom right;
-    transform: rotate(45deg);
-  }
+.cd-timeline-img.cd-picture {
+  background: #75ce66;
 }
-.tl-items-arrow-right {
-  right: 0;
-  &:before {
-    top: 0;
-    transform-origin: top left;
-    transform: rotate(45deg);
+.cd-timeline-img.cd-movie {
+  background: #c03b44;
+}
+.cd-timeline-img.cd-location {
+  background: #f0ca45;
+}
+@media only screen and (min-width: 1170px) {
+  .cd-timeline-img {
+    width: 60px;
+    height: 60px;
+    left: 50%;
+    margin-left: -30px;
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
   }
-  &:after {
-    bottom: 0;
-    transform-origin: bottom left;
-    transform: rotate(-45deg);
+  .cssanimations .cd-timeline-img.is-hidden {
+    visibility: hidden;
+  }
+  .cssanimations .cd-timeline-img.bounce-in {
+    visibility: visible;
+    -webkit-animation: cd-bounce-1 0.6s;
+    -moz-animation: cd-bounce-1 0.6s;
+    animation: cd-bounce-1 0.6s;
   }
 }
 
-/*** The nav's styles ***/
-.tl-nav-wrapper {
+@-webkit-keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@-moz-keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    -moz-transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: scale(1.2);
+  }
+  100% {
+    -moz-transform: scale(1);
+  }
+}
+@keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.cd-timeline-content {
+  position: relative;
+  margin-left: 60px;
+  background: #ffffff;
+  border-radius: 0.25em;
+  padding: 1em;
+  box-shadow: 0 3px 0 #d7e4ed;
+}
+.cd-timeline-content::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.cd-timeline-content h2 {
+  color: #303e49;
+}
+.cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+  font-size: 13px;
+  font-size: 0.8125rem;
+}
+.cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+  display: inline-block;
+}
+.cd-timeline-content p {
+  margin: 1em 0;
+  line-height: 1.6;
+}
+.cd-timeline-content .cd-read-more {
+  float: right;
+  padding: .8em 1em;
+  background: #acb7c0;
+  color: #ffffff;
+  border-radius: 0.25em;
+}
+.no-touch .cd-timeline-content .cd-read-more:hover {
+  background-color: #bac4cb;
+}
+.cd-timeline-content .cd-date {
+  float: left;
+  padding: .8em 0;
+  opacity: .7;
+}
+.cd-timeline-content::before {
+  content: '';
   position: absolute;
-  bottom: 10px;
-  left: 0;
-  margin: 0;
-  padding: 16px 0 0 0;
-  
-  border-top: 1px solid $line;
-  overflow-x: hidden;
-  width: 100%;
-  &:before,
-  &:after {
-    content: "";
-    width: 38px;
-    height: 86px;
-    position: absolute;
-    top: 17px;
-    
-    background: $wrapper;
-    z-index: 50;
+  top: 16px;
+  right: 100%;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-right: 7px solid #ffffff;
+}
+@media only screen and (min-width: 768px) {
+  .cd-timeline-content h2 {
+    font-size: 20px;
+    font-size: 1.25rem;
   }
-  &:before { left: 0; }
-  &:after { right: 0; }
+  .cd-timeline-content p {
+    font-size: 16px;
+    font-size: 1rem;
+  }
+  .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+    font-size: 14px;
+    font-size: 0.875rem;
+  }
 }
-
-.no-csstransforms .tl-nav-wrapper {
-  overflow-x: auto;
-}
-
-.tl-nav {
-  list-style: none;
-  margin: 0;
-  padding-top: 16px;
-  border-top: 1px dashed $bg;
-  
-  transition: all .4s ease;
-  li {
-    width: 70px;
-    height: 70px;
-    position: relative;
-    
+@media only screen and (min-width: 1170px) {
+  .cd-timeline-content {
+    margin-left: 0;
+    padding: 1.6em;
+    width: 45%;
+  }
+  .cd-timeline-content::before {
+    top: 24px;
+    left: 100%;
+    border-color: transparent;
+    border-left-color: #ffffff;
+  }
+  .cd-timeline-content .cd-read-more {
     float: left;
-    cursor: pointer;
-    margin-right: 1rem;
-    
-    font-size: 12px;
-    text-align: center;
-    div {
-      width: 34px;
-      height: 34px;
-      margin: auto;
-      
-      background: $bg;
-      color: #fff;
-      padding-top: 9px;
-      border-radius: 1000px;
-      transition: $t1;
-    }
-    &:hover div,
-    &.tl-active div{
-      width: 70px;
-      height: 70px;
-      background: transparent;
-      color: $bg;
-      border: 1px solid $bg;
-      font-size: 24px;
-      padding-top: 19px;
-    }
-    &:before {
-      content: "";
-      width: 4px;
-      height: 4px;
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      margin-left: -2px;
-      
-      background: $bg;
-      border-radius: 1000px;
-    }
   }
-  &:after {
-    @extend %clearfix;
-  }
-}
-
-/*** The nav's nav styles ***/
-.tl-nav-arrow-left,
-.tl-nav-arrow-right {
-  position: absolute;
-  width: 12px;
-  height: 20px;
-  top: 50%;
-  z-index: 100;
-  &:before,
-  &:after {
-    content: "";
-    display: block;
+  .cd-timeline-content .cd-date {
     position: absolute;
-    width: 14px;
-    height: 2px;
-    background: $bg;
+    width: 100%;
+    left: 122%;
+    top: 6px;
+    font-size: 16px;
+    font-size: 1rem;
   }
-}
-.tl-nav-arrow-left {
-  left: 9px;
-  &:before {
-    top: 0;
-    transform-origin: top right;
-    transform: rotate(-45deg);
+  .cd-timeline-block:nth-child(even) .cd-timeline-content {
+    float: right;
   }
-  &:after {
-    bottom: 0;
-    transform-origin: bottom right;
-    transform: rotate(45deg);
+  .cd-timeline-block:nth-child(even) .cd-timeline-content::before {
+    top: 24px;
+    left: auto;
+    right: 100%;
+    border-color: transparent;
+    border-right-color: #ffffff;
   }
-}
-.tl-nav-arrow-right {
-  right: 9px;
-  &:before {
-    top: 0;
-    transform-origin: top left;
-    transform: rotate(45deg);
+  .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
+    float: right;
   }
-  &:after {
-    bottom: 0;
-    transform-origin: bottom left;
-    transform: rotate(-45deg);
+  .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
+    left: auto;
+    right: 122%;
+    text-align: right;
+  }
+  .cssanimations .cd-timeline-content.is-hidden {
+    visibility: hidden;
+  }
+  .cssanimations .cd-timeline-content.bounce-in {
+    visibility: visible;
+    -webkit-animation: cd-bounce-2 0.6s;
+    -moz-animation: cd-bounce-2 0.6s;
+    animation: cd-bounce-2 0.6s;
   }
 }
 
-.no-csstransforms .tl-nav-arrow-left,
-.no-csstransforms .tl-nav-arrow-right {
-  display: none;
+@media only screen and (min-width: 1170px) {
+  /* inverse bounce effect on even content blocks */
+  .cssanimations .cd-timeline-block:nth-child(even) .cd-timeline-content.bounce-in {
+    -webkit-animation: cd-bounce-2-inverse 0.6s;
+    -moz-animation: cd-bounce-2-inverse 0.6s;
+    animation: cd-bounce-2-inverse 0.6s;
+  }
 }
+@-webkit-keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-moz-keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: translateX(20px);
+  }
+  100% {
+    -moz-transform: translateX(0);
+  }
+}
+@keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(-20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-moz-keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: translateX(-20px);
+  }
+  100% {
+    -moz-transform: translateX(0);
+  }
+}
+@keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100px);
+    -moz-transform: translateX(100px);
+    -ms-transform: translateX(100px);
+    -o-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    -ms-transform: translateX(-20px);
+    -o-transform: translateX(-20px);
+    transform: translateX(-20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
 </style>
 
 
 <body>
+	<header>
+		<h1>Responsive Vertical Timeline</h1>
+	</header>
 
-<div class="tl-wrapper">
-  <ul class="timeline">
-    <li class="tl-item" data-year="1981">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1988">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1989">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1990">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1991">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1992">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1993">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1994">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1995">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1996">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1997">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1998">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="1999">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="2000">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="2001">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="2002">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="2003">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="2004">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="2005">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="2006">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="2007">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-    <li class="tl-item" data-year="2008">
-      <div class="tl-image"><img src=" http://placehold.it/1650x1000/"/></div>
-      <div class="tl-copy">
-        <h3 class="title">Aw, you're all Mr. Grumpy Face today. They're not aliens, they're Earth&hellip;liens!</h3>
-        <div class="tl-description">
-          <p>Aw, you're all Mr. Grumpy Face today. No&hellip; It's a thing; it's like a plan, but with more greatness. They're not aliens, they're Earth&hellip;liens! Sorry, checking all the water in this area; there's an escaped fish. All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? You've swallowed a planet!</p>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div>
+	<section id="cd-timeline" class="cd-container">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-picture.svg" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 1</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+				<a href="#0" class="cd-read-more">Read more</a>
+				<span class="cd-date">Jan 14</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-movie.svg" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 2</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
+				<a href="#0" class="cd-read-more">Read more</a>
+				<span class="cd-date">Jan 18</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-picture.svg" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 3</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam provident pariatur temporibus quia eos repellat consequuntur perferendis enim amet quae quasi repudiandae sed quod veniam dolore possimus rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
+				<a href="#0" class="cd-read-more">Read more</a>
+				<span class="cd-date">Jan 24</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-location.svg" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 4</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+				<a href="#0" class="cd-read-more">Read more</a>
+				<span class="cd-date">Feb 14</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-location.svg" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 5</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
+				<a href="#0" class="cd-read-more">Read more</a>
+				<span class="cd-date">Feb 18</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-movie.svg" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Final Section</h2>
+				<p>This is the content of the last section</p>
+				<span class="cd-date">Feb 26</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+	</section> <!-- cd-timeline -->
+</body>
 
 <script>
-    /*** Detect the browser's prefixes ***/ 
-if(document.addEventListener){ // Only IE9+ support this ;)
-  // http://davidwalsh.name/vendor-prefix
-  // Can't use it in IE8- as it brakes the page...
-  var isPrefixed = (function () {
-    var styles = window.getComputedStyle(document.documentElement, ''),
-      pre = (Array.prototype.slice
-        .call(styles)
-        .join('') 
-        .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
-      )[1],
-      dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
-    return {
-      dom: dom,
-      lowercase: pre,
-      css: '-' + pre + '-',
-      js: pre[0].toUpperCase() + pre.substr(1)
-    };
-  })();
+jQuery(document).ready(function($) {
+  var $timeline_block = $(".cd-timeline-block");
 
-  // Deals with prefixes
-  var prefix = isPrefixed.css;
-
-} else {
-  var prefix = "";
-}
-
-/*** Slides ***/
-var currentSlide = 0,
-    totalSlides  = $(".tl-item").length - 1;
-
-// Creates the navigation
-$(".timeline").after("<div class='tl-nav-wrapper'><ul class='tl-nav'></ul></div><a href='#' class='tl-items-arrow-left'></a><a href='#' class='tl-items-arrow-right'></a>");
-$( ".tl-copy" ).wrapInner( "<div class='tl-copy-inner'></div>");
-
-// Cicle through items and creates the nav
-$(".tl-item").each(function(i) {
-  var year = $(".tl-item:eq(" + i + ")" ).data("year");
-  $(".tl-nav").append("<li><div>" + year + "</div></li>");
-  
-  // Click handlers
-  $(".tl-nav li:eq(" + i + ")").click(function() {
-    if(!$(".tl-item:eq(" + i + ")" ).hasClass("tl-active")) {
-      // Activates the item
-      $(".tl-item").removeClass("tl-active");
-      $(".tl-item:eq(" + i + ")" ).addClass("tl-active");
-      currentSlide = i;
-
-      // Activates the item nav
-      $(".tl-nav li").removeClass("tl-active");
-      $(".tl-nav li:eq(" + i + ")" ).addClass("tl-active");
+  //hide timeline blocks which are outside the viewport
+  $timeline_block.each(function() {
+    if (
+      $(this).offset().top >
+      $(window).scrollTop() + $(window).height() * 0.75
+    ) {
+      $(this)
+        .find(".cd-timeline-img, .cd-timeline-content")
+        .addClass("is-hidden");
     }
+  });
+
+  //on scolling, show/animate timeline blocks when enter the viewport
+  $(window).on("scroll", function() {
+    $timeline_block.each(function() {
+      if (
+        $(this).offset().top <=
+        $(window).scrollTop() + $(window).height() * 0.75 &&
+        $(this)
+        .find(".cd-timeline-img")
+        .hasClass("is-hidden")
+      ) {
+        $(this)
+          .find(".cd-timeline-img, .cd-timeline-content")
+          .removeClass("is-hidden")
+          .addClass("bounce-in");
+      }
+    });
   });
 });
 
-// Activates the first slide
-$(".tl-item:first, .tl-nav li:first").addClass("tl-active");
-
-// Slide's arrows click handlers
-$(".tl-items-arrow-left").on("click", function(){
-  if(currentSlide > 0) {
-    currentSlide--;
-  
-    // Activates the previous item
-    $(".tl-item").removeClass("tl-active");
-    $(".tl-item:eq(" + currentSlide +")").addClass("tl-active");
-    
-    // Activates the previous item nav
-    $(".tl-nav li").removeClass("tl-active");
-    $(".tl-nav li:eq(" + currentSlide + ")" ).addClass("tl-active");
-  }
-});
-
-$(".tl-items-arrow-right").on("click", function(){
-  if(currentSlide < totalSlides) {
-    currentSlide++;
-  
-    // Activates the next item
-    $(".tl-item").removeClass("tl-active");
-    $(".tl-item:eq(" + currentSlide +")").addClass("tl-active");
-    
-    // Activates the next item nav
-    $(".tl-nav li").removeClass("tl-active");
-    $(".tl-nav li:eq(" + currentSlide + ")" ).addClass("tl-active");
-  }
-});
-  
-/*** Nav ***/
-// The nav's width
-var navWidth = ($(".tl-nav li").outerWidth(true) * $(".tl-nav li").length) + 36;
-$(".tl-nav").width(navWidth);
-
-// The nav's arrows
-$(".tl-nav-wrapper").append("<a href='#' class='tl-nav-arrow-left'></a><a href='#' class='tl-nav-arrow-right'></a>");
-
-/*** The timeline's height ***/
-var vpHeight  = $(window).height();
-var tlHeight = vpHeight - $(".tl-nav-wrapper").outerHeight(true) - 26;
-$(".tl-wrapper").height(vpHeight);
-$(".tl-item").css("max-height", tlHeight);
-$(".tl-item").height(tlHeight);
-
-/*** Nav's navigation... ***/
-var navTranslation = 0;
-var navLimit = (navWidth - $(".tl-nav-wrapper").outerWidth(true) + 20) * -1;
-
-// To the left
-$(".tl-nav-arrow-left").on("click", function() {
-  if(navTranslation < 0) {
-    navTranslation = navTranslation + 86;
-    $(".tl-nav").css(prefix + "transform", "translateX(" + navTranslation + "px)");
-  }
-});
-
-// To the right
-$(".tl-nav-arrow-right").on("click", function() {
-  if(navTranslation >= navLimit) {
-    navTranslation = navTranslation - 86;
-    $(".tl-nav").css(prefix + "transform", "translateX(" + navTranslation + "px)");
-  }
-});</script>
-
+</script>
 
 
 <?php include "includes/footer.php"; ?>

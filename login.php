@@ -5,7 +5,7 @@
    <div class="container container-space">
        <div class="row">
             <div class="col-md-4 login-separator">
-            <img class="my-logo" src="img/logo-jcb.png" alt="">
+            <img class="my-logo" src="img/nova-logo-jcb-2.png" alt="">
             </div>
             <div class="col-md-6">
             <div class="panel panel-default col-login">
@@ -17,7 +17,7 @@
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira o usuário">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword1">Senha<a href="/sessions/forgot_password">(esqueci minha senha)</a></label>
+                        <label for="exampleInputPassword1">Senha<a href="/sessions/forgot_password"></a></label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
                       </div>
                       <button type="submit" class="btn btn-sm btn-default">Acessar</button>

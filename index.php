@@ -1,7 +1,7 @@
 <?php include "includes/navigation.php"; ?>
 
- <!--==========================
-    INÍCIO
+<!--==========================
+    Intro Section
   ============================-->
   <section id="intro">
     <div class="intro-container">
@@ -10,12 +10,42 @@
         <ol class="carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
-
-          <div class="carousel-item active" style="background-image: url('img/intro-carousel/imagem2.jpg');">
+          
+         <div class="carousel-item" style="background-image: url('img/intro-carousel/limpeza1.jpg');">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2>Mão-de-obra Especializada</h2>
-                <p>Profissionais treinados para atuar com agilidade, responsabilidade técnica e com alta perfomance. Conheça mais nossos serviços!</p>
+                <h2>Limpeza aérea</h2>
+                <p>Durante a parada na Vale Uberaba a JCB Soluções promoveu a campanha de Conscientização Cancer de Mama. Foi um dia muito especial para toda a nossa equipe.</p>
+                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item active" style="background-image: url('img/intro-carousel/imagem6.jpg');">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Técnicas de Acesso por Corda</h2>
+                <p>Execução de atividades classificadas como alpinismo industrial: Tratamento e pintura industrial, montagem, remoção, instalação e reparos industriais, inspeções técnicas e limpeza técnica especializada.</p>
+                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem7.jpg');">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Tratamento ST3 e Pintura Industrial</h2>
+                <p>Serviços executados pela equipe da JCB Soluções Industriais.</p>
+                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem5.jpg');">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Instalação e Manutenção de Banners e Similares</h2>
+                <p>Em parceria com a empresa F9, a JCB Soluções Industriais instalou o banner para a reinauguração do Palácio Iguaçu, sede do governo estadual do Paraná.</p>
                 <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
               </div>
             </div>
@@ -26,37 +56,7 @@
               <div class="carousel-content">
                 <h2>Técnicas de Acesso por Corda</h2>
                 <p>Execução de atividades classificadas como alpinismo industrial: Tratamento e pintura industrial, montagem, remoção, instalação e reparos industriais, inspeções técnicas e limpeza técnica especializada.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem7.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Tratamento ST3 e Pintura Industrial</h2>
-                <p>Serviços executados pela equipe da JCB Soluções Industriais.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem8.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Conscientização Câncer de Mama</h2>
-                <p>Durante a parada na Vale Uberaba a JCB Soluções promoveu a campanha de Conscientização Cancer de Mama. Foi um dia muito especial para toda a nossa equipe.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem5.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Instalação e Manutenção de Banners e Similares</h2>
-                <p>Em parceria com a empresa F9, a JCB Soluções Industriais instalou o banner para a reinauguração do Palácio Iguaçu, sede do governo estadual do Paraná.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba Mais</a>
+                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@
     <section id="about">
       <div class="container">
           <header class="section-header">
-               <h3>Sobre nós</h3>
+               <a href="#about"><h3>Sobre nós</h3></a>
           </header>
            <div class="row">
                <div class="col-md-6">
@@ -113,140 +113,20 @@
           </div>
     </div>
 </section><!-- #about -->
+   
+      <!--==========================
+      Timeline
+    ============================-->
+    <!--<section id="call-to-action" class="wow fadeIn">
+      <div class="container">
+          <?php //include "includes/timeline.php"; ?>
+      </div>
+    </section><!-- #call-to-action -->
     
    <!--==========================
       Timeline
     ============================-->
-    <section id="call-to-action" class="wow fadeIn">
-      <div class="container">
-          <?php include "includes/timeline.php"; ?>
-      </div>
-    </section><!-- #call-to-action -->
-    
-    <!--==========================
-      Timeline
-    ============================-->
-<section class="cd-horizontal-timeline">
-	<div class="timeline">
-		<div class="events-wrapper">
-			<div class="events">
-				<ol>
-					<li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a></li>
-					<li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
-					<li><a href="#0" data-date="20/04/2014">20 Mar</a></li>
-					<li><a href="#0" data-date="20/05/2014">20 May</a></li>
-					<li><a href="#0" data-date="09/07/2014">09 Jul</a></li>
-					<li><a href="#0" data-date="30/08/2014">30 Aug</a></li>
-					<li><a href="#0" data-date="15/09/2014">15 Sep</a></li>
-					<li><a href="#0" data-date="01/11/2014">01 Nov</a></li>
-					<li><a href="#0" data-date="10/12/2014">10 Dec</a></li>
-					<li><a href="#0" data-date="19/01/2015">29 Jan</a></li>
-					<li><a href="#0" data-date="03/03/2015">3 Mar</a></li>
-				</ol>
-
-				<span class="filling-line" aria-hidden="true"></span>
-			</div> <!-- .events -->
-		</div> <!-- .events-wrapper -->
-			
-		<ul class="cd-timeline-navigation">
-			<li><a href="#0" class="prev inactive">Prev</a></li>
-			<li><a href="#0" class="next">Next</a></li>
-		</ul> <!-- .cd-timeline-navigation -->
-	</div> <!-- .timeline -->
-
-	<div class="events-content">
-		<ol>
-			<li class="selected" data-date="16/01/2014">
-				<h2>Horizontal Timeline</h2>
-				<em>January 16th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-				<img src="img/imagem3.jpg" style="margin: 30px auto; display:block;" alt="">
-			</li>
-
-			<li data-date="28/02/2014">
-				<h2>Event title here</h2>
-				<em>February 28th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="20/04/2014">
-				<h2>Event title here</h2>
-				<em>March 20th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="20/05/2014">
-				<h2>Event title here</h2>
-				<em>May 20th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="09/07/2014">
-				<h2>Event title here</h2>
-				<em>July 9th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="30/08/2014">
-				<h2>Event title here</h2>
-				<em>August 30th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="15/09/2014">
-				<h2>Event title here</h2>
-				<em>September 15th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="01/11/2014">
-				<h2>Event title here</h2>
-				<em>November 1st, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="10/12/2014">
-				<h2>Event title here</h2>
-				<em>December 10th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="19/01/2015">
-				<h2>Event title here</h2>
-				<em>January 19th, 2015</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="03/03/2015">
-				<h2>Event title here</h2>
-				<em>March 3rd, 2015</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-		</ol>
-	</div> <!-- .events-content -->
-</section>
+          <?php include "includes/timeline3.php"; ?>
     
     <!--==========================
       Facts Section
@@ -537,6 +417,16 @@
           <img src="img/clients/client-8.png" alt="">-->
         </div>
 
+        <div class="owl-carousel clients-carousel">
+          <img src="img/clients/mond.png" alt="">
+          <img src="img/clients/petrobras.png" alt="">
+          <img src="img/clients/vale-top.png" alt="">
+          <img src="img/clients/volvo.jpg" alt="">
+          <img src="img/clients/csn.jpg" alt="">
+          <!--<img src="img/clients/client-6.png" alt="">
+          <img src="img/clients/client-7.png" alt="">
+          <img src="img/clients/client-8.png" alt="">-->
+        </div>
       </div>
     </section><!-- #clients -->
 
@@ -591,7 +481,7 @@
               <h3>Redes Sociais</h3>
               <div class="social-links">
                 <a href="https://www.facebook.com/jcbsolucoes/" class="facebook"><i class="fa fa-facebook" style="font-size: 26px; padding: 10px;"></i></a>
-                <a href="#" class="instagram"><i class="fa fa-instagram" style="font-size: 30px; padding: 10px;"></i></a>
+                <a href="https://www.instagram.com/jcbsolucoes/" class="instagram"><i class="fa fa-instagram" style="font-size: 30px; padding: 10px;"></i></a>
                 <a href="https://pt.linkedin.com/company/jcb-solu-es-industriais" class="linkedin"><i class="fa fa-linkedin" style="font-size: 30px; padding: 10px;"></i></a>
             </div>
             </div>

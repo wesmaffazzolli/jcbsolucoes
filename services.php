@@ -3,10 +3,11 @@
 
 <!-- Header with Background Image -->
 <header class="business-header">
-  <div class="container">
+  <div class="container-fluid" style="padding-right:0px; padding-left:0px;">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="display-3 text-center text-white mt-4">Business Name or Tagline</h1>
+       <img src="img/services/fabrica5.jpg" class="img-fluid" alt="">
+        <!--<h1 class="display-3 text-center text-white mt-4">Business Name or Tagline</h1>-->
       </div>
     </div>
   </div>
@@ -43,8 +44,8 @@
                                   <div class="col-sm-6 col-md-6 portfolio-item filter-app wow fadeInUp">
                                     <div class="portfolio-wrap">
                                       <figure>
-                                        <img src="img/portfolio/kraft1.jpg" class="img-fluid" alt="">
-                                        <a href="img/portfolio/kraft1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <img src="img/portfolio/limpeza2.jpg" class="img-fluid" alt="">
+                                        <a href="img/portfolio/limpeza2.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                                         <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
                                       </figure>
 
@@ -57,8 +58,8 @@
                                   <div class="col-sm-6 col-md-6 portfolio-item filter-app wow fadeInUp">
                                     <div class="portfolio-wrap">
                                       <figure>
-                                        <img src="img/portfolio/kraft2.jpg" class="img-fluid" alt="">
-                                        <a href="img/portfolio/kraft2.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <img src="img/portfolio/limpeza1.jpg" class="img-fluid" alt="">
+                                        <a href="img/portfolio/limpeza1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                                         <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
                                       </figure>
 
@@ -71,8 +72,8 @@
                                   <div class="col-sm-6 col-md-6 portfolio-item filter-app wow fadeInUp">
                                     <div class="portfolio-wrap">
                                       <figure>
-                                        <img src="img/portfolio/kraft3.jpg" class="img-fluid" alt="">
-                                        <a href="img/portfolio/kraft3.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <img src="img/portfolio/limpeza3.jpg" class="img-fluid" alt="">
+                                        <a href="img/portfolio/limpeza3.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                                         <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
                                       </figure>
 

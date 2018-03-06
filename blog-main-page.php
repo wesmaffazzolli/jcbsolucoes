@@ -8,7 +8,7 @@
       <div class="row my-4">
         <div class="col-lg-8">
           <!--<img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">-->
-          <img class="img-fluid rounded" src="img/imagem3.jpg" alt="">
+          <img class="img-fluid rounded" src="img/services/fabrica3.jpg" alt="">
         </div>
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
@@ -111,7 +111,7 @@
 
           <!-- Blog Post -->
           <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <img class="card-img-top" src="img/services/fabrica.jpg" alt="Card image cap">
             <div class="card-body">
               <h2 class="card-title">Título da Notícia</h2>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
@@ -125,7 +125,7 @@
 
           <!-- Blog Post -->
           <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <img class="card-img-top" src="img/services/fabrica4.jpg" alt="Card image cap">
             <div class="card-body">
               <h2 class="card-title">Título da Notícia</h2>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
@@ -139,7 +139,7 @@
 
           <!-- Blog Post -->
           <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <img class="card-img-top" src="img/services/fabrica2.jpg" alt="Card image cap">
             <div class="card-body">
               <h2 class="card-title">Título da Notícia</h2>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
