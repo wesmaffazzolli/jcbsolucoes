@@ -11,7 +11,16 @@
 
 #login img {
     display: block;
-    margin: 10F0px auto 0px auto;
+    margin: 0px auto 0px auto;
+}
+
+#login a img {
+    margin: 0px auto;
+}
+
+#login .my-logo {
+    width: 100%;
+    max-width: 200px;
 }
 
 #login .login-separator {
@@ -46,9 +55,35 @@
     background-color: #FF6600;
 }
 
+#login h3 {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    #login .container-space {
+        margin-top: 10px;
+    }
+    
+    #login h3 {
+        text-align: center;
+    }
+    
+    #login .col-login {
+        margin: 30px 0px 0px 0px;
+    }
+    
+    #login .login-separator {
+        border-right: none;
+    }
+    
+    #login .my-logo {
+        width: 60%;
+    }
+}
+
 /* -------------------------------- 
 
-Primary style
+Timeline Vertical Configuration
 
 -------------------------------- */
 html * {
@@ -127,7 +162,42 @@ header h1 {
     font-size: 24px;
     font-size: 1.5rem;
   }
-}*/    
+}*/
+
+#cd-timeline i {
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -15px;
+  margin-top: -14px;
+  color: #fff;
+  font-size: 30px;
+}
+
+@media (min-width: 1024px) {
+    #cd-timeline i {
+        font-size: 34px;
+        margin-left: -17px;
+        margin-top: -17px;
+    }
+}
+
+@media (max-width: 768px) {
+    #cd-timeline i {
+      margin-left: -15px;
+      margin-top: -14px;
+      color: #fff;
+      font-size: 30px;
+    }
+}
+
+#cd-timeline span {
+    font-size: 20px; 
+    font-weight: bold;
+}
 
 #cd-timeline {
   position: relative;
@@ -210,6 +280,9 @@ header h1 {
 }
 .cd-timeline-img.cd-location {
   background: #f0ca45;
+}
+.cd-timeline-img.cd-calendar {
+  background: #ff9900;
 }
 @media only screen and (min-width: 1170px) {
   .cd-timeline-img {
@@ -514,7 +587,6 @@ header h1 {
   }
 }
 
-
 /*--------------------------------------------------------------
 # Sobre nós
 --------------------------------------------------------------*/
@@ -761,7 +833,6 @@ _nav.scss:15
   left: 43px;
 }
 
-
 /*--------------------------------------------------------------
 # Página de Serviços
 --------------------------------------------------------------*/
@@ -930,9 +1001,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 135px;
     left: -18%;
     top: -5%;
-}
-    
-}
+}}
 
 /* Customização */
 

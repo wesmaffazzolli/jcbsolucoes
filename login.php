@@ -5,7 +5,7 @@
    <div class="container container-space">
        <div class="row">
             <div class="col-md-4 login-separator">
-            <img class="my-logo" src="img/nova-logo-jcb-2.png" alt="">
+            <a href="index.php"><img class="my-logo" src="img/jcb-logo-final-vertical.png" alt=""></a>
             </div>
             <div class="col-md-6">
             <div class="panel panel-default col-login">

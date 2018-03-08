@@ -111,8 +111,8 @@
                     </div>
                 </div>
           </div>
-    </div>
-</section><!-- #about -->
+      </div>
+    </section><!-- #about -->
    
       <!--==========================
       Timeline
@@ -127,7 +127,7 @@
       Timeline
     ============================-->
           <?php include "includes/timeline3.php"; ?>
-    
+          
     <!--==========================
       Facts Section
     ============================-->
@@ -140,11 +140,10 @@
         </header>
 
         <div class="row counters">
-
-  				<div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">274</span>
-            <p>Clientes</p>
-  				</div>
+  		    <div class="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">274</span>
+                <p>Clientes</p>
+  		    </div>
 
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up">421</span>
@@ -169,232 +168,6 @@
 
       </div>
     </section><!-- #facts -->
-    
-
-    <!--==========================
-      SERVIÇOS
-    ============================-->
-    <!--<section id="services">
-      <div class="container">
-
-        <header class="section-header wow fadeInUp">
-          <h3>Serviços</h3>
-            <p>
-              Com comprovada experiência adquirida ao decorrer dos anos, a JCB Soluções Industrais presta serviço de Capacitação em SMS, executa serviços de Alpinismo Industrial , atividades diversas em espaços confinados e limpeza técnica aérea em locais de difícil acesso, atendendo empresas de pequeno, médio e grande porte.
-            </p>
-            <p>
-              Nossa equipe é treinada para personalizar o atendimento de nossos clientes, com a premissa básica de acessibilidade. É de real importância que toda a equipe esteja preparada para dar os devidos retornos as solicitações dos nossos clientes. Nosso desafio é prestar serviço garantido a segurança, qualidade, prazo e  confiabilidade.
-            </p>
-        </header>
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
-            <h4 class="title"><a href="">Limpeza Aérea</a></h4>
-            <p class="description">Limpeza de equipamentos e instalações por acesso por corda. <a href="">Saiba mais</a></p>
-          </div>
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
-            <h4 class="title"><a href="">Consultoria e Acessoria</a></h4>
-            <p class="description">PPRA, PCMSO, PPR, PPEOB, PCA, CIPA, PROGRAMA 5S E SIPAT. <a href="">Saiba mais</a></p>
-          </div>
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-paper-outline"></i></div>
-            <h4 class="title"><a href="">Instalação de Banners</a></h4>
-            <p class="description">Em parceria com a empresa F9, a JCB Soluções Industriais instalou o banner para a reinauguração do Palácio Iguaçu, sede do governo estadual do Paraná. <a href="">Confira a matéria na Gazeta do Povo</a></p>
-          </div>
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-            <div class="icon"><i class="ion-ios-people-outline"></i></div>
-            <h4 class="title"><a href="">Mão de Obra especializada em SMS</a></h4>
-            <p class="description">Supervisão e Resgate técnico em altura e espaços confinados, Observadores de espaços confinados, Médico do Trabalho, Técnico e Auxiliar em Enfermagem do Trabalho, Engenheiro, Técnico e Auxiliar de Segurança no Trabalho e Bombeiro industrial. <a href="">Saiba mais</a></p>
-          </div>
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
-            <h4 class="title"><a href="">Ensaios não Destrutivos</a></h4>
-            <p class="description">Liquido Penetrante
-            - Partículas Magnéticas
-            - Ultra Som
-            - Medição de Espessura POR Ultra Som
-            - Ensaio Visual e Dimensional de Solda
-            - Inspeção de Soldagem
-            - Inspeção de Equipamentos.
-            <a href="">Saiba mais</a></p>
-          </div>
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-people-outline"></i></div>
-            <h4 class="title"><a href="">Equipe de Resgate em Altura e Espaços Confinados</a></h4>
-            <p class="description">Serviços realizados pela equipe da JCB Soluções Industriais. <a href="">Saiba mais</a></p>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #services -->
-
-    <!--==========================
-      Portfolio Section
-    ============================-->
-    <!--<section id="portfolio"  class="section-bg" >
-      <div class="container">
-
-        <header class="section-header">
-          <h3 class="section-title">Nosso Portfolio</h3>
-        </header>
-
-        <div class="row">
-          <div class="col-lg-12">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">Ver Todos</li>
-              <li data-filter=".filter-app">Limpeza Aérea</li>
-              <li data-filter=".filter-card">Instalação de Banners</li>
-              <li data-filter=".filter-web">Treinamentos</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/kraft1.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Limpeza Aérea</a></h4>
-                <p>Empresa: Kraft Foods.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/cipa.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/web3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 3" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">NR 05 - CIPA</a></h4>
-                <p><a href="">Inscreva-se aqui</a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/kraft2.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/app2.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 2" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Limpeza Aérea</a></h4>
-                <p>Empresa: Kraft Foods.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/p2.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/card2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Instalação de Banners</a></h4>
-                <p>Palácio Iguaçú - Curitiba PR</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/epi.jpeg" class="img-fluid" alt="">
-                <a href="img/portfolio/web2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">NR 06 - EPI</a></h4>
-                <p><a href="">Inscreva-se aqui</a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/kraft3.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/app3.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Limpeza Aérea</a></h4>
-                <p>Empresa: Kraft Foods.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/p1.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/card1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 1" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Instalação de Banners</a></h4>
-                <p>Palácio Iguaçú - Curitiba PR</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/p3.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/card3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Instalação de Banners</a></h4>
-                <p>Palácio Iguaçú - Curitiba PR</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/empilhadeira.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/web1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Curso Op. de Empilhadeira</a></h4>
-                <p><a href="">Inscreva-se aqui</a></p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #portfolio -->
 
     <!--==========================
       Clients Section
