@@ -12,26 +12,39 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li><a href="index.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                <li><a href="/jcbsolucoes/index.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
             </ul>
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <!--<li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>s
-                            </div>
-                        </li> /sidebar-search END -->
-                        <!--<li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>-->
+                        <!-- Novidades INÍCIO -->
+                        <li>
+                            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Novidades<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="novidades.php?source=listar">Listar</a>
+                                </li>
+                                <li>
+                                    <a href="novidades.php?source=adicionar">Adicionar Novidade</a>
+                                </li>
+                                <li>
+                                    <a href="#"> Categorias<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="categorias.php?source=listar">Listar</a>
+                                        </li>
+                                        <li>
+                                            <a href="categorias.php?source=adicionar">Adicionar Categoria</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <!-- Novidades FIM -->
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
