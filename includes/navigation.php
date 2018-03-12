@@ -39,6 +39,7 @@
           <li><a href="blog-main-page.php">Novidades</a></li>
           <li><a href="index.php#contact">Contato</a></li>
           <li><a href="login.php"><i class="material-icons">vpn_key</i></a></li>
+          <li><a href="admin/index.php">Admin</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
