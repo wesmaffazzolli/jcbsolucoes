@@ -137,15 +137,23 @@ if(isset($_POST['update_post'])) {
 		        		echo "<option value='DP'>Destaque Principal</option>";
 		        		echo "<option value='D1'>Destaque 1</option>";
 		        		echo "<option value='D2'>Destaque 2</option>";
+		        		echo "<option value='SD'>Sem destaque</option>";
 		        		
 		        	} else if($post_featured == 'D1') {
 		        		echo "<option value='D1'>Destaque 1</option>";
 		        		echo "<option value='D2'>Destaque 2</option>";
 		        		echo "<option value='DP'>Destaque Principal</option>";
-		        	} else {
+		        		echo "<option value='SD'>Sem destaque</option>";
+		        	} else if($post_featured == 'D2') {
 						echo "<option value='D2'>Destaque 2</option>";
 		        		echo "<option value='D1'>Destaque 1</option>";
 		        		echo "<option value='DP'>Destaque Principal</option>";
+		        		echo "<option value='SD'>Sem destaque</option>";
+		        	} else {
+		        		echo "<option value='SD'>Sem destaque</option>";
+		        		echo "<option value='DP'>Destaque Principal</option>";
+		        		echo "<option value='D1'>Destaque 1</option>";
+		        		echo "<option value='D2'>Destaque 2</option>";
 		        	} ?>
 		        </select>
 		    </div>

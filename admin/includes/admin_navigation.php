@@ -19,6 +19,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
+
                         <!-- Novidades INÍCIO -->
                         <li>
                             <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Novidades<span class="fa arrow"></span></a>
@@ -46,6 +47,32 @@
                         </li>
                         <!-- Novidades FIM -->
 
+                        <!-- Serviços INÍCIO -->
+                        <li>
+                            <a href=""><i class="fa fa-wrench fa-fw"></i> Serviços<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="servicos.php?source=listar">Listar</a>
+                                </li>
+                                <li>
+                                    <a href="servicos.php?source=adicionar">Adicionar Serviço</a>
+                                </li>
+                                <li>
+                                    <a href="#"> Imagens<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="categorias.php?source=listar">Listar</a>
+                                        </li>
+                                        <li>
+                                            <a href="categorias.php?source=adicionar">Adicionar Imagens</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <!-- Serviços FIM -->
 
                         <!--
                         <li>

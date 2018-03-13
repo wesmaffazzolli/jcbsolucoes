@@ -67,8 +67,10 @@
 		                	$post_featured = "Destaque Principal";
 		                } else if($post_featured == 'D1') {
 		                	$post_featured = "Destaque 1";
-		                } else {
+		                } else if($post_featured == 'D2') {
 		                	$post_featured = "Destaque 2";
+		                } else {
+		                	$post_featured = "Sem destaque";
 		                }
 		                echo "<td>{$post_featured}</td>";
 		                //

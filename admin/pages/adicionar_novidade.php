@@ -92,6 +92,7 @@ if(isset($_POST['create_post'])) {
 		        	<option value="DP">Destaque Principal</option>
 					<option value="D1">Destaque 1</option>
 					<option value="D2">Destaque 2</option>
+					<option value="SD">Sem destaque</option>
 		        </select>
 		    </div>
 		    
