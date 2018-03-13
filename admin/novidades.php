@@ -19,16 +19,26 @@
 					$option = $_GET['source'];
 
 					switch ($option) {
-						case 'listar':
-							include "pages/listar_novidades.php";
-							break;
 						case 'adicionar':
 							include "pages/adicionar_novidade.php";
 							break;
+						case 'editar':
+							include "pages/editar_novidade.php";
+							break;
+						case 'delete':
+				            $the_post_id = $_GET['p_id'];
+				            $query = "DELETE FROM posts WHERE ID = {$the_post_id} ";
+				            $delete_query = mysqli_query($connection, $query);
+				            confirmQuery($delete_query);
+
+						    header("Location: novidades.php"); 
+						    break;
 						default:
 							include "pages/listar_novidades.php";
 							break;
 					}
+				} else {
+					include "pages/listar_novidades.php";
 				}
 
 				?>

@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        Listar novidades
+        Lista de Novidades Cadastradas
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -8,63 +8,77 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Categoria</th>
+                        <th>Status</th>
+                        <th>Imagem</th>
+                        <th>Destaque</th>
+                        <th>Tags</th>
+                        <th>Última Atualização</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
 				<tbody>
 
 		            <?php                                
-		            /*$query = "SELECT * FROM posts";
+		            $query = "SELECT * FROM posts";
 		            $select_posts = mysqli_query($connection, $query); 
 
 		            while($row = mysqli_fetch_assoc($select_posts)) {
-		                $post_id = $row['post_id'];    
-		                $post_title = $row['post_title'];
-		                $post_author = $row['post_author'];
-		                $post_category_id = $row['post_category_id'];    
-		                $post_status = $row['post_status'];
-		                $post_image = $row['post_image'];
-		                $post_tags = $row['post_tags'];    
-		                $post_comment_count = $row['post_comment_count'];
-		                $post_date = $row['post_date'];
-		                $post_content = $row['post_content'];
+		                $post_id = $row['ID'];    
+		                $post_title = $row['TITLE'];
+		                $post_author = $row['AUTHOR'];
+		                $post_category_id = $row['CATEGORY_ID'];    
+		                $post_status = $row['STATUS'];
+		                $post_image = $row['IMAGE'];
+		                $post_featured = $row['FEATURED'];
+		                $post_content = $row['CONTENT'];
+		                $post_tags = $row['TAGS'];    
+		                $post_creation_date = $row['CREATION_DATE'];
+		                $post_update_date = $row['UPDATE_DATE'];
+		                $post_update_username = $row['UPDATE_USERNAME'];
 
 		                echo "<tr>";
-		                echo "<td>{$post_id}</td>";
 		                echo "<td>{$post_title}</td>";
 		                echo "<td>{$post_author}</td>";
 		                
 		                //Descrição da categoria ao invés do código
-		                $query = "SELECT * FROM categories WHERE cat_id = $post_category_id ";
+		                $query = "SELECT * FROM categories WHERE ID = $post_category_id ";
 		                $select_categories_id = mysqli_query($connection, $query); 
 		                while($row = mysqli_fetch_assoc($select_categories_id)) { 
-		                $cat_id = $row['cat_id'];
-		                $cat_title = $row['cat_title'];                
-		                echo "<td>{$cat_title}</td>"; }
-		                
+		                $cat_id = $row['ID'];
+		                $cat_title = $row['TITLE'];                
+		                echo "<td>{$cat_title}</td>"; } 
+
+		                //Descrição do Status
+		                if($post_status == 'A') {
+		                	$post_status = "Ativo";
+		                } else {
+		                	$post_status = "Inativo";
+		                }
 		                echo "<td>{$post_status}</td>";
-		                echo "<td><img width='100' src='../images/{$post_image}' alt='image'></td>";
+		                //
+
+		                echo "<td><img width='100' src='../img/novidades/{$post_image}' alt='image'></td>";
+
+		                //Descrição do Destaque Principal
+		                if($post_featured == 'DP') {
+		                	$post_featured = "Destaque Principal";
+		                } else if($post_featured == 'D1') {
+		                	$post_featured = "Destaque 1";
+		                } else {
+		                	$post_featured = "Destaque 2";
+		                }
+		                echo "<td>{$post_featured}</td>";
+		                //
+
 		                echo "<td>{$post_tags}</td>";
-		                echo "<td>{$post_comment_count}</td>";
-		                echo "<td>{$post_date}</td>";
-		                echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
-		                echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
+		                echo "<td>{$post_update_date} por {$post_update_username}</td>";
+		                echo "<td><a href='novidades.php?source=editar&p_id={$post_id}'>Editar</a>&nbsp;&nbsp;&nbsp;<a href='novidades.php?source=delete&p_id={$post_id}'>Excluir</a>";
 		                echo "</tr>";
 
 		            } ?>
-				            
-			        <?php 
-			        if(isset($_GET['delete'])) {
-			            $the_post_id = $_GET['delete'];
-			            $query = "DELETE FROM posts WHERE post_id = {$the_post_id} ";
-			            $delete_query = mysqli_query($connection, $query);
-			            header("Location: posts.php");
-			            
-			            confirmQuery($delete_query);
-			        } */?>
 				    </tbody>
             </table>
         </div>

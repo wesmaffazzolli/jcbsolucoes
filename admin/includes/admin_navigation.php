@@ -45,6 +45,9 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <!-- Novidades FIM -->
+
+
+                        <!--
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -55,7 +58,6 @@
                                     <a href="morris.html">Morris.js Charts</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
@@ -85,7 +87,6 @@
                                     <a href="grid.html">Grid</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
@@ -112,10 +113,8 @@
                                             <a href="#">Third Level Item</a>
                                         </li>
                                     </ul>
-                                    <!-- /.nav-third-level -->
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
@@ -127,8 +126,9 @@
                                     <a href="login.html">Login Page</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                        </li>-->
+
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

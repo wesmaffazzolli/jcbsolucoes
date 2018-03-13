@@ -1,6 +1,6 @@
 <?php include "../includes/db.php"; ?>
 <?php include "functions.php"; ?>
-<?php //include "classes/UploadException.php"; ?>
+<?php include "classes/UploadException.php"; ?>
 
 <?php ob_start(); ?>
 <!DOCTYPE html>

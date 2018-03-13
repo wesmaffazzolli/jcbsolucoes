@@ -8,7 +8,6 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>Código</th>
                         <th>Nome</th>
                         <th>Ações</th>
                     </tr>
@@ -23,7 +22,6 @@
 					        $cat_title = $row['TITLE'];
 
 					        echo "<tr>";    
-					        echo "<td>{$cat_id}</td>";
 					        echo "<td>{$cat_title}</td>";
 					        echo "<td><a href='categorias.php?source=editar&p_id={$cat_id}'>Editar</a>&nbsp;&nbsp;&nbsp;<a href='categorias.php?source=delete&p_id={$cat_id}'>Excluir</a></td>";
 					        echo "</tr>";
