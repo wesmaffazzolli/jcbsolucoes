@@ -1,7 +1,6 @@
 <?php include "includes-blog/header.php"; ?>
 <?php include "includes/navigation.php"; ?>
 
-
 <?php
 
     //Query dos posts com destaque
@@ -82,8 +81,6 @@
          <!-- Fim do Loop -->
 
 
-
-
         <!-- /.col-md-4 -->
         <div class="col-md-4 mb-4">
           <div class="card">
@@ -115,7 +112,7 @@
                       $cat_title = $row['TITLE']; ?> 
 
                     <li>
-                      <a href="search-categorias.php?p_id=<?php echo $cat_id; ?>" style="color: #FF9900;"><?php echo $cat_title; ?></a>
+                      <a href="search-categorias.php?cat_id=<?php echo $cat_id; ?>&cat_title=<?php echo $cat_title; ?>" style="color: #FF9900;"><?php echo $cat_title; ?></a>
                     </li>
 
                     <?php } ?>

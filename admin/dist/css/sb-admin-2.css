@@ -22,7 +22,7 @@ body {
     border-left: 1px solid #e7e7e7;
   }
 }
-/* Customização: início */
+/* ========== Customização: INÍCIO ==========*/
 .nav>li>a {
   color: grey;
 }
@@ -30,7 +30,12 @@ body {
 .nav>li>a:hover{
   color: #ff9900;
 }
-/* Customização: fim */
+
+
+
+/* ========== Customização: FIM ========== */
+
+
 
 .navbar-top-links {
   margin-right: 0;

@@ -16,6 +16,9 @@
 
     <title>Acesso Interno JCB</title>
 
+    <!-- Modal CSS -->
+    <link href="dist/css/modal.css" rel="stylesheet">
+
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 

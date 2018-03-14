@@ -11,7 +11,7 @@
 
         <div class="carousel-inner" role="listbox">
           
-         <div class="carousel-item" style="background-image: url('img/intro-carousel/limpeza1.jpg');">
+         <div class="carousel-item" style="background-image: url('img/intro-carousel/1.jpg');">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>Limpeza aérea</h2>
@@ -21,7 +21,7 @@
             </div>
           </div>
 
-          <div class="carousel-item active" style="background-image: url('img/intro-carousel/imagem6.jpg');">
+          <div class="carousel-item active" style="background-image: url('img/intro-carousel/2.jpg');">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>Técnicas de Acesso por Corda</h2>

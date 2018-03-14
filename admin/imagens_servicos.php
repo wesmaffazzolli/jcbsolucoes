@@ -20,10 +20,10 @@
 
 					switch ($option) {
 						case 'adicionar':
-							include "pages/adicionar_servico.php";
+							include "pages/adicionar_imagens_servico.php";
 							break;
 						case 'editar':
-							include "pages/editar_servico.php";
+							include "pages/editar_imagens_servico.php";
 							break;
 						case 'delete':
 				            $the_service_id = $_GET['p_id'];
@@ -31,17 +31,17 @@
 				            $delete_service_query = mysqli_query($connection, $query);
 				            confirmQuery($delete_service_query);
 
-						    header("Location: servicos.php"); 
+						    header("Location: imagens_servicos.php"); 
 						    break;
-						case 'view_images':
+						case 'listar':
 							include "pages/listar_imagens_servicos.php";
 							break;
 						default:
-							include "pages/listar_servicos.php";
+							include "pages/listar_imagens_servicos.php";
 							break;
 					}
 				} else {
-					include "pages/listar_servicos.php";
+					include "pages/listar_imagens_servicos.php";
 				}
 
 				?>

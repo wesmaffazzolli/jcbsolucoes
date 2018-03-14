@@ -61,10 +61,10 @@
                                     <a href="#"> Imagens<span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="categorias.php?source=listar">Listar</a>
+                                            <a href="imagens_servicos.php?source=listar">Listar</a>
                                         </li>
                                         <li>
-                                            <a href="categorias.php?source=adicionar">Adicionar Imagens</a>
+                                            <a href="imagens_servicos.php?source=adicionar">Adicionar Imagens</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->

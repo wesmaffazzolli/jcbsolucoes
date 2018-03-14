@@ -15,6 +15,9 @@
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
 
+    <!-- JavaScript Modal's -->
+    <script src="js/modal.js"></script>
+
 </body>
 
 </html>
