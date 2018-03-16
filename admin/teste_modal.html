@@ -5,13 +5,13 @@
 
 <style type="text/css">
 		/* Style the Image Used to Trigger the Modal */
-#myImg {
+.myImg {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-#myImg:hover {opacity: 0.7;}
+.myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
 .modal {
@@ -90,49 +90,66 @@
 <body>
 
 <!-- Trigger the Modal -->
-<img id="myImg" src="../img/novidades/about-bg.jpg" alt="Trolltunga, Norway" width="300" height="200">
+<img id="myImg1" class="myImg" src="../img/novidades/about-bg.jpg" onclick="abreModal('myModal1', this.id, 'img1', 'spanclose1', 'caption1')" alt="Trolltunga, Norway" width="300" height="200">
 
 <!-- The Modal -->
-<div id="myModal" class="modal" onclick="getMyModalId(this.id)">
+<div id="myModal1" class="modal">
 
   <!-- The Close Button -->
-  <span class="close">&times;</span>
+  <span id="spanclose1" class="close">&times;</span>
 
   <!-- Modal Content (The Image) -->
-  <img class="modal-content" id="img01" onclick="this.id">
+  <img class="modal-content" id="img1">
 
   <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
+  <div id="caption1"></div>
+</div>
+
+<!-- Trigger the Modal -->
+<img id="myImg2" class="myImg" src="../img/novidades/about-mission.jpg" onclick="abreModal('myModal2', this.id, 'img2', 'spanclose2', 'caption2')" alt="Trolltunga, Norway" width="300" height="200">
+
+<!-- The Modal -->
+<div id="myModal2" class="modal">
+
+  <!-- The Close Button -->
+  <span id="spanclose2" class="close">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img2">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption2"></div>
 </div>
 
 </body>
 
 <script type="text/javascript">
 
-function getMyModalId(clicked_id) {
-	alert(clicked_id);
+function abreModal(myModal, myImg, myModalImg, mySpanClose, myCaption) {
+    // Get the modal
+    var modal = document.getElementById(myModal);
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById(myImg);
+    var modalImg = document.getElementById(myModalImg);
+    var captionText = document.getElementById(myCaption);
+    //var botaoModal = document.getElementById("botaoModal");
+
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+    // Get the <span> element that closes the modal
+    // var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementById(mySpanClose);
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() { 
+      modal.style.display = "none";
+    } 
 }
 
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById('myImg');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-}
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-  modal.style.display = "none";
-}
 </script>
 
 

@@ -19,30 +19,19 @@
 					$option = $_GET['source'];
 
 					switch ($option) {
-						case 'adicionar':
-							include "pages/adicionar_imagens_servico.php";
+						case 'institucional':
+							include "pages/institucional.php";
 							break;
-						case 'editar':
-							include "pages/editar_imagens_servico.php";
+						case 'nossos_numeros':
+							include "pages/nossos_numeros.php";
 							break;
-						case 'delete':
-							$the_service_id = $_GET['s_id'];
-				            $the_img_id = $_GET['img_id'];
-				            $query = "DELETE FROM services_images WHERE ID = {$the_img_id} ";
-				            $delete_img_service_query = mysqli_query($connection, $query);
-				            confirmQuery($delete_img_service_query);
-
-						    header("Location: imagens_servicos.php?source=listar&s_id=$the_service_id"); 
+						case 'clientes':
+							include "pages/clientes.php";
 						    break;
-						case 'listar':
-							include "pages/listar_imagens_servicos.php";
-							break;
-						default:
-							include "pages/listar_imagens_servicos.php";
-							break;
 					}
+
 				} else {
-					include "pages/listar_imagens_servicos.php";
+					include "pages/listar_servicos.php";
 				}
 
 				?>

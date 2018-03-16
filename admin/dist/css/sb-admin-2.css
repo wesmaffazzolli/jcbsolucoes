@@ -31,6 +31,13 @@ body {
   color: #ff9900;
 }
 
+.no-gutter-left {
+  padding-left: 0px !important;
+}
+
+.no-gutter-right {
+  padding-right: 0px;
+}
 
 
 /* ========== Customização: FIM ========== */

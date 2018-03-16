@@ -20,29 +20,28 @@
 
 					switch ($option) {
 						case 'adicionar':
-							include "pages/adicionar_imagens_servico.php";
+							include "pages/adicionar_cliente.php";
 							break;
 						case 'editar':
-							include "pages/editar_imagens_servico.php";
+							include "pages/editar_cliente.php";
 							break;
 						case 'delete':
-							$the_service_id = $_GET['s_id'];
-				            $the_img_id = $_GET['img_id'];
-				            $query = "DELETE FROM services_images WHERE ID = {$the_img_id} ";
-				            $delete_img_service_query = mysqli_query($connection, $query);
-				            confirmQuery($delete_img_service_query);
+				            /*$the_service_id = $_GET['p_id'];
+				            $query = "DELETE FROM services WHERE ID = {$the_service_id} ";
+				            $delete_service_query = mysqli_query($connection, $query);
+				            confirmQuery($delete_service_query);
 
-						    header("Location: imagens_servicos.php?source=listar&s_id=$the_service_id"); 
+						    header("Location: servicos.php"); */
 						    break;
-						case 'listar':
+						case 'view_images':
 							include "pages/listar_imagens_servicos.php";
 							break;
 						default:
-							include "pages/listar_imagens_servicos.php";
+							include "pages/listar_clientes.php";
 							break;
 					}
 				} else {
-					include "pages/listar_imagens_servicos.php";
+					include "pages/listar_clientes.php";
 				}
 
 				?>

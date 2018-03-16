@@ -90,21 +90,21 @@ if(isset($_POST['search_service_image']) || (isset($_GET['s_id']))) {
 		                echo "<tr>";
 		                echo "<td>{$service_title}</td>";
 		                echo "<td>
-                                <img id='myImg' src='../img/servicos/{$service_image_path}' alt='{$service_title}' style='width: 300px;'>
+                                <img class='myImg' id='myImg{$service_image_id}' src='../img/servicos/{$service_image_path}' onClick='abreModal('myModal{$service_image_id}', this.id, 'img{$service_image_id}', 'spanclose{$service_image_id}', 'caption{$service_image_id}')' alt='{$service_title}' style='width: 300px;'>
                                   <!-- The Modal -->
-                                    <div id='myModal' class='modal'>
+                                    <div id='myModal{$service_image_id}' class='modal'>
 
                                       <!-- The Close Button -->
                                       <span class='close'>&times;</span>
 
                                       <!-- Modal Content (The Image) -->
-                                      <img class='modal-content' id='img01'>
+                                      <img class='modal-content' id='img{$service_image_id}'>
 
                                       <!-- Modal Caption (Image Text) -->
-                                      <div id='caption'></div>
+                                      <div id='caption{$service_image_id}'></div>
                                     </div>
                                 </td>";
-		                echo "<td><a href='imagens_servicos.php?source=editar&img_id={$service_image_id}&s_id={$service_id_selected}'>Editar</a>&nbsp;&nbsp;<a href='imagens_servicos.php?source=delete&img_id={$service_image_id}'>Excluir</a>&nbsp;&nbsp;<a href='#' id='botaoModal' onClick='abreModal()'>Ver Imagem</a></td>";
+		                echo "<td><a href='imagens_servicos.php?source=editar&img_id={$service_image_id}&s_id={$service_id_selected}'>Editar</a>&nbsp;&nbsp;<a href='imagens_servicos.php?source=delete&img_id={$service_image_id}&s_id={$service_id_selected}'>Excluir</a>&nbsp;&nbsp;<a href='#' id='botaoModal' onClick='abreModal()'>Ver Imagem</a></td>";
 		                echo "</tr>";
 
 		            } ?>

@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Acesso Interno JCB</a>
+                <a class="navbar-brand" href="index.php">Acesso Interno JCB</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -19,6 +19,66 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
+
+                        <!-- Página Inicial INÍCIO -->
+                        <li>
+                            <a href=""><i class="fa fa-home fa-fw"></i> Página Inicial<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="imagens_inicio.php?source=listar"> Início</a>
+                                    <!--<ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="imagens_inicio.php?source=listar">Listar</a>
+                                        </li>
+                                        <li>
+                                            <a href="imagens_inicio.php?source=adicionar">Adicionar Conteúdo</a>
+                                        </li>
+                                    </ul>-->
+                                    <!-- /.nav-third-level -->
+                                </li>
+                                <li>
+                                    <a href="#"> Sobre nós<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="sobre.php?source=institucional">Institucional</a>
+                                        </li>
+                                        <li>
+                                            <a href="sobre.php?source=nossos_numeros">Nossos Números</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
+                                <li>
+                                    <a href="#"> Linha do Tempo<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="timeline.php?source=listar">Listar</a>
+                                        </li>
+                                        <li>
+                                            <a href="timeline.php?source=adicionar">Adicionar História</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
+
+                                <li>
+                                    <a href="#"> Clientes<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="clientes.php?source=listar">Listar</a>
+                                        </li>
+                                        <li>
+                                            <a href="clientes.php?source=adicionar">Adicionar Cliente</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <!-- Página Inicial FIM -->
+
 
                         <!-- Novidades INÍCIO -->
                         <li>
