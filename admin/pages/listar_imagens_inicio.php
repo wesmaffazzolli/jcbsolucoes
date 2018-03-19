@@ -6,7 +6,7 @@ if(isset($_GET['source'])) {
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        Lista de Conteúdos
+        Lista das Imagens do Início
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -27,13 +27,13 @@ if(isset($_GET['source'])) {
 		            <?php    
 
                     //Listagem das imagens do início                    
-		            $query = "SELECT A.MAINPAGE_DATA_ID, A.TITLE, A.DESCR, A.STATUS, A.POSITION, B.MAINPAGE_IMAGE_ID, B.IMG_PATH ";
-                    $query .="FROM mainpage_data AS A LEFT JOIN mainpage_images AS B ON A.MAINPAGE_DATA_ID = B.MAINPAGE_DATA_ID ";
-                    $query .="ORDER BY A.POSITION ";
+		            $query = "SELECT INICIO_ID, TITLE, DESCR, STATUS, POSITION, IMG_PATH ";
+                    $query .="FROM inicio ";
+                    $query .="ORDER BY POSITION ";
 
 		            $select_imagens_inicio = mysqli_query($connection, $query); 
 		            while($row = mysqli_fetch_assoc($select_imagens_inicio)) {
-                        $home_id = $row['MAINPAGE_DATA_ID'];
+                        $home_id = $row['INICIO_ID'];
                         $home_title = $row['TITLE'];
                         $home_descr = $row['DESCR'];
 
@@ -45,13 +45,12 @@ if(isset($_GET['source'])) {
                         }
 
                         $home_position = $row['POSITION'];
-                        $home_image_id = $row['MAINPAGE_IMAGE_ID'];
 		                $home_image_path = $row['IMG_PATH'];
 
 		                echo "<tr>";
-		                if(isset($home_title)) {echo "<td>{$home_title}</td>";} else {echo "<td>Título vazio.</td>" ;}
-                        if(isset($home_descr)) {echo "<td>{$home_descr}</td>";} else {echo "<td>Texto vazio.</td>" ;}
-                        if(isset($home_image_id)) {
+		                if(isset($home_title) && !empty($home_title)) {echo "<td>{$home_title}</td>";} else {echo "<td>Título vazio.</td>" ;}
+                        if(isset($home_descr) && !empty($home_descr)) {echo "<td>{$home_descr}</td>";} else {echo "<td>Texto vazio.</td>" ;}
+                        if(isset($home_image_path) && !empty($home_image_path)) {
     		                echo "<td>
                                     <img id='myImg' class='myImg' src='../img/intro-carousel/{$home_image_path}' alt='{$home_title}' style='width: 300px;'>
 
@@ -77,29 +76,20 @@ if(isset($_GET['source'])) {
 
                         echo "<td>{$home_position}</td>";
 
-                        //Lógica da coluna ações.
-                        if(empty($home_image_id)) {
+                        echo "<td>
+                                <a href='imagens_inicio.php?source=editar&h_id={$home_id}'>Editar</a>
+                                &nbsp;&nbsp;";
 
-		                echo "<td>
-                                <a href='imagens_inicio.php?source=adicionar&h_id={$home_id}'>Editar</a>
-                                    &nbsp;&nbsp;
-                             </td>";
-
-                        } else {
-
-                            echo "<td>
-                                    <a href='imagens_inicio.php?source=editar&img_id={$home_image_id}&h_id={$home_id}'>Editar</a>
-                                    &nbsp;&nbsp;";
-
+                        if(!empty($home_image_path)) {
                             if($home_status == 'A') {
                                 echo "<a href='imagens_inicio.php?source=trocar_status&h_id={$home_id}&status={$home_status}'>Inativar</a>
-                                    &nbsp;&nbsp;";                                
+                                &nbsp;&nbsp;";                                
                             } else {
                                 echo "<a href='imagens_inicio.php?source=trocar_status&h_id={$home_id}&status={$home_status}'>Ativar</a>
-                                    &nbsp;&nbsp;";
+                                &nbsp;&nbsp;";
                             }
-
-                            echo "<a href='#' id='botaoModal'>Ver Imagem</a></td>"; 
+                            
+                            echo "<a href='#' id='botaoModal'>Ver Imagem</a></td>";
                         }      
 
 		                echo "</tr>";

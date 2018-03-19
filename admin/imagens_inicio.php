@@ -30,13 +30,13 @@
 				            $the_status = $_GET['status'];
 
 				            if($the_status == 'A'){
-				            	$query = "UPDATE mainpage_data SET ";
+				            	$query = "UPDATE inicio SET ";
 					        	$query .= "STATUS = 'I' ";  
-					            $query .= "WHERE MAINPAGE_DATA_ID = '{$the_home_id}' ";
+					            $query .= "WHERE INICIO_ID = '{$the_home_id}' ";
 				            } else {
-					           	$query = "UPDATE mainpage_data SET ";
+					           	$query = "UPDATE inicio SET ";
 					        	$query .= "STATUS = 'A' ";  
-					            $query .= "WHERE MAINPAGE_DATA_ID = '{$the_home_id}' ";
+					            $query .= "WHERE INICIO_ID = '{$the_home_id}' ";
 				            }
 
 				           	$change_status_home_query = mysqli_query($connection, $query);
@@ -44,17 +44,6 @@
 				            
 						    header("Location: imagens_inicio.php?source=listar"); 
 						    break;
-						case 'delete':
-							/*$query = "DELETE FROM mainpage_images WHERE ID = {$the_img_home_id} ";
-				            $delete_img_home_query = mysqli_query($connection, $query);
-				            confirmQuery($delete_img_home_query);
-
-				            $query = "DELETE FROM mainpage_data WHERE ID = {$the_home_id} ";
-				            $delete_home_query = mysqli_query($connection, $query);
-				            confirmQuery($delete_home_query);*/
-
-				            header("Location: imagens_inicio.php?source=listar"); 
-						break;    
 						case 'listar':
 							include "pages/listar_imagens_inicio.php";
 							break;

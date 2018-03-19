@@ -24,11 +24,12 @@ if(isset($_POST['publish_home_image'])) {
 	        //Verificação de erros possíveis durante o upload das imagens
 	        if ($_FILES['home_img']['error'] === UPLOAD_ERR_OK) {
 
-	        	$query = "UPDATE mainpage_data SET ";
+	        	$query = "UPDATE inicio SET ";
 	        	$query .= "TITLE = '{$home_title}', ";
-	        	$query .= "STATUS = 'A', "; 
+	        	$query .= "STATUS = 'I', "; 
+	        	$query .= "IMG_PATH = {$home_img}, "; 
 	        	$query .= "DESCR = '{$home_descr}' "; 
-	            $query .= "WHERE MAINPAGE_DATA_ID = '{$home_id}' ";
+	            $query .= "WHERE INICIO_ID = '{$home_id}' ";
 
 	           	$add_home_data = mysqli_query($connection, $query);
 
@@ -38,16 +39,7 @@ if(isset($_POST['publish_home_image'])) {
 
 	            } else {
 
-	            	$query_img = "INSERT INTO mainpage_images(IMG_PATH, MAINPAGE_DATA_ID) ";
-	            	$query_img .= "VALUE('{$home_img}','{$home_id}') ";	
-
-		            $add_home_img = mysqli_query($connection, $query_img);
-
-		            if(!$add_home_img) {
-		                die('Erro de inserção de dados: ' . mysqli_error($connection));
-		            } else {
-		            	header("Location: imagens_inicio.php?source=listar");
-		            }
+	            	echo "O conteúdo foi adicionado com sucesso.";
 			    } 
 
 			} else { 

@@ -10,8 +10,42 @@
         <ol class="carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
+
+        <?php 
+
+          $query = "SELECT A.MAINPAGE_DATA_ID, A.TITLE, A.DESCR, A.STATUS, A.POSITION, B.MAINPAGE_IMAGE_ID, B.IMG_PATH ";
+          $query .="FROM mainpage_data AS A INNER JOIN mainpage_images AS B ON A.MAINPAGE_DATA_ID = B.MAINPAGE_DATA_ID ";
+          $query .="ORDER BY A.POSITION ";
+
+          $select_imagens_inicio = mysqli_query($connection, $query); 
+          while($row = mysqli_fetch_assoc($select_imagens_inicio)) {
+                  $home_id = $row['MAINPAGE_DATA_ID'];
+                  $home_title = $row['TITLE'];
+                  $home_descr = $row['DESCR'];
+
+                  $home_status = $row['STATUS'];
+                  if($home_status == 'A') {
+                      $home_status_descr = 'Ativo';
+                  } else {
+                      $home_status_descr = 'Inativo';
+                  }
+
+                  $home_position = $row['POSITION'];
+                  $home_image_id = $row['MAINPAGE_IMAGE_ID'];
+                  $home_image_path = $row['IMG_PATH'];
+        ?>
+
+          <div class="carousel-item" style="background-image: url('img/intro-carousel/1.jpg');">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Limpeza aérea</h2>
+                <p>Durante a parada na Vale Uberaba a JCB Soluções promoveu a campanha de Conscientização Cancer de Mama. Foi um dia muito especial para toda a nossa equipe.</p>
+                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
+              </div>
+            </div>
+          </div>
           
-         <div class="carousel-item" style="background-image: url('img/intro-carousel/1.jpg');">
+         <!--<div class="carousel-item" style="background-image: url('img/intro-carousel/1.jpg');">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>Limpeza aérea</h2>
@@ -59,7 +93,7 @@
                 <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
               </div>
             </div>
-          </div>
+          </div>-->
 
         </div>
 
