@@ -17,6 +17,7 @@ if(isset($_GET['source'])) {
                         <th>Imagem Cliente</th>
                         <th>Grupo</th>
                         <th>Ordem de Exibição</th>
+                        <th>Criado em</th>
                         <th>Última Atualização</th>
                         <th>Ações</th>
                     </tr>
@@ -25,15 +26,16 @@ if(isset($_GET['source'])) {
 
 		            <?php    
 
-                    //Listagem das imagens do início                    
-		            $query = "SELECT CLIENTES_ID, IMG_PATH, GRUPO, POSITION, UPDATE_DATE, UPDATE_USERNAME FROM clientes ORDER BY GRUPO, POSITION";
+                    //Listagem dos clientes                
+		            $query = "SELECT CLIENTS_ID, IMG_PATH, GRUPO, POSITION, CREATION_DATE, UPDATE_DATE, UPDATE_USERNAME FROM clients ORDER BY GRUPO, POSITION";
 
 		            $select_clients = mysqli_query($connection, $query); 
 		            while($row = mysqli_fetch_assoc($select_clients)) {
-                        $clients_id = $row['CLIENTES_ID'];
+                        $clients_id = $row['CLIENTS_ID'];
                         $clients_img = $row['IMG_PATH'];
                         $clients_group = $row['GRUPO'];
                         $clients_position = $row['POSITION'];
+                        $clients_creation_date = $row['CREATION_DATE'];
                         $clients_update_date = $row['UPDATE_DATE'];
                         $clients_update_username = $row['UPDATE_USERNAME'];
 
@@ -62,14 +64,9 @@ if(isset($_GET['source'])) {
 
                         if(isset($clients_group)) {echo "<td>{$clients_group}</td>";} else {echo "<td>Grupo vazio.</td>" ;}
                         if(isset($clients_position)) {echo "<td>{$clients_position}</td>";} else {echo "<td>Ordem de exibição vazia.</td>" ;}
-                        if(isset($clients_update_date) && isset($clients_update_username)) {echo "<td>{$clients_update_date} por {$clients_update_username}</td>";} else {echo "<td>Última atualização vazia.</td>" ;}
-
-                            echo "<td><a href='clientes.php?source=editar&c_id={$clients_id}>Editar</a>
-                                    &nbsp;&nbsp;";
-                            echo "<td><a href='clientes.php?source=delete&c_id={$home_id}'>Excluir</a>
-                                    &nbsp;&nbsp;";
-                            echo "<a href='#' id='botaoModal'>Ver Imagem</a></td>"; 
-
+                        if(isset($clients_creation_date)) {echo "<td>{$clients_creation_date}</td>";} else {echo "<td>Data de criação vazia.</td>" ;}
+                        if(isset($clients_update_date) && isset($clients_update_username)) {echo "<td>{$clients_update_date} por {$clients_update_username}</td>";} else {echo "<td>---/---" ;}
+                        echo "<td><a href='clientes.php?source=editar&c_id={$clients_id}'>Editar</a>&nbsp;&nbsp;&nbsp;<a href='clientes.php?source=delete&c_id={$clients_id}'>Excluir</a></td>";
 		                echo "</tr>"; 
 
                     } ?>

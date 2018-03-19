@@ -1,57 +1,41 @@
 <?php 
 
+//Adicionar cliente
 if(isset($_POST['publish_client'])) {
 
-	$home_id = $_GET['h_id'];
+    if(isset($_POST['clients_grupo'])) {$clients_grupo = $_POST['clients_grupo'];} else {$clients_grupo = "";} 
+    if(isset($_POST['clients_position'])) {$clients_position = $_POST['clients_position'];} else {$clients_position = "";}
+    if(isset($_FILES['clients_image']['name'])) {$clients_image = $_FILES['clients_image']['name'];} else {$clients_image = "";}
+    if(isset($_FILES['clients_image']['tmp_name'])) {$clients_image_temp = $_FILES['clients_image']['tmp_name'];} else {$clients_image_temp = "";}
+    $username = "adminjcb";
 
-	$home_title = $_POST['home_title'];
-	$home_descr = $_POST['home_descr']; 
-    $home_img = $_FILES['home_img']['name'];
-    $home_img_temp = $_FILES['home_img']['tmp_name'];
-
-    if($home_title == "" || empty($home_title)) {
-        echo "O título não foi preenchido. Favor preenchê-lo para prosseguir.";
-    } else if($home_descr == "" || empty($home_descr)) {
-    	echo "O texto não foi preenchido. Favor preenchê-lo para prosseguir.";
-   	} else if($home_img == "" || empty($home_img)) {
+    if($clients_grupo == "" || empty($clients_grupo)) {
+        echo "O grupo não foi preenchido. Favor preenchê-lo para prosseguir.";
+    } else if($clients_position == "" || empty($clients_position)) {
+    	echo "A ordem de exibição não foi preenchida. Favor preenchê-la para prosseguir.";
+   	} else if($clients_image == "" || empty($clients_image)) {
     	echo "A imagem não foi selecionada. Favor selecioná-la para prosseguir.";
     } else {
 
     	try {
 
-    		move_uploaded_file($home_img_temp, "../img/intro-carousel/$home_img");
+    		move_uploaded_file($clients_image_temp, "../img/clients/$clients_image");
         
 	        //Verificação de erros possíveis durante o upload das imagens
-	        if ($_FILES['home_img']['error'] === UPLOAD_ERR_OK) {
+	        if ($_FILES['clients_image']['error'] === UPLOAD_ERR_OK) {
 
-	        	$query = "UPDATE mainpage_data SET ";
-	        	$query .= "TITLE = '{$home_title}', ";
-	        	$query .= "STATUS = 'A', "; 
-	        	$query .= "DESCR = '{$home_descr}' "; 
-	            $query .= "WHERE MAINPAGE_DATA_ID = '{$home_id}' ";
+            	$query = "INSERT INTO clients(IMG_PATH, POSITION, GRUPO, CREATION_DATE, UPDATE_USERNAME) ";
+            	$query .= "VALUE('{$clients_image}','{$clients_position}','{$clients_grupo}', CURRENT_TIMESTAMP, '{$username}') ";	
 
-	           	$add_home_data = mysqli_query($connection, $query);
+	            $add_client = mysqli_query($connection, $query);
 
-	           	if(!$add_home_data) {
-
+	            if(!$add_client) {
 	                die('Erro de inserção de dados: ' . mysqli_error($connection));
-
 	            } else {
-
-	            	$query_img = "INSERT INTO mainpage_images(IMG_PATH, MAINPAGE_DATA_ID) ";
-	            	$query_img .= "VALUE('{$home_img}','{$home_id}') ";	
-
-		            $add_home_img = mysqli_query($connection, $query_img);
-
-		            if(!$add_home_img) {
-		                die('Erro de inserção de dados: ' . mysqli_error($connection));
-		            } else {
-		            	header("Location: imagens_inicio.php?source=listar");
-		            }
-			    } 
-
-			} else { 
-		        throw new UploadException($_FILES['home_img']['error']); 
+	            	echo "O cliente foi adicionado.";
+	            }
+		    } else { 
+		        throw new UploadException($_FILES['clients_image']['error']); 
 		    } 
 
 		} catch (UploadException $e) {
@@ -71,22 +55,22 @@ if(isset($_POST['publish_client'])) {
 		<form action="" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
-                <label for="clients_line">Linha:</label>
-                <select name="clients_line">
+                <label for="clients_grupo">Grupo:</label>
+                <select name="clients_grupo">
                     <?php
-                        for($line = 1; $line <= 2 ; $line++) {
-                            echo "<option value='{$line}'>{$line}</option>";
+                        for($grupo = 1; $grupo <= 2 ; $grupo++) {
+                            echo "<option value='{$grupo}'>{$grupo}</option>";
                         }  
                     ?>
                 </select>
             </div>
 		    
             <div class="form-group">
-                <label for="clients_order">Ordem de exibição:</label>
-                <select name="clients_order" id="">
+                <label for="clients_position">Ordem de exibição:</label>
+                <select name="clients_position" id="">
                     <?php
-                        for($order = 1; $order <= 10 ; $order++) {
-                            echo "<option value='{$order}'>{$order}</option>";
+                        for($position = 1; $position <= 10 ; $position++) {
+                            echo "<option value='{$position}'>{$position}</option>";
                         }  
                     ?>
                 </select>

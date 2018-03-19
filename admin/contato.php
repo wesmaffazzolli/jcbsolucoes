@@ -13,38 +13,27 @@
             <!-- /.row -->
 
             <div class="row">
-				<?php 
+
+            	<?php 
 
 				if(isset($_GET['source'])) {
 					$option = $_GET['source'];
 
 					switch ($option) {
-						case 'adicionar':
-							include "pages/adicionar_cliente.php";
-							break;
 						case 'editar':
-							include "pages/editar_cliente.php";
-							break;
-						case 'delete':
-				            $the_client_id = $_GET['c_id'];
-				            $query = "DELETE FROM clients WHERE CLIENTS_ID = {$the_client_id} ";
-				            $delete_client_query = mysqli_query($connection, $query);
-				            confirmQuery($delete_client_query);
-
-						    header("Location: clientes.php?source=listar");
-						    break;
-						case 'view_images':
-							include "pages/listar_imagens_servicos.php";
+							include "pages/contato.php";
 							break;
 						default:
-							include "pages/listar_clientes.php";
+							include "pages/contato.php";
 							break;
 					}
+
 				} else {
-					include "pages/listar_clientes.php";
+					include "pages/contato.php";
 				}
 
 				?>
+
 			</div>
 			<!-- /#Row conteúod -->
 
