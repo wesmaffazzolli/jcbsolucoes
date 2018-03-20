@@ -19,9 +19,9 @@
 					$option = $_GET['source'];
 
 					switch ($option) {
-						case 'adicionar':
+						/*case 'adicionar':
 							include "pages/adicionar_imagens_inicio.php";
-							break;
+							break;*/
 						case 'editar':
 							include "pages/editar_imagens_inicio.php";
 							break;

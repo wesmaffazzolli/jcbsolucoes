@@ -19,6 +19,7 @@ if(isset($_GET['source'])) {
                         <th>Imagem</th>
                         <th>Status</th>
                         <th>Posição no Slider</th>
+                        <th>URL Botão "Saiba Mais"</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -27,7 +28,7 @@ if(isset($_GET['source'])) {
 		            <?php    
 
                     //Listagem das imagens do início                    
-		            $query = "SELECT INICIO_ID, TITLE, DESCR, STATUS, POSITION, IMG_PATH ";
+		            $query = "SELECT INICIO_ID, TITLE, DESCR, STATUS, POSITION, IMG_PATH, URL ";
                     $query .="FROM inicio ";
                     $query .="ORDER BY POSITION ";
 
@@ -36,6 +37,7 @@ if(isset($_GET['source'])) {
                         $home_id = $row['INICIO_ID'];
                         $home_title = $row['TITLE'];
                         $home_descr = $row['DESCR'];
+                        $home_url = $row['URL'];
 
                         $home_status = $row['STATUS'];
                         if($home_status == 'A') {
@@ -44,7 +46,7 @@ if(isset($_GET['source'])) {
                             $home_status_descr = 'Inativo';
                         }
 
-                        $home_position = $row['POSITION'];
+                        $home_position = $row['POSITION'] + 1;
 		                $home_image_path = $row['IMG_PATH'];
 
 		                echo "<tr>";
@@ -75,6 +77,8 @@ if(isset($_GET['source'])) {
                         echo "<td>{$home_status_descr}</td>";
 
                         echo "<td>{$home_position}</td>";
+
+                        if(isset($home_url) && !empty($home_url)) {echo "<td><a href='{$home_url}'>Ver redirecionamento</a></td>";} else {echo "<td>URL vazia.</td>" ;}
 
                         echo "<td>
                                 <a href='imagens_inicio.php?source=editar&h_id={$home_id}'>Editar</a>

@@ -7,93 +7,38 @@
     <div class="intro-container">
       <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
 
-        <ol class="carousel-indicators"></ol>
+        <ol class="carousel-indicators">
+        </ol>
 
         <div class="carousel-inner" role="listbox">
 
         <?php 
 
-          $query = "SELECT A.MAINPAGE_DATA_ID, A.TITLE, A.DESCR, A.STATUS, A.POSITION, B.MAINPAGE_IMAGE_ID, B.IMG_PATH ";
-          $query .="FROM mainpage_data AS A INNER JOIN mainpage_images AS B ON A.MAINPAGE_DATA_ID = B.MAINPAGE_DATA_ID ";
-          $query .="ORDER BY A.POSITION ";
+        $query = "SELECT INICIO_ID, TITLE, DESCR, STATUS, POSITION, IMG_PATH, URL ";
+        $query .="FROM inicio WHERE STATUS = 'A'";
+        $query .="ORDER BY POSITION ";
 
-          $select_imagens_inicio = mysqli_query($connection, $query); 
-          while($row = mysqli_fetch_assoc($select_imagens_inicio)) {
-                  $home_id = $row['MAINPAGE_DATA_ID'];
-                  $home_title = $row['TITLE'];
-                  $home_descr = $row['DESCR'];
+        $select_imagens_inicio = mysqli_query($connection, $query); 
+        while($row = mysqli_fetch_assoc($select_imagens_inicio)) { 
+            $home_id = $row['INICIO_ID'];
+            $home_title = $row['TITLE'];
+            $home_descr = $row['DESCR'];
+            $home_status = $row['STATUS'];
+            $home_position = $row['POSITION'];
+            $home_url = $row['URL'];
+            $home_image_path = $row['IMG_PATH']; ?>
 
-                  $home_status = $row['STATUS'];
-                  if($home_status == 'A') {
-                      $home_status_descr = 'Ativo';
-                  } else {
-                      $home_status_descr = 'Inativo';
-                  }
-
-                  $home_position = $row['POSITION'];
-                  $home_image_id = $row['MAINPAGE_IMAGE_ID'];
-                  $home_image_path = $row['IMG_PATH'];
-        ?>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/1.jpg');">
+         <div class="carousel-item<?php if($home_position == 0) {echo ' active';} ?>" style="background-image: url('img/intro-carousel/<?php echo $home_image_path; ?>');">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2>Limpeza aérea</h2>
-                <p>Durante a parada na Vale Uberaba a JCB Soluções promoveu a campanha de Conscientização Cancer de Mama. Foi um dia muito especial para toda a nossa equipe.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
-              </div>
-            </div>
-          </div>
-          
-         <!--<div class="carousel-item" style="background-image: url('img/intro-carousel/1.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Limpeza aérea</h2>
-                <p>Durante a parada na Vale Uberaba a JCB Soluções promoveu a campanha de Conscientização Cancer de Mama. Foi um dia muito especial para toda a nossa equipe.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
+                <h2><?php echo $home_title; ?></h2>
+                <p><?php echo $home_descr; ?></p>
+                <a href="<?php echo $home_url; ?>" class="btn-get-started scrollto">Saiba mais</a>
               </div>
             </div>
           </div>
 
-          <div class="carousel-item active" style="background-image: url('img/intro-carousel/2.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Técnicas de Acesso por Corda</h2>
-                <p>Execução de atividades classificadas como alpinismo industrial: Tratamento e pintura industrial, montagem, remoção, instalação e reparos industriais, inspeções técnicas e limpeza técnica especializada.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem7.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Tratamento ST3 e Pintura Industrial</h2>
-                <p>Serviços executados pela equipe da JCB Soluções Industriais.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem5.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Instalação e Manutenção de Banners e Similares</h2>
-                <p>Em parceria com a empresa F9, a JCB Soluções Industriais instalou o banner para a reinauguração do Palácio Iguaçu, sede do governo estadual do Paraná.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url('img/intro-carousel/imagem6.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Técnicas de Acesso por Corda</h2>
-                <p>Execução de atividades classificadas como alpinismo industrial: Tratamento e pintura industrial, montagem, remoção, instalação e reparos industriais, inspeções técnicas e limpeza técnica especializada.</p>
-                <a href="services.php" class="btn-get-started scrollto">Saiba mais</a>
-              </div>
-            </div>
-          </div>-->
+        <?php  } ?>       
 
         </div>
 

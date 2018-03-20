@@ -4,10 +4,11 @@ if(isset($_POST['publish_home_image'])) {
 
 	$home_id = $_GET['h_id'];
 
-	$home_title = $_POST['home_title'];
-	$home_descr = $_POST['home_descr']; 
-    $home_img = $_FILES['home_img']['name'];
-    $home_img_temp = $_FILES['home_img']['tmp_name'];
+	if(isset($_POST['home_title'])){$home_title = $_POST['home_title'];}else{$home_title = "";}
+	if(isset($_POST['home_descr'])){$home_descr = $_POST['home_descr'];}else{$home_descr = "";} 
+	if(isset($_POST['home_url'])){$home_url = $_POST['home_url'];}else{$home_url = "";}
+    if(isset($_FILES['home_img']['name'])){$home_img = $_FILES['home_img']['name'];}else{$home_img = "";}
+    if(isset($_FILES['home_img']['tmp_name'])){$home_img_temp = $_FILES['home_img']['tmp_name'];}else{$home_img_temp = "";}
 
     if($home_title == "" || empty($home_title)) {
         echo "O título não foi preenchido. Favor preenchê-lo para prosseguir.";
@@ -15,6 +16,8 @@ if(isset($_POST['publish_home_image'])) {
     	echo "O texto não foi preenchido. Favor preenchê-lo para prosseguir.";
    	} else if($home_img == "" || empty($home_img)) {
     	echo "A imagem não foi selecionada. Favor selecioná-la para prosseguir.";
+    } else if($home_url == "" || empty($home_url)) {
+    	echo "A URL de direcionamento não foi adicionada. Favor adicioná-la para prosseguir.";
     } else {
 
     	try {
@@ -27,7 +30,8 @@ if(isset($_POST['publish_home_image'])) {
 	        	$query = "UPDATE inicio SET ";
 	        	$query .= "TITLE = '{$home_title}', ";
 	        	$query .= "STATUS = 'I', "; 
-	        	$query .= "IMG_PATH = {$home_img}, "; 
+	        	$query .= "IMG_PATH = {$home_img}, ";
+	        	$query .= "URL = {$home_url}, "; 
 	        	$query .= "DESCR = '{$home_descr}' "; 
 	            $query .= "WHERE INICIO_ID = '{$home_id}' ";
 
@@ -71,6 +75,11 @@ if(isset($_POST['publish_home_image'])) {
 		    	<label for="home_img">Imagem: </label>
 		        <input type="file" name="home_img" class="form-control">
 		    </div>
+
+		    <div class="form-group">
+				<label for="home_url">URL do Botão "Saiba Mais" redireciona para: </label>
+				<input type="text" class="form-control" name="home_url">
+			</div>
 
 		    <div class="form-group">
 		        <label for="home_descr">Texto:</label>

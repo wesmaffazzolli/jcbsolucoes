@@ -22,7 +22,7 @@ class UploadException extends Exception
                 $message = "The uploaded file was only partially uploaded"; 
                 break; 
             case UPLOAD_ERR_NO_FILE: 
-                $message = "No file was uploaded"; 
+                $message = "Nenhuma imagem foi inserida."; 
                 break; 
             case UPLOAD_ERR_NO_TMP_DIR: 
                 $message = "Missing a temporary folder"; 
