@@ -9,23 +9,24 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-          <h1 class="my-4">Categoria: <?php if(isset($_GET['cat_title'])) {echo $_GET['cat_title'];} else {echo "Resultados: ";}?>
-          </h1>
+         <?php
 
-          <?php
+          if(isset($_GET['cat_id']) && isset($_GET['cat_title'])) {
+            $the_cat_id = $_GET['cat_id'];
+            $the_cat_title = $_GET['cat_title'];
 
-            if(isset($_GET['cat_id'])) {
-              $the_category_id = $_GET['cat_id'];
+            echo "<h1 class='my-4'>Categoria: {$the_cat_title}</h1>";
 
-              $query = "SELECT * FROM posts WHERE CATEGORY_ID = $the_category_id ";
-              $select_posts_by_category = mysqli_query($connection, $query); 
-  
+            $query = "SELECT * FROM posts WHERE CATEGORY_ID = $the_cat_id ";
+            $select_posts_by_category = mysqli_query($connection, $query); 
+
             while($row = mysqli_fetch_assoc($select_posts_by_category)) {
                 $post_id = $row['ID'];    
                 $post_title = $row['TITLE'];
                 $post_image = $row['IMAGE'];
                 $post_featured = $row['FEATURED'];
                 $post_content = $row['CONTENT']; ?>
+  
 
             <!-- Blog Post -->
             <div class="card mb-4">

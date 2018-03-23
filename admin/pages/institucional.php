@@ -9,7 +9,6 @@ if(isset($_GET['source'])) {
 	confirmQuery($select_institucional);
 
 	while($row = mysqli_fetch_assoc($select_institucional)) { 
-		$institucional_id = $row['INSTITUCIONAL_ID'];
         $institucional_text = $row['INSTITUCIONAL_TEXT'];
         $institucional_missao_text = $row['MISSAO_TEXT'];
         $institucional_visao_text = $row['VISAO_TEXT'];
@@ -32,7 +31,6 @@ if(isset($_GET['source'])) {
 		    $query .="INSTITUCIONAL_TEXT = '{$institucional_text}', ";
 		    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
 		    $query .="UPDATE_USERNAME = '{$institucional_update_username}' ";
-		    $query .="WHERE INSTITUCIONAL_ID = '{$institucional_id}' ";
 
         } else if(isset($_POST['update_missao'])){
 
@@ -40,7 +38,6 @@ if(isset($_GET['source'])) {
 		    $query .="MISSAO_TEXT = '{$institucional_missao_text}', ";
 		    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
 		    $query .="UPDATE_USERNAME = '{$institucional_update_username}' ";
-		    $query .="WHERE INSTITUCIONAL_ID = '{$institucional_id}' ";
 
         	} else if(isset($_POST['update_visao'])){
 
@@ -48,7 +45,6 @@ if(isset($_GET['source'])) {
 			    $query .="VISAO_TEXT = '{$institucional_visao_text}', ";
 			    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
 			    $query .="UPDATE_USERNAME = '{$institucional_update_username}' ";
-			    $query .="WHERE INSTITUCIONAL_ID = '{$institucional_id}' ";
 
         		} else if(isset($_POST['update_objetivos'])){
 
@@ -56,7 +52,6 @@ if(isset($_GET['source'])) {
 				    $query .="OBJETIVOS_TEXT = '{$institucional_objetivos_text}', ";
 				    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
 				    $query .="UPDATE_USERNAME = '{$institucional_update_username}' ";
-				    $query .="WHERE INSTITUCIONAL_ID = '{$institucional_id}' ";
 
         			}
 

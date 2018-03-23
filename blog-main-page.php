@@ -37,8 +37,6 @@
     <!-- /.container -->
     <?php } ?>
 
-
-
     <?php if($post_featured == 'D1') { ?>
      <div class="container">
       <!-- Content Row -->
@@ -59,8 +57,6 @@
         <!-- Fim do Destaque 1 -->
 
 
-
-
         <?php if($post_featured == 'D2') { ?>
         <!-- /.col-md-4 -->
         <div class="col-md-4 mb-4">
@@ -77,6 +73,7 @@
 
         <?php } ?>
         <!-- Fim da condicional D2 -->
+
         <?php } ?>
          <!-- Fim do Loop -->
 
@@ -86,12 +83,14 @@
           <div class="card">
             <h5 class="card-header">Pesquisar</h5>
             <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Pesquisar notícia...">
-                <span class="input-group-btn">
-                  <button class="btn" type="button" style="background-color: #FF9900; border-color: #FF9900; font-size:16px;"><i class="material-icons" style="font-size: 26px; color: #fff;">search</i></button>
-                </span>
-              </div>
+              <form action="search.php" method="GET">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="search" placeholder="Pesquisar notícia...">
+                  <span class="input-group-btn">
+                    <button class="btn" type="submit" style="background-color: #FF9900; border-color: #FF9900; font-size:16px;"><i class="material-icons" style="font-size: 26px; color: #fff; margin-top: 5px;">search</i></button>
+                  </span>
+                </div>
+              </form>
             </div>
           </div>
 

@@ -9,7 +9,7 @@ if(isset($_GET['source'])) {
 	confirmQuery($select_nossos_numeros);
 
 	while($row = mysqli_fetch_assoc($select_nossos_numeros)) { 
-		$nossos_numeros_id = $row['NOSSOS_NUMEROS_ID'];
+		$nossos_numeros_text_main = $row['TEXT_MAIN'];
         $nossos_numeros_num1 = $row['NUM1'];
         $nossos_numeros_num2 = $row['NUM2'];
         $nossos_numeros_num3 = $row['NUM3'];
@@ -24,7 +24,7 @@ if(isset($_GET['source'])) {
 	}
 
 	//Mecanismo de atualização da imagem do serviço
-	if(isset($_POST['update_nossos_numeros1']) || isset($_POST['update_nossos_numeros2']) || isset($_POST['update_nossos_numeros3']) || isset($_POST['update_nossos_numeros4'])) {
+	if(isset($_POST['update_nossos_numeros1']) || isset($_POST['update_nossos_numeros2']) || isset($_POST['update_nossos_numeros3']) || isset($_POST['update_nossos_numeros4']) || isset($_POST['update_nossos_numeros_text_main'])) {
 
         if(isset($_POST['num1'])){$nossos_numeros_num1 = $_POST['num1'];}else{$nossos_numeros_num1 = "";};
         if(isset($_POST['num2'])){$nossos_numeros_num2 = $_POST['num2'];}else{$nossos_numeros_num2 = "";};
@@ -34,6 +34,7 @@ if(isset($_GET['source'])) {
         if(isset($_POST['text2'])){$nossos_numeros_text2 = $_POST['text2'];}else{$nossos_numeros_text2 = "";};
         if(isset($_POST['text3'])){$nossos_numeros_text3 = $_POST['text3'];}else{$nossos_numeros_text3 = "";};
         if(isset($_POST['text4'])){$nossos_numeros_text4 = $_POST['text4'];}else{$nossos_numeros_text4 = "";};
+       	if(isset($_POST['text_main'])){$nossos_numeros_text_main = $_POST['text_main'];}else{$nossos_numeros_text_main = "";};
 
         if(isset($_POST['update_nossos_numeros1'])){
 
@@ -42,7 +43,6 @@ if(isset($_GET['source'])) {
 		    $query .="TEXT1 = '{$nossos_numeros_text1}', ";
 		    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
 		    $query .="UPDATE_USERNAME = '{$nossos_numeros_update_username}' ";
-		    $query .="WHERE NOSSOS_NUMEROS_ID = '{$nossos_numeros_id}' ";
 
         } else if(isset($_POST['update_nossos_numeros2'])){
 
@@ -51,7 +51,6 @@ if(isset($_GET['source'])) {
 		    $query .="TEXT2 = '{$nossos_numeros_text2}', ";
 		    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
 		    $query .="UPDATE_USERNAME = '{$nossos_numeros_update_username}' ";
-		    $query .="WHERE NOSSOS_NUMEROS_ID = '{$nossos_numeros_id}' ";
 
         	} else if(isset($_POST['update_nossos_numeros3'])){
 
@@ -60,7 +59,6 @@ if(isset($_GET['source'])) {
 			    $query .="TEXT3 = '{$nossos_numeros_text3}', ";
 			    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
 			    $query .="UPDATE_USERNAME = '{$nossos_numeros_update_username}' ";
-			    $query .="WHERE NOSSOS_NUMEROS_ID = '{$nossos_numeros_id}' ";
 
         		} else if(isset($_POST['update_nossos_numeros4'])){
 
@@ -69,8 +67,12 @@ if(isset($_GET['source'])) {
 				    $query .="TEXT4 = '{$nossos_numeros_text4}', ";
 				    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
 				    $query .="UPDATE_USERNAME = '{$nossos_numeros_update_username}' ";
-				    $query .="WHERE NOSSOS_NUMEROS_ID = '{$nossos_numeros_id}' ";
 
+        			} else if(isset($_POST['update_nossos_numeros_text_main'])) {
+			    		$query = "UPDATE nossos_numeros SET ";
+					    $query .="TEXT_MAIN = '{$nossos_numeros_text_main}', ";
+					    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
+					    $query .="UPDATE_USERNAME = '{$nossos_numeros_update_username}' ";
         			}
 
         $update_nossos_numeros = mysqli_query($connection, $query);
@@ -93,6 +95,25 @@ if(isset($_GET['source'])) {
 			<div class="alert alert-danger">
   				<strong>Danger!</strong> Indicates a dangerous or potentially negative action.
 			</div>		
+
+		<div class="panel panel-default"> <!--Painel Texto Principal: INÍCIO -->
+			    <div class="panel-heading"> 
+			        Texto da Seção dos Nossos Números
+			    </div>
+			    <!-- /.panel-heading -->
+			    <div class="panel-body">
+					<form action="" method="post">
+						<label for="text_main">Texto:</label>
+					    <div class="form-group">
+					        <textarea type="text" name="text_main" class="form-control" cols="30" rows="3"><?php if(isset($nossos_numeros_text_main)){echo $nossos_numeros_text_main;}else{echo "Uma história fundada em competência e dedicação: ";} ?></textarea>
+					    </div>
+					    <div class="form-group">
+					        <input class="btn btn-primary" type="submit" name="update_nossos_numeros_text_main" value="Atualizar">
+					    </div>
+					</form>
+				</div>
+				<!-- Panel Body End -->
+			</div> <!--Painel Texto Principal: FIM -->
 		</div>
 
 		<div class="col-sm-6"> <!--Painel Institucional: INÍCIO -->

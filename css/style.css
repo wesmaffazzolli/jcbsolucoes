@@ -836,25 +836,40 @@ _nav.scss:15
 /*--------------------------------------------------------------
 # Página de Serviços
 --------------------------------------------------------------*/
-.business-header {
+
+.nav-link {
+    color: #000 !important; 
+}
+
+.tab-content>.tab-pane {
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .tab-content>.tab-pane {
+    margin-top: 50px;
+}
+}
+
+
+/*.business-header {
   display: block;
-  margin-top: 112px;
-  height: 50vh;
-  margin-bottom: 100px;
-  min-height: 100px;
+  margin-top: 108px;
+  height: 600px;
+  min-height: 300px;
   background: url('http://placehold.it/1920x400') center center no-repeat scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-size: contain;
+  -o-background-size: contain;
+}
+
+.business-header img {
+  max-height: 1200px;
 }
 
 .card {
-  /*height: 100%;*/
-}
-
-.nav-link {
-    color: #333; !important
+  height: 100%;
 }
 
 .flex-column {
@@ -862,7 +877,8 @@ _nav.scss:15
      -webkit-box-direction: normal!important;
     -ms-flex-direction: column!important;
     flex-direction: column!important; 
-}
+}*/
+
 
 
 /*--------------------------------------------------------------

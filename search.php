@@ -9,51 +9,39 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-          <h1 class="my-4">Page Heading
-            <small>Secondary Text</small>
-          </h1>
+         <?php
 
-          <!-- Blog Post -->
-          <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2017 by
-              <a href="#">Start Bootstrap</a>
-            </div>
-          </div>
+          if(isset($_GET['search'])) {
+            $the_search = $_GET['search'];
 
-          <!-- Blog Post -->
-          <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2017 by
-              <a href="#">Start Bootstrap</a>
-            </div>
-          </div>
+            echo "<h1 class='my-4'>Pesquisa: {$the_search}</h1>";
 
-          <!-- Blog Post -->
-          <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            $query = "SELECT * FROM posts WHERE TITLE LIKE '%{$the_search}%' ";
+            $select_posts_by_search = mysqli_query($connection, $query); 
+
+            while($row = mysqli_fetch_assoc($select_posts_by_search)) {
+                $post_id = $row['ID'];    
+                $post_title = $row['TITLE'];
+                $post_image = $row['IMAGE'];
+                $post_featured = $row['FEATURED'];
+                $post_content = $row['CONTENT']; ?>
+  
+
+            <!-- Blog Post -->
+            <div class="card mb-4">
+              <img class="card-img-top" src="img/novidades/<?php echo $post_image; ?>" alt="Card image cap">
+              <div class="card-body">
+                <h2 class="card-title"><?php echo $post_title; ?></h2>
+                <p class="card-text"><?php echo substr($post_content, 0, 200)."..."; ?></p>
+                <a href="blog-post.php?p_id=<?php echo $post_id; ?>" class="btn" style="background-color: #FF9900; border-color: #FF9900;">Saiba mais &rarr;</a>
+              </div>
+              <!--<div class="card-footer text-muted">
+                Postado em 2 de março de 2018 por
+                <a href="#" style="color: #FF9900;">Rogério</a>
+              </div>-->
             </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2017 by
-              <a href="#">Start Bootstrap</a>
-            </div>
-          </div>
+
+          <?php } } ?>
 
           <!-- Pagination -->
           <ul class="pagination justify-content-center mb-4">
@@ -74,58 +62,43 @@
           <div class="card my-4">
             <h5 class="card-header">Search</h5>
             <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-              </div>
+              <form action="search.php" method="GET">
+                 <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Go!</button>
+                  </span>
+                </div>
+              </form>
             </div>
           </div>
 
           <!-- Categories Widget -->
           <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
+            <h5 class="card-header">Categorias</h5>
             <div class="card-body">
               <div class="row">
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
+                <div class="col-lg-12">
+                  <ul class="list-unstyled mb-0 categorias" >
+
+                    <?php
+                    //Descrição da categoria
+                    $query = "SELECT * FROM categories ";
+                    $select_categories = mysqli_query($connection, $query); 
+                      while($row = mysqli_fetch_assoc($select_categories)) { 
+                      $cat_id = $row['ID'];
+                      $cat_title = $row['TITLE']; ?> 
+
                     <li>
-                      <a href="#">Web Design</a>
+                      <a href="search-categorias.php?cat_id=<?php echo $cat_id; ?>&cat_title=<?php echo $cat_title; ?>" style="color: #FF9900;"><?php echo $cat_title; ?></a>
                     </li>
-                    <li>
-                      <a href="#">HTML</a>
-                    </li>
-                    <li>
-                      <a href="#">Freebies</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">Tutorials</a>
-                    </li>
+
+                    <?php } ?>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Side Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-            </div>
-          </div>
-
         </div>
 
       </div>

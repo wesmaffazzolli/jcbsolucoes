@@ -32,7 +32,7 @@ if(isset($_GET['source'])) {
                         $timeline_max_year = $row['MAX_YEAR'];
                     }
 
-                    //Seleciona o maior ano das timelines
+                    //Seleciona o menor ano das timelines
                     $query_min_year = "SELECT MIN(A.YEAR) AS MIN_YEAR FROM timeline A";
                     $select_min_year_timeline = mysqli_query($connection, $query_min_year); 
                     while($row = mysqli_fetch_assoc($select_min_year_timeline)) {

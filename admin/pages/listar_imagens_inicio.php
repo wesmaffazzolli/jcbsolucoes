@@ -26,8 +26,7 @@ if(isset($_GET['source'])) {
 				<tbody>
 
 		            <?php    
-
-                    //Listagem das imagens do início                    
+                
 		            $query = "SELECT INICIO_ID, TITLE, DESCR, STATUS, POSITION, IMG_PATH, URL ";
                     $query .="FROM inicio ";
                     $query .="ORDER BY POSITION ";
