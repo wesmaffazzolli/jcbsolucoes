@@ -11,6 +11,17 @@ if(isset($_GET['source'])) {
     <!-- /.panel-heading -->
     <div class="panel-body">
         <div class="table-responsive">
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- The Close Button -->
+                <span class="close">&times;</span>
+                <!-- Modal Content (The Image) -->
+                <img class="modal-content" id="img01">
+                <!-- Modal Caption (Image Text) -->
+                <div id="caption"></div>
+            </div>
+
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
@@ -53,23 +64,8 @@ if(isset($_GET['source'])) {
                         if(isset($home_descr) && !empty($home_descr)) {echo "<td>{$home_descr}</td>";} else {echo "<td>Texto vazio.</td>" ;}
                         if(isset($home_image_path) && !empty($home_image_path)) {
     		                echo "<td>
-                                    <img id='myImg' class='myImg' src='../img/intro-carousel/{$home_image_path}' alt='{$home_title}' style='width: 300px;'>
-
-                                        <span id='myId' value='{$home_position}'></span>
-
-                                      <!-- The Modal -->
-                                        <div id='myModal' class='modal'>
-
-                                          <!-- The Close Button -->
-                                          <span class='close'>&times;</span>
-
-                                          <!-- Modal Content (The Image) -->
-                                          <img class='modal-content' id='img01'>
-
-                                          <!-- Modal Caption (Image Text) -->
-                                          <div id='caption'></div>
-                                        </div>
-                                    </td>";
+                            <img id='myImg' class='myImg' src='../img/intro-carousel/{$home_image_path}' alt='{$home_title}' style='width: 300px;'>
+                                </td>";
 
                         } else {echo "<td>Imagem vazia.</td>";}
 
@@ -92,7 +88,6 @@ if(isset($_GET['source'])) {
                                 &nbsp;&nbsp;";
                             }
                             
-                            echo "<a href='#' id='botaoModal'>Ver Imagem</a></td>";
                         }      
 
 		                echo "</tr>";
