@@ -38,14 +38,13 @@
 
             <div class="form-group">
                 <label for="service_content">Conteúdo</label>
-                <textarea type="text" name="service_content" class="form-control" id="" cols="30" rows="10" placeholder="Escreva o conteúdo do serviço aqui..."></textarea>
+                <textarea id="summernote" name="service_content" class="form-control" cols="30" rows="10"></textarea>
             </div>
 
 		    <div class="form-group">
 		        <input class="btn btn-primary" type="submit" name="create_service" value="Adicionar">
 		    </div>
 		</form>
-
 	</div>
 	<!-- Panel Body End -->
 

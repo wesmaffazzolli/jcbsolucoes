@@ -1,5 +1,20 @@
     <!-- jQuery -->
+    <script src="vendor/jquery/jquery.js"></script>
+
+    <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+    </script>
+
+    <!-- Summernote JavaScript -->
+    <script src="vendor/summernote/summernote.js"></script>
+
+    <!-- Bootstrap Summernote JavaScript -->
+    <script src="vendor/bootstrap-3.3.5/js/bootstrap.js"></script> 
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

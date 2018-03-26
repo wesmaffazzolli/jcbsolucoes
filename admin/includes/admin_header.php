@@ -16,11 +16,17 @@
 
     <title>Acesso Interno JCB</title>
 
+    <!-- Summernote Bootstrap dependency -->
+    <link href="vendor/summernote/summernote.css" rel="stylesheet">
+
     <!-- Modal CSS -->
     <link href="dist/css/modal.css" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Summernote Bootstrap dependency -->
+    <link href="vendor/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -43,4 +49,4 @@
 
 </head>
 
-<body>
+<body>  
