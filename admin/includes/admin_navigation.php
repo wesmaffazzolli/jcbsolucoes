@@ -26,15 +26,6 @@
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="imagens_inicio.php?source=listar"> Início</a>
-                                    <!--<ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="imagens_inicio.php?source=listar">Listar</a>
-                                        </li>
-                                        <li>
-                                            <a href="imagens_inicio.php?source=adicionar">Adicionar Conteúdo</a>
-                                        </li>
-                                    </ul>-->
-                                    <!-- /.nav-third-level -->
                                 </li>
                                 <li>
                                     <a href="#"> Sobre nós<span class="fa arrow"></span></a>
@@ -111,6 +102,9 @@
                         <li>
                             <a href=""><i class="fa fa-wrench fa-fw"></i> Serviços<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="servicos.php?source=editar_cabecalho">Atualizar Cabeçalho</a>
+                                </li>
                                 <li>
                                     <a href="servicos.php?source=listar">Listar</a>
                                 </li>

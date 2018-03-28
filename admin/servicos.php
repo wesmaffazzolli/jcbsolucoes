@@ -26,6 +26,9 @@
 						case 'editar':
 							include "pages/editar_servico.php";
 							break;
+						case 'editar_cabecalho':
+							include "pages/editar_cabecalho_servicos.php";
+							break;
 						case 'delete':
 				            $the_service_id = $_GET['p_id'];
 				            $query = "DELETE FROM services WHERE ID = {$the_service_id} ";

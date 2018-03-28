@@ -1,5 +1,15 @@
 <?php include "includes/navigation.php"; ?>
 
+<?php   
+
+  $query = "SELECT HEADER_IMG FROM services ";
+  $select_services = mysqli_query($connection, $query); 
+
+  $row = mysqli_fetch_array($select_services);
+  $services_header_img = $row['HEADER_IMG'];    
+
+?>
+
 <!-- Header with Background Image -->
 <header id="intro">
  <div class="intro-container">
@@ -7,17 +17,10 @@
 
         <div class="carousel-inner" role="listbox">
 
-         <div class="carousel-item active" style="background-image: url('img/intro-carousel/1.jpg')">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non justo sit amet diam dignissim elementum. Praesent sit amet mauris et diam porta facilisis. Suspendisse interdum facilisis purus a tincidunt. Nulla ac pharetra nisl. Vestibulum id lectus cursus justo mattis vulputate eu vitae leo. Nunc eros lectus, gravida eget pharetra non, suscipit non ipsum. Integer pellentesque ipsum lacus, eget dapibus ligula maximus ac. Sed eleifend nisi sit amet lacus vulputate, eu sollicitudin quam consectetur. Nam hendrerit sapien augue, sed mollis purus iaculis eget. In hac habitasse platea dictumst. Proin semper, eros a pretium interdum, orci orci condimentum elit, a pretium ipsum ex at magna.</p>
-              </div>
-            </div>
+         <div class="carousel-item active" style="background-image: url('img/servicos/<?php echo $services_header_img; ?>')">
           </div>
 
         </div>
-
       </div>
     </div>
 </header>
