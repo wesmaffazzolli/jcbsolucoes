@@ -9,4 +9,19 @@ function confirmQuery($result) {
     
 }
 
+function escape($string) {
+	global $connection;
+	return $escaped_string = mysqli_real_escape_string($connection, trim($string));
+}
+
+function sucesso($string) {
+	"<div class='alert alert-success'>
+	<strong>Sucesso!</strong>' '.{$string}</div>";
+}
+
+function erro($string) {
+	echo "<div class='alert alert-danger'>
+	<strong>Erro!</strong>' '.{$string}</div>";
+}
+
 ?>

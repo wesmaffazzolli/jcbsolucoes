@@ -14,6 +14,14 @@
 
         <?php 
 
+        $query = "SELECT INICIO_ID ";
+        $query .="FROM inicio WHERE STATUS = 'A' ";
+        $query .="ORDER BY POSITION LIMIT 1";
+
+        $select_first_active_id = mysqli_query($connection, $query); 
+        $row = mysqli_fetch_array($select_first_active_id);
+        $home_first_id = $row['INICIO_ID'];
+
         $query = "SELECT INICIO_ID, TITLE, DESCR, STATUS, POSITION, IMG_PATH, URL ";
         $query .="FROM inicio WHERE STATUS = 'A'";
         $query .="ORDER BY POSITION ";
@@ -28,7 +36,7 @@
             $home_url = $row['URL'];
             $home_image_path = $row['IMG_PATH']; ?>
 
-         <div class="carousel-item<?php if($home_position == 0) {echo ' active';} ?>" style="background-image: url('img/intro-carousel/<?php if(isset($home_image_path) && !empty($home_image_path)){echo $home_image_path;}else{echo "";} ?>');">
+         <div class="carousel-item<?php if($home_id == $home_first_id) {echo ' active';} ?>" style="background-image: url('img/intro-carousel/<?php if(isset($home_image_path) && !empty($home_image_path)){echo $home_image_path;}else{echo "";} ?>');">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2><?php if(isset($home_title) && !empty($home_title)){echo $home_title;}else{echo "Título aqui";} ?></h2>

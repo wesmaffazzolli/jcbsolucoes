@@ -50,7 +50,7 @@ if(isset($_POST['edit_service'])) {
 
             <div class="form-group">
                 <label for="service_content">Conteúdo</label>
-                <textarea type="text" name="service_content" class="form-control" id="" cols="30" rows="10"><?php echo $service_content; ?></textarea>
+                <textarea id="summernote" type="text" name="service_content" class="form-control" cols="30" rows="10"><?php echo $service_content; ?></textarea>
             </div>
 
 		    <div class="form-group">

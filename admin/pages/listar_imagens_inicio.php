@@ -31,6 +31,7 @@ if(isset($_GET['source'])) {
                         <th>Status</th>
                         <th>Posição no Slider</th>
                         <th>URL Botão "Saiba Mais"</th>
+                        <th>Última Atualização</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -38,15 +39,15 @@ if(isset($_GET['source'])) {
 
 		            <?php    
                 
-		            $query = "SELECT INICIO_ID, TITLE, DESCR, STATUS, POSITION, IMG_PATH, URL ";
+		            $query = "SELECT INICIO_ID, TITLE, DESCR, STATUS, POSITION, IMG_PATH, URL, UPDATE_DATE, UPDATE_USERNAME ";
                     $query .="FROM inicio ";
                     $query .="ORDER BY POSITION ";
 
 		            $select_imagens_inicio = mysqli_query($connection, $query); 
 		            while($row = mysqli_fetch_assoc($select_imagens_inicio)) {
                         $home_id = $row['INICIO_ID'];
-                        $home_title = $row['TITLE'];
-                        $home_descr = $row['DESCR'];
+                        $home_title = substr($row['TITLE'], 0, 255);
+                        $home_descr = substr($row['DESCR'], 0, 255)."...";
                         $home_url = $row['URL'];
 
                         $home_status = $row['STATUS'];
@@ -59,12 +60,16 @@ if(isset($_GET['source'])) {
                         $home_position = $row['POSITION'] + 1;
 		                $home_image_path = $row['IMG_PATH'];
 
+                        /* Format Date */
+                        $date = new DateTime($row['UPDATE_DATE']);
+                        $home_update_date = $date->format('d/m/Y H:i');
+
 		                echo "<tr>";
 		                if(isset($home_title) && !empty($home_title)) {echo "<td>{$home_title}</td>";} else {echo "<td>Título vazio.</td>" ;}
                         if(isset($home_descr) && !empty($home_descr)) {echo "<td>{$home_descr}</td>";} else {echo "<td>Texto vazio.</td>" ;}
                         if(isset($home_image_path) && !empty($home_image_path)) {
     		                echo "<td>
-                            <img id='myImg' class='myImg' src='../img/intro-carousel/{$home_image_path}' alt='{$home_title}' style='width: 300px;'>
+                            <img id='myImg' class='myImg' src='../img/intro-carousel/{$home_image_path}' alt='{$home_title} - {$home_descr}' style='width: 300px;'>
                                 </td>";
 
                         } else {echo "<td>Imagem vazia.</td>";}
@@ -73,24 +78,24 @@ if(isset($_GET['source'])) {
 
                         echo "<td>{$home_position}</td>";
 
-                        if(isset($home_url) && !empty($home_url)) {echo "<td><a href='{$home_url}'>Ver redirecionamento</a></td>";} else {echo "<td>URL vazia.</td>" ;}
+                        if(isset($home_url) && !empty($home_url)) {echo "<td><a class='link-crud' href='http://{$home_url}'>Ver redirecionamento</a></td>";} else {echo "<td>Sem direcionamento.</td>" ;}
 
-                        echo "<td>
-                                <a href='imagens_inicio.php?source=editar&h_id={$home_id}'>Editar</a>
-                                &nbsp;&nbsp;";
+                        if(isset($home_update_date) && !empty($home_update_date)) {echo "<td>{$home_update_date}</td>";} else {echo "<td>===//===</td>" ;}
+
+                        echo "<td><ul class='lista-no-style'>
+                                <li class='link-no-style'><a class='link-crud' href='imagens_inicio.php?source=editar&h_id={$home_id}'>Editar</a></li>";
 
                         if(!empty($home_image_path)) {
                             if($home_status == 'A') {
-                                echo "<a href='imagens_inicio.php?source=trocar_status&h_id={$home_id}&status={$home_status}'>Inativar</a>
-                                &nbsp;&nbsp;";                                
+                                echo "<li class='link-no-style'><a class='link-crud' href='imagens_inicio.php?source=trocar_status&h_id={$home_id}&status={$home_status}'>Inativar</a></li>";                                
                             } else {
-                                echo "<a href='imagens_inicio.php?source=trocar_status&h_id={$home_id}&status={$home_status}'>Ativar</a>
+                                echo "<li class='link-no-style'><a class='link-crud' href='imagens_inicio.php?source=trocar_status&h_id={$home_id}&status={$home_status}'>Ativar</a></li>
                                 &nbsp;&nbsp;";
                             }
                             
                         }      
 
-		                echo "</tr>";
+		                echo "</ul></tr>";
 
 		            } ?>
 

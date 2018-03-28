@@ -41,6 +41,39 @@ body {
 
 .link-voltar {
   margin-left: 20px !important;
+  color: grey;
+}
+
+.link-voltar:hover {
+  margin-left: 20px !important;
+  color: #ff9900;
+}
+
+.link-crud {
+  color: #ff9900;
+}
+
+.link-crud:hover {
+  color: grey;
+}
+
+.link-no-style {
+  list-style-type: none !important;
+}
+
+.lista-no-style {
+  padding-left: 0px !important;
+}
+
+.botao-crud {
+  background-color: grey !important;
+  color: #fff !important;
+}
+
+.botao-crud:hover{
+  background-color: #ff9900 !important;
+  transition: 0.8;
+  color: #fff !important;
 }
 
 /* ========== Customização: FIM ========== */

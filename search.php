@@ -42,7 +42,7 @@
               $count = ceil($count / $per_page);
               //Pagination System configuration end
 
-              $query = "SELECT * FROM posts WHERE TITLE LIKE '%{$the_search}%' LIMIT {$page_1}, $per_page";
+              $query = "SELECT * FROM posts WHERE TITLE LIKE '%{$the_search}%' LIMIT {$page_1}, $per_page ";
               $select_posts_by_search = mysqli_query($connection, $query); 
 
               while($row = mysqli_fetch_assoc($select_posts_by_search)) {
