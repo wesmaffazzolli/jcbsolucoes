@@ -22,3 +22,9 @@ body {
     color: #333;
     transition: 0.5s;
 }
+
+.pagination a .activ_link {
+
+	background-color: #FF9900 !important;
+	
+}

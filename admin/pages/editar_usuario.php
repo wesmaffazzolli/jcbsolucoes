@@ -75,7 +75,7 @@ if(isset($_GET['source'])) {
 
 			<div class="form-group">
 				<label for="password">Senha: </label>
-				<input type="text" class="form-control" name="password" value="<?php if(isset($password)){echo $password;}else{echo '';} ?>">
+				<input type="password" class="form-control" name="password" value="<?php if(isset($password)){echo $password;}else{echo '';} ?>">
 			</div>
 		    
 		    <div class="form-group">

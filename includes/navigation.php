@@ -26,7 +26,7 @@
          <li class="menu-has-children"><a href="services.php">Serviços</a>
             <ul>
               <?php 
-                $query = "SELECT * FROM services";
+                $query = "SELECT * FROM services ORDER BY TITLE";
                 $select_services = mysqli_query($connection, $query); 
 
                 while($row = mysqli_fetch_assoc($select_services)) {    

@@ -11,13 +11,38 @@
 
          <?php
 
+
           if(isset($_GET['cat_id']) && isset($_GET['cat_title'])) {
             $the_cat_id = $_GET['cat_id'];
             $the_cat_title = $_GET['cat_title'];
 
             echo "<h1 class='my-4'>Categoria: {$the_cat_title}</h1>";
 
-            $query = "SELECT * FROM posts WHERE CATEGORY_ID = $the_cat_id ";
+          //Pagination System configuration begin
+            $per_page = 5;
+
+            if(isset($_GET['page'])) {
+
+                $per_page = 5;
+
+                $page = $_GET['page'];
+            } else {
+                $page = "";
+            }
+
+            if($page == "" || $page == 1) {
+                $page_1 = 0;
+            } else {
+                $page_1 = ($page * $per_page) - $per_page;
+            }
+
+            $post_query_count = "SELECT * FROM posts WHERE CATEGORY_ID = $the_cat_id ";
+            $find_count = mysqli_query($connection, $post_query_count);
+            $count = mysqli_num_rows($find_count);
+            $count = ceil($count / $per_page);
+            //Pagination System configuration end
+
+            $query = "SELECT * FROM posts WHERE CATEGORY_ID = $the_cat_id LIMIT {$page_1}, $per_page ";
             $select_posts_by_category = mysqli_query($connection, $query); 
 
             while($row = mysqli_fetch_assoc($select_posts_by_category)) {
@@ -42,33 +67,40 @@
               </div>-->
             </div>
 
-          <?php } } ?>
+          <?php } ?>
 
           <!-- Pagination -->
           <ul class="pagination justify-content-center mb-4">
-            <li class="page-item">
-              <a class="page-link" href="#">&larr; Older</a>
-            </li>
-            <li class="page-item disabled">
-              <a class="page-link" href="#">Newer &rarr;</a>
-            </li>
+            <?php 
+            for($i = 1; $i <= $count; $i++) {
+              echo "<li class='page-item'>";
+              if($i  == $page) { 
+                echo "<a class='page-link activ_link' href='search-categorias.php?page={$i}' style='color: #fff; background-color: #ff9900;'>{$i}</a>";
+              } else {
+                echo "<a class='page-link' href='search-categorias.php?page={$i}' style='color: #FF9900;'>{$i}</a>";
+              }
+              echo "</li>"; } ?>
           </ul>
+
+          <?php } ?>
 
         </div>
 
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
 
-          <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Search</h5>
+        <!-- /.col-md-4 -->
+          <div class="card">
+            <h5 class="card-header">Pesquisar</h5>
             <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-              </div>
+              <form action="search.php" method="GET">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="search" placeholder="Pesquisar notícia...">
+                  <span class="input-group-btn">
+                    <button class="btn" type="submit" style="background-color: #FF9900; border-color: #FF9900; font-size:16px;"><i class="material-icons" style="font-size: 26px; color: #fff; margin-top: 5px;">search</i></button>
+                  </span>
+                </div>
+              </form>
             </div>
           </div>
 
