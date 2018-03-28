@@ -12,7 +12,7 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li><a href="/jcbsolucoes/index.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                <li><a href="../logout.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
             </ul>
             <!-- /.navbar-top-links -->
 

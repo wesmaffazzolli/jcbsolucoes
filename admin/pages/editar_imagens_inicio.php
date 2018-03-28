@@ -24,7 +24,6 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 	//Mecanismo de atualização da imagem do serviço
 	if(isset($_POST['edit_home_content'])) {
 
-
         if(isset($_POST['home_title'])){$home_title = escape($_POST['home_title']);}else{$home_title = "";}
         if(isset($_POST['home_descr'])){$home_descr = escape($_POST['home_descr']);}else{$home_descr = "";}
         if(isset($_POST['home_url'])){$home_url = escape($_POST['home_url']);}else{$home_url = "";}

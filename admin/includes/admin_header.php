@@ -3,6 +3,19 @@
 <?php include "classes/UploadException.php"; ?>
 
 <?php ob_start(); ?>
+<?php session_start(); ?>
+
+<?php 
+
+if(!isset($_SESSION['username'])) {
+    
+    $_SESSION['message'] = "Você não está logado. Faça o login para prosseguir.";
+    header("Location: ../login.php");
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
