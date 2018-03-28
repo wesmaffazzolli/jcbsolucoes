@@ -22,7 +22,17 @@
 
         </div>
       </div>
-    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+  </div>
 </header>
 
 <section id="about">
@@ -84,20 +94,22 @@
 
                     if($service_id === $the_first_service_id) { ?>
 
+                    <!-- Tabpanel com active -->
                     <div class='tab-pane fade show active' id="v-pills-<?php echo $service_id; ?>" role='tabpanel' aria-labelledby='v-pills-<?php echo $service_id; ?>-tab'>
 
                     <?php } else { ?>
 
+                    <!-- Tabpanel sem active -->
                     <div class='tab-pane fade show' id="v-pills-<?php echo $service_id; ?>" role='tabpanel' aria-labelledby='v-pills-<?php echo $service_id; ?>-tab'>
 
-                   <?php  } ?>
+                    <?php  } ?>
 
-                       <h2><?php echo $service_title; ?></h2>
-                          <p style="text-align: justify;"><?php echo $service_content; ?></p>
-                            <section id="portfolio">
-                                <div class="row portfolio-container">
-
-                                <?php 
+                      <!-- Conteúdo do serviço -->
+                     <h2><?php echo $service_title; ?></h2>
+                        <p style="text-align: justify;"><?php echo $service_content; ?></p>
+                              <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <?php 
 
                                     $query = "SELECT A.ID, A.IMG_PATH, B.TITLE FROM services_images A, services B ";
                                     $query .="WHERE A.SERVICES_ID = B.ID ";
@@ -107,30 +119,14 @@
                                     while($row = mysqli_fetch_assoc($select_services_images)) {
                                       $service_image_id = $row['ID'];
                                       $service_image_path = $row['IMG_PATH'];
-                                      $service_image_title = $row['TITLE'];
+                                      $service_image_title = $row['TITLE']; ?>
 
-                                ?>
-
-                                  <div class="col-sm-6 col-md-6 portfolio-item filter-app wow fadeInUp">
-                                    <div class="portfolio-wrap">
-                                      <figure>
-                                        <img src="img/servicos/<?php echo $service_image_path; ?>" class="img-fluid" alt="">
-                                        <a href="img/servicos/<?php echo $service_image_path; ?>" data-lightbox="portfolio" data-title="<?php echo $service_image_title; ?>" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                                        <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                      </figure>
-
-                                      <div class="portfolio-info">
-                                        <h4><a href="#">Foto 1</a></h4>
-                                        <p>Descrição</p>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                <?php } ?>
-
-                              </div>
-                          </section>
-                        </div>
+                                    <?php echo "<img id='myImg' class='myImg' src='img/servicos/{$service_image_path}' alt='{$service_image_title}' style='width: 300px;'>"; ?>
+                                  
+                                    <?php } ?>
+                               </div>
+                            </div>
+                      </div>
 
                    <?php } ?>
 

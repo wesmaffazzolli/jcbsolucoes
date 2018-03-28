@@ -74,6 +74,7 @@ if(isset($_POST['publish_home_image'])) {
 		    <div class="form-group">
 		    	<label for="home_img">Imagem: </label>
 		        <input type="file" name="home_img" class="form-control">
+		        <p class="help-block">Example block-level help text here.</p>
 		    </div>
 
 		    <div class="form-group">

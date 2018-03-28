@@ -60,18 +60,32 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 		        if(!$edit_home_carousel) {
 		            die('QUERY FAILED = ' . mysqli_error($connection));
 		        } else {
-		        	echo "Conteúdo alterado com sucesso.";
+		        	$good_message = "O conteúdo foi alterado.";
 		        }
 
 	        } else { 
 	            throw new UploadException($_FILES['home_img']['error']); 
 	        }   
 	    } catch (UploadException $e) {
-	        echo $e->getMessage();
+	        $bad_message = $e->message;
 	    }
 
 	} 
 ?>   
+
+<?php if(isset($good_message) && !empty($good_message)) { ?>
+
+<div class="alert alert-success">
+	<strong>Sucesso!</strong><?php echo " ".$good_message; ?>
+</div>	
+
+<?php } else if(isset($bad_message) && !empty($bad_message)) {?>
+
+<div class="alert alert-danger">
+	<strong>Erro!</strong> <?php echo " ".$bad_message; ?>;
+</div>
+
+<?php } ?>	
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -88,12 +102,15 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 		    
 		    <div class="form-group">
 		    	<img src="../img/intro-carousel/<?php if(isset($home_img) && !empty($home_img)){echo $home_img;}else{echo 'imagem-nao-disponivel.png';} ?>" width="200">
+		    	<p class="help-block">Clique na imagem para visualizá-la.</p>
 		        <input type="file" name="home_img" class="form-control">
+		        <p class="help-block">Resolução máxima indicada: 1920x1468 pixels. Formatos de imagens aceitos: jpg/jpeg. Tamanho Máximo: 1MB.</p>
 		    </div>
 
 		   	<div class="form-group">
-				<label for="home_url">URL do Botão "Saiba Mais" redireciona para: </label>
+				<label for="home_url">URL: </label>
 				<input type="text" class="form-control" name="home_url" value="<?php if(isset($home_url)){echo $home_url;}else{echo '';} ?>">
+				<p class="help-block">Esta URL direcionará o usuário quando clicar no botão "Saber Mais".</p>
 			</div>
 
 		    <div class="form-group">
@@ -103,7 +120,7 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 
 		    <div class="form-group">
 		        <input type="submit" class="btn btn-primary" name="edit_home_content" value="Publicar">
-		        <span><a href="imagens_inicio.php?source=listar">Voltar</a></span>
+		        <span><a href="imagens_inicio.php?source=listar" style="margin-left: 15px;">Voltar</a></span>
 		    </div>
 		    
 		</form>

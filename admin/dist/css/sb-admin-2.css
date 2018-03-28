@@ -39,10 +39,11 @@ body {
   padding-right: 0px;
 }
 
+.link-voltar {
+  margin-left: 20px !important;
+}
 
 /* ========== Customização: FIM ========== */
-
-
 
 .navbar-top-links {
   margin-right: 0;

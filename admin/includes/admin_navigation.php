@@ -139,6 +139,19 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <!-- Contato FIM -->
+
+                        <!-- Usuário INÍCIO -->
+                        <li>
+                            <a href=""><i class="fa fa-user fa-fw"></i> Usuário<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="usuario.php?source=editar">Atualizar</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <!-- Usuário FIM -->
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
