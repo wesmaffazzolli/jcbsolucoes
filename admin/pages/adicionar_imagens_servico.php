@@ -1,19 +1,20 @@
 <?php 
 
 if(isset($_POST['publish_service_image'])) {
-	$service = $_POST['service']; 
-    $service_img = $_FILES['service_img']['name'];
-    $service_img_temp = $_FILES['service_img']['tmp_name'];
+
+	if(isset($_POST['service'])){$service = escape($_POST['service']);}else{$service = "";}
+    if(isset($_FILES['service_img']['name'])){$service_img = escape($_FILES['service_img']['name']);}else{$service_img = "";}
+    if(isset($_FILES['service_img']['tmp_name'])){$service_img_tmp = $_FILES['service_img']['tmp_name'];}else{$service_img_tmp = "";}
 
     if($service_img == "" || empty($service_img)) {
-        echo "Selecione uma imagem para prosseguir.";
+        $bad_message = "Selecione uma imagem para prosseguir.";
     } else if($service == "" || empty($service)) {
-    	echo "Selecione um serviço para prosseguir.";
+    	$bad_message = "Selecione um serviço para prosseguir.";
     } else {
 
     	try {
 
-    		move_uploaded_file($service_img_temp, "../img/servicos/$service_img");
+    		move_uploaded_file($service_img_tmp, "../img/servicos/$service_img");
         
 	        //Verificação de erros possíveis durante o upload das imagens
 	        if ($_FILES['service_img']['error'] === UPLOAD_ERR_OK) {
@@ -25,31 +26,41 @@ if(isset($_POST['publish_service_image'])) {
 	            if(!$add_image_service) {
 	                die('QUERY FAILED' . mysqli_error($connection));
 	            } else {
-	                echo "Imagem adicionada com sucesso.";
+	                $good_message = "A imagem foi adicionada.";
 	            }
 
 	        } else { 
 	            throw new UploadException($_FILES['service_img']['error']); 
 	        } 
 	    } catch (UploadException $e) {
-	        echo $e->getMessage();
+	        $bad_message = $e->message;
 	    }
     }
 }
 
-?>   
+?>  
+
+<?php if(isset($good_message) && !empty($good_message)) {?>
+<div class="alert alert-success">
+		<strong>Sucesso!</strong><?php echo " ".$good_message; ?>
+</div>	
+<?php } else if(isset($bad_message) && !empty($bad_message)) { ?>
+<div class="alert alert-danger">
+		<strong>Erro!</strong><?php echo " ".$bad_message; ?>
+</div>	
+<?php } ?> 
 
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        Adicionar Imagem
+        Adicionar Imagem no Serviço
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
 		<form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Procedimento: </label>
-                <p class="form-control-static">Selecione o serviço e depois a imagem que deseja adicionar.</p>
+                <span class="form-control-static">Selecione o serviço e depois a imagem que deseja adicionar.</span>
             </div>
 
 		    
@@ -78,10 +89,11 @@ if(isset($_POST['publish_service_image'])) {
 		    
 		    <div class="form-group">
 		        <input type="file" name="service_img" class="form-control">
+		        <p class="help-block">Resolução máxima indicada: 1920x1468 pixels. Formatos de imagens aceitos: jpg/jpeg. Tamanho Máximo: 1MB.</p>
 		    </div>
 		    
 		    <div class="form-group">
-		        <input type="submit" class="btn btn-primary" name="publish_service_image" value="Publicar">
+		        <input type="submit" class="btn botao-crud" name="publish_service_image" value="Publicar">
 		    </div>
 		    
 		</form>

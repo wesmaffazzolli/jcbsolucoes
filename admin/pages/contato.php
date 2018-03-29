@@ -16,21 +16,26 @@ if(isset($_GET['source'])) {
         $contact_url_facebook = $row['URL_FACEBOOK'];
         $contact_url_instagram = $row['URL_INSTAGRAM'];
         $contact_url_linkedin = $row['URL_LINKEDIN'];
+
         $contact_update_date = $row['UPDATE_DATE'];
-        $contact_update_username = "adminjcb";
+
+        /* Format Date */
+        $date = new DateTime($row['UPDATE_DATE']);
+        $contact_update_date = $date->format('d/m/Y H:i');
+
+        $contact_update_username = $_SESSION['username'];
 	}
 
 	//Mecanismo de atualização da imagem do serviço
 	if(isset($_POST['update_contact_address']) || isset($_POST['update_contact_phone']) || isset($_POST['update_contact_email']) || isset($_POST['update_contact_url'])) {
 
-        if(isset($_POST['contact_phone1'])){$contact_phone1 = $_POST['contact_phone1'];}else{$contact_phone1 = "";};
-        if(isset($_POST['contact_phone2'])){$contact_phone2 = $_POST['contact_phone2'];}else{$contact_phone2 = "";};
-        if(isset($_POST['contact_address'])){$contact_address = $_POST['contact_address'];}else{$contact_address = "";};
-        if(isset($_POST['contact_url_facebook'])){$contact_url_facebook = $_POST['contact_url_facebook'];}else{$contact_url_facebook = "";};
-        if(isset($_POST['contact_url_instagram'])){$contact_url_instagram = $_POST['contact_url_instagram'];}else{$contact_url_instagram = "";};
-        if(isset($_POST['contact_url_linkedin'])){$contact_url_linkedin = $_POST['contact_url_linkedin'];}else{$contact_url_linkedin = "";};
-        if(isset($_POST['contact_email'])){$contact_email = $_POST['contact_email'];}else{$contact_email = "";};
- 
+        if(isset($_POST['contact_phone1'])){$contact_phone1 = escape($_POST['contact_phone1']);}else{$contact_phone1 = "";};
+        if(isset($_POST['contact_phone2'])){$contact_phone2 = escape($_POST['contact_phone2']);}else{$contact_phone2 = "";};
+        if(isset($_POST['contact_address'])){$contact_address = escape($_POST['contact_address']);}else{$contact_address = "";};
+        if(isset($_POST['contact_url_facebook'])){$contact_url_facebook = escape($_POST['contact_url_facebook']);}else{$contact_url_facebook = "";};
+        if(isset($_POST['contact_url_instagram'])){$contact_url_instagram = escape($_POST['contact_url_instagram']);}else{$contact_url_instagram = "";};
+        if(isset($_POST['contact_url_linkedin'])){$contact_url_linkedin = escape($_POST['contact_url_linkedin']);}else{$contact_url_linkedin = "";};
+        if(isset($_POST['contact_email'])){$contact_email = escape($_POST['contact_email']);}else{$contact_email = "";};
 
         if(isset($_POST['update_contact_address'])){
 
@@ -77,16 +82,6 @@ if(isset($_GET['source'])) {
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-12">
-			<div class="alert alert-success">
-  				<strong>Success!</strong> Indicates a successful or positive action.
-			</div>	
-
-			<div class="alert alert-danger">
-  				<strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-			</div>		
-		</div>
-
 		<div class="col-sm-6"> 
 			<div class="panel panel-default">
 			    <div class="panel-heading">
@@ -97,14 +92,16 @@ if(isset($_GET['source'])) {
 					<form action="" method="post">
 						<label for="contact_phone1">Telefone 1:</label>
 					    <div class="form-group">
-					        <input type="text" class="form-control" name="contact_phone1" value="<?php if(isset($contact_phone1)){echo $contact_phone1;} else {echo '';} ?>">
+					        <input type="text" class="form-control" name="contact_phone1" value="<?php if(isset($contact_phone1)){echo $contact_phone1;} else {echo '';} ?>" maxlength="50">
+					        <p class="help-block">Máx 50 caracteres.</p>
 					    </div>
 						<label for="contact_phone2">Telefone 2:</label>
 					    <div class="form-group">
-					        <input type="text" class="form-control" name="contact_phone2" value="<?php if(isset($contact_phone2)){echo $contact_phone2;} else {echo '';} ?>">
+					        <input type="text" class="form-control" name="contact_phone2" value="<?php if(isset($contact_phone2)){echo $contact_phone2;} else {echo '';} ?>" maxlength="50">
+					        <p class="help-block">Máx 50 caracteres.</p>
 					    </div>
 					    <div class="form-group">
-					        <input class="btn btn-primary" type="submit" name="update_contact_phone" value="Atualizar">
+					        <input class="btn botao-crud" type="submit" name="update_contact_phone" value="Atualizar">
 					    </div>
 					</form>
 				</div>
@@ -122,10 +119,11 @@ if(isset($_GET['source'])) {
 					<form action="" method="post">
 						<label for="contact_address">Endereço:</label>
 					    <div class="form-group">
-					        <input type="text" class="form-control" name="contact_address" value="<?php if(isset($contact_address)){echo $contact_address;} else {echo '';} ?>">
+					        <input type="text" class="form-control" name="contact_address" value="<?php if(isset($contact_address)){echo $contact_address;} else {echo '';} ?>" maxlength="100">
+					        <p class="help-block">Máx 100 caracteres.</p>
 					    </div>
 					    <div class="form-group">
-					        <input class="btn btn-primary" type="submit" name="update_contact_address" value="Atualizar">
+					        <input class="btn botao-crud" type="submit" name="update_contact_address" value="Atualizar">
 					    </div>
 					</form>
 				</div>
@@ -157,7 +155,7 @@ if(isset($_GET['source'])) {
 					        <input type="text" class="form-control" name="contact_url_linkedin" value="<?php if(isset($contact_url_linkedin)){echo $contact_url_linkedin;} else {echo '';}?>">
 					    </div>
 					    <div class="form-group">
-					        <input class="btn btn-primary" type="submit" name="update_contact_url" value="Atualizar">
+					        <input class="btn botao-crud" type="submit" name="update_contact_url" value="Atualizar">
 					    </div>
 					</form>
 				</div>
@@ -175,10 +173,11 @@ if(isset($_GET['source'])) {
 					<form action="" method="post">
 						<label for="contact_email">Email:</label>
 					    <div class="form-group">
-					        <input type="text" class="form-control" name="contact_email" value="<?php if(isset($contact_email)){echo $contact_email;} else {echo '';} ?>">
+					        <input type="text" class="form-control" name="contact_email" value="<?php if(isset($contact_email)){echo $contact_email;} else {echo '';} ?>" maxlength="100">
+					        <p class="help-block">Máx 100 caracteres.</p>
 					    </div>
 					    <div class="form-group">
-					        <input class="btn btn-primary" type="submit" name="update_contact_email" value="Atualizar">
+					        <input class="btn botao-crud" type="submit" name="update_contact_email" value="Atualizar">
 					    </div>
 					</form>
 				</div>

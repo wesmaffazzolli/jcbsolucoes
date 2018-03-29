@@ -16,8 +16,8 @@ if(isset($_GET['source'])) {
 	//Mecanismo de atualização da imagem do serviço
 	if(isset($_POST['edit_user'])) {
 
-        if(isset($_POST['username'])){$username = $_POST['username'];}else{$username = "";}
-        if(isset($_POST['password'])){$password = $_POST['password'];}else{$password = "";}
+        if(isset($_POST['username'])){$username = escape($_POST['username']);}else{$username = "";}
+        if(isset($_POST['password'])){$password = escape($_POST['password']);}else{$password = "";}
 
 		$query = "SELECT RANDSALT FROM user";
 		$select_randsalt_query = mysqli_query($connection, $query);
@@ -62,7 +62,7 @@ if(isset($_GET['source'])) {
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        Editar Usuário
+        Editar Usuário Administrador
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -70,16 +70,18 @@ if(isset($_GET['source'])) {
 
 			<div class="form-group">
 				<label for="username">Usuário: </label>
-				<input type="text" class="form-control" name="username" value="<?php if(isset($username)){echo $username;}else{echo '';} ?>">
+				<input type="text" class="form-control" name="username" value="<?php if(isset($username)){echo $username;}else{echo '';} ?>" maxlength="100">
+				<p class="help-block">Máx 100 caracteres.</p>
 			</div>
 
 			<div class="form-group">
 				<label for="password">Senha: </label>
-				<input type="password" class="form-control" name="password" value="<?php if(isset($password)){echo $password;}else{echo '';} ?>">
+				<input type="password" class="form-control" name="password" value="<?php if(isset($password)){echo $password;}else{echo '';} ?>" maxlength="255">
+				<p class="help-block">Máx 255 caracteres.</p>
 			</div>
 		    
 		    <div class="form-group">
-		        <input type="submit" class="btn btn-primary" name="edit_user" value="Atualizar">
+		        <input type="submit" class="btn botao-crud" name="edit_user" value="Atualizar">
 		    </div>
 		    
 		</form>

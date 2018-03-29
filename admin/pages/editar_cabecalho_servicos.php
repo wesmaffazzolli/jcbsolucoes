@@ -3,17 +3,17 @@
 //Mecanismo de busca e preenchimento dos campos
 if(isset($_GET['source'])) {
 		
-	$query = "SELECT HEADER_IMG FROM services ";
+	$query = "SELECT HEADER_IMG FROM services LIMIT 1";
 	$select_services = mysqli_query($connection, $query); 
 
 	$row = mysqli_fetch_array($select_services);
 	$services_header_img = $row['HEADER_IMG'];    
 	
 
-	//Mecanismo de atualização da imagem do serviço
+	//Mecanismo de atualização da imagem do cabeçalho da tela de serviços
 	if(isset($_POST['edit_header_service'])) {
 
-		if(isset($_FILES['services_header_img']['name'])){$services_header_img = $_FILES['services_header_img']['name'];}else{$services_header_img = "";}
+		if(isset($_FILES['services_header_img']['name'])){$services_header_img = escape($_FILES['services_header_img']['name']);}else{$services_header_img = "";}
 		if(isset($_FILES['services_header_img']['tmp_name'])){$services_header_img_temp = $_FILES['services_header_img']['tmp_name'];}else{$services_header_img_temp = "";}
 
 	  	try {
@@ -40,18 +40,38 @@ if(isset($_GET['source'])) {
 		        if(!$edit_services_header) {
 		            die('QUERY FAILED = ' . mysqli_error($connection));
 		        } else {
-		        	echo "Cabeçalho atualizado com sucesso.";
+		        	$good_message = "O cabeçalho foi atualizado.";
 		        }
 
 	        } else { 
 	            throw new UploadException($_FILES['services_header_img']['error']); 
 	        }   
 	    } catch (UploadException $e) {
-	        echo $e->getMessage();
+	        $bad_message = $e->message;
 	    }
 
 	} 
-?>   
+?>
+
+<?php if(isset($good_message) && !empty($good_message)) {?>
+<div class="alert alert-success">
+        <strong>Sucesso!</strong><?php echo " ".$good_message; ?>
+</div>  
+<?php } else if(isset($bad_message) && !empty($bad_message)) { ?>
+<div class="alert alert-danger">
+        <strong>Erro!</strong><?php echo " ".$bad_message; ?>
+</div>  
+<?php } ?>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+</div>
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -62,12 +82,14 @@ if(isset($_GET['source'])) {
 		<form action="" method="post" enctype="multipart/form-data">
 		    
 		    <div class="form-group">
-		    	<img src="../img/servicos/<?php if(isset($services_header_img) && !empty($services_header_img)){echo $services_header_img;}else{echo 'imagem-nao-disponivel.png';} ?>" width="200">
+		    	<img id="myImg" src="../img/servicos/<?php if(isset($services_header_img) && !empty($services_header_img)){echo $services_header_img;}else{echo 'imagem-nao-disponivel.png';} ?>" width="200">
+		    	<p class="help-block">Clique na imagem para visualizá-la.</p>	
 		        <input type="file" name="services_header_img" class="form-control">
+		        <p class="help-block">Resolução máxima indicada: 1920x1468 pixels. Formatos de imagens aceitos: jpg/jpeg. Tamanho Máximo: 1MB.</p>
 		    </div>
 
 		    <div class="form-group">
-		        <input type="submit" class="btn btn-primary" name="edit_header_service" value="Atualizar">
+		        <input type="submit" class="btn botao-crud" name="edit_header_service" value="Atualizar">
 		    </div>
 		    
 		</form>
@@ -76,9 +98,4 @@ if(isset($_GET['source'])) {
 </div>
 <!-- /.panel -->
 
-<?php } else {
-
-// Traz Página de Erro
-
-
-}?>
+<?php } ?>

@@ -10,7 +10,6 @@
                     <tr>
                         <th>Título</th>
                         <th>Conteúdo</th>
-                        <th>Data de Criação</th>
                         <th>Última Atualização</th>
                         <th>Ações</th>
                     </tr>
@@ -24,17 +23,25 @@
 		            while($row = mysqli_fetch_assoc($select_services)) {
 		                $service_id = $row['ID'];    
 		                $service_title = $row['TITLE'];
-		                $service_content = substr($row['CONTENT'], 0, 200)."...";
-		                $service_creation_date = $row['CREATION_DATE'];
-		                $service_update_date = $row['UPDATE_DATE'];
+		                $service_content = substr($row['CONTENT'], 0, 255);
+
+                        /* Format Date */
+                        $date = new DateTime($row['UPDATE_DATE']);
+                        $service_update_date = $date->format('d/m/Y H:i');
+
 		                $service_update_username = $row['UPDATE_USERNAME'];
 
 		                echo "<tr>";
 		                echo "<td>{$service_title}</td>";
 		                echo "<td>{$service_content}</td>";
-		                echo "<td>{$service_creation_date}</td>";
-		                echo "<td>{$service_update_date} por {$service_update_username}</td>";
-		                echo "<td><a href='servicos.php?source=editar&p_id={$service_id}'>Editar</a>&nbsp;&nbsp;<a href='servicos.php?source=delete&p_id={$service_id}'>Excluir</a>&nbsp;&nbsp;<a href='servicos.php?source=view_images&p_id={$service_id}'>Ver Imagens</a></td>";
+                        if(isset($service_update_date) && !empty($service_update_date) && isset($service_update_username) && !empty($service_update_username)){
+                            echo "<td>{$service_update_date} por {$service_update_username}</td>";
+                        } else {echo "<td>===//===</td>";}
+		                
+		                echo "<td><ul class='lista-no-style'>
+                        <li class='link-no-style'><a class='link-crud' href='servicos.php?source=editar&p_id={$service_id}'>Editar</a></li>
+                        <li class='link-no-style'><a class='link-crud' href='servicos.php?source=delete&p_id={$service_id}'>Excluir</a></li>
+                        </ul></td>";
 		                echo "</tr>";
 
 		            } ?>
