@@ -24,4 +24,5 @@ function erro($string) {
 	<strong>Erro!</strong>' '.{$string}</div>";
 }
 
+
 ?>

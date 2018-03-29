@@ -131,8 +131,7 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 
 		    <div class="form-group">
 		        <label for="home_descr">Texto:</label>
-		        <textarea id="summernote" type="text" name="home_descr" class="form-control" cols="30" rows="10"><?php if(isset($home_descr)){echo $home_descr;}else{echo '';}?></textarea>
-		        <p class="help-block">Ajuste o tamanho da caixa de texto acima clicando na borda inferior dela e arrastando para baixo. Usar somente para edição de texto.</p>
+		        <textarea type="text" name="home_descr" class="form-control" cols="30" rows="10"><?php if(isset($home_descr)){echo $home_descr;}else{echo '';}?></textarea>
 		    </div>
 
 		    <div class="form-group">
@@ -148,7 +147,6 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 
 <?php } else {
 
-// Traz Página de Erro
-
+include "pages/nao_encontrado.php"; 
 
 }?>
