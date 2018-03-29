@@ -1,44 +1,68 @@
 <?php
 
 if(isset($_POST['create_post'])) {
-    $post_title = $_POST['post_title'];
-    $post_author = $_POST['post_author'];
-    $post_category_id = $_POST['post_category'];
-    $post_status = $_POST['post_status'];
-    $post_featured = $_POST['post_featured'];
 
-    $post_image = $_FILES['post_image']['name'];
-    $post_image_temp = $_FILES['post_image']['tmp_name'];
+    if(isset($_POST['post_title'])) {$post_title = escape($_POST['post_title']);}else{$post_title="";}
+    if(isset($_POST['post_category'])) {$post_category_id = escape($_POST['post_category']);}else{$post_category_id="";}
+    if(isset($_POST['post_status'])) {$post_status = escape($_POST['post_status']);}else{$post_status="";}
+    if(isset($_POST['post_featured'])) {$post_featured = escape($_POST['post_featured']);}else{$post_featured="";}
+    if(isset($_FILES['post_image']['name'])) {$post_image = escape($_FILES['post_image']['name']);}else{$post_image="";}
+    if(isset($_FILES['post_image']['tmp_name'])) {$post_image_tmp = escape($_FILES['post_image']['tmp_name']);} {$post_image_tmp="";}
+    if(isset($_POST['post_content'])) {$post_content = escape($_POST['post_content']);}else{$post_content="";}
 
-    $post_tags = $_POST['post_tags'];
-    $post_content = $_POST['post_content'];
-    $post_creation_date = date('d-m-y');
+    $post_update_username = $_SESSION['username'];
     
     try {
+
+		if(empty($post_title) || $post_title == "") {
+			$bad_message = "Campo título vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_category_id) || $post_category_id == "") {
+			$bad_message = "Campo categoria vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_status) || $post_status == "") {
+			$bad_message = "Campo status vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_featured) || $post_featured == "") {
+			$bad_message = "Campo destaque vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_content) || $post_content == "") {
+			$bad_message = "Campo conteúdo vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_image) || $post_image == "") {
+			$bad_message = "Nenhuma imagem foi inserida. Favor inserir para prosseguir.";
+		} else {
+
+			move_uploaded_file($post_image_tmp, "../img/novidades/$post_image");
         
-        move_uploaded_file($post_image_temp, "../img/novidades/$post_image");
-        
-        if ($_FILES['post_image']['error'] === UPLOAD_ERR_OK) { 
-            $query = "INSERT INTO posts(TITLE, AUTHOR, CATEGORY_ID, STATUS, IMAGE, FEATURED, CONTENT, TAGS) ";
-            $query .= "VALUES('{$post_title}','{$post_author}','{$post_category_id}','{$post_status}','{$post_image}','{$post_featured}','{$post_content}','{$post_tags}') ";
+	        if ($_FILES['post_image']['error'] === UPLOAD_ERR_OK) { 
+	            $query = "INSERT INTO posts(TITLE, AUTHOR, CATEGORY_ID, STATUS, IMAGE, FEATURED, CONTENT) ";
+	            $query .= "VALUES('{$post_title}','{$post_update_username}','{$post_category_id}','{$post_status}','{$post_image}','{$post_featured}','{$post_content}') ";
+	 
+	            $create_post_query = mysqli_query($connection, $query);
+	            if(!$create_post_query) {
+	            	die("Query Failed = ". mysqli_error($connection));
+	            } else  {
+	            	$good_message = "O Post foi inserido.";
+	            }
 
-            $create_post_query = mysqli_query($connection, $query);
+	        } else { 
+	            throw new UploadException($_FILES['post_image']['error']); 
+	        }   
+		}
 
-            confirmQuery($create_post_query);
-            
-            echo "Post inserido com sucesso.";
-
-            header("Location: novidades.php");
-        } else { 
-            throw new UploadException($_FILES['post_image']['error']); 
-        }   
     } catch (UploadException $e) {
-        echo $e->getMessage();
+        $bad_message = $e->message;
     }
     
 }
 
 ?>
+
+<?php if(isset($good_message) && !empty($good_message)) {?>
+<div class="alert alert-success">
+		<strong>Sucesso!</strong><?php echo " ".$good_message; ?>
+</div>	
+<?php } else if(isset($bad_message) && !empty($bad_message)) { ?>
+<div class="alert alert-danger">
+		<strong>Erro!</strong><?php echo " ".$bad_message; ?>
+</div>	
+<?php } ?>
    
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -50,14 +74,10 @@ if(isset($_POST['create_post'])) {
 		    
 		    <div class="form-group">
 		        <label for="post_title">Título</label>
-		        <input type="text" name="post_title" class="form-control">
+		        <input type="text" maxlength="100" name="post_title" class="form-control">
+		        <p class="help-block">Máx 100 caracteres.</p>
 		    </div>
 
-		    <div class="form-group">
-		        <label for="post_author">Autor</label>
-		        <input type="text" name="post_author" class="form-control">
-		    </div>
-		    
 		    <div class="form-group">
 		    	<label for="post_category">Categoria</label>
 		        <select name="post_category" id="">
@@ -88,7 +108,7 @@ if(isset($_POST['create_post'])) {
 
 		    <div class="form-group">
 		    	<label for="post_featured">Destaque na Página de Novidades</label>
-		        <select name="post_featured" id="">
+		        <select name="post_featured">
 		        	<option value="DP">Destaque Principal</option>
 					<option value="D1">Destaque 1</option>
 					<option value="D2">Destaque 2</option>
@@ -99,20 +119,17 @@ if(isset($_POST['create_post'])) {
 		    <div class="form-group">
 		        <label for="post_image">Imagem</label>
 		        <input type="file" name="post_image" class="form-control">
-		    </div>
-		    
-		    <div class="form-group">
-		        <label for="post_tags">Tags de Pesquisa</label>
-		        <input type="text" name="post_tags" class="form-control" placeholder="Exemplo: treinamentos, cursos, leis...">
+		        <p class="help-block">Resolução máxima indicada: 1024x768 pixels. Formatos de imagens aceitos: jpg/jpeg. Tamanho Máximo: 1MB.</p>
 		    </div>
 		    
 		    <div class="form-group">
 		        <label for="post_content">Conteúdo</label>
-		        <textarea type="text" name="post_content" class="form-control" id="" cols="30" rows="10" placeholder="Escreva o conteúdo da novidade aqui..."></textarea>
+		        <textarea type="text" id="summernote" name="post_content" class="form-control" id="" cols="30" rows="10" placeholder="Escreva o conteúdo da novidade aqui..."></textarea>
+		        <p class="help-block">Aumente a caixa de texto arrastando sua borda inferior para baixo. Use somente esta caixa para edição de texto. Aviso: imagens, vídeos e outros conteúdos que forem adicionados poderão afetar a estrutura da página e danificá-la.</p>
 		    </div>
 		    
 		    <div class="form-group">
-		        <input type="submit" class="btn btn-primary" name="create_post" value="Publicar">
+		        <input type="submit" class="btn botao-crud" name="create_post" value="Publicar">
 		    </div>
 		    
 		</form>

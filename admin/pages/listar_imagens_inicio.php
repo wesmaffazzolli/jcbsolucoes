@@ -82,7 +82,7 @@ if(isset($_GET['source'])) {
 
                         if(isset($home_update_date) && !empty($home_update_date)) {echo "<td>{$home_update_date}</td>";} else {echo "<td>===//===</td>" ;}
 
-                        echo "<td><ul class='lista-no-style'>
+                        echo "<td>c
                                 <li class='link-no-style'><a class='link-crud' href='imagens_inicio.php?source=editar&h_id={$home_id}'>Editar</a></li>";
 
                         if(!empty($home_image_path)) {

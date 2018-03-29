@@ -1,7 +1,8 @@
 <?php    
 
 if(isset($_GET['source'])) {
-	$the_post_id = $_GET['p_id'];
+
+	$the_post_id = escape($_GET['p_id']);
 
 	$query = "SELECT * FROM posts WHERE ID = '{$the_post_id}' ";
 	$select_posts_by_id = mysqli_query($connection, $query); 
@@ -9,60 +10,105 @@ if(isset($_GET['source'])) {
 	while($row = mysqli_fetch_assoc($select_posts_by_id)) {
 	    $post_id = $row['ID'];    
 	    $post_title = $row['TITLE'];
-	    $post_author = $row['AUTHOR'];
 	    $post_category_id = $row['CATEGORY_ID'];    
 	    $post_status = $row['STATUS'];
 	    $post_image = $row['IMAGE'];
 	    $post_featured = $row['FEATURED'];
 	    $post_content = $row['CONTENT'];
-	    $post_tags = $row['TAGS'];    
-	    $post_creation_date = $row['CREATION_DATE'];
-	    $post_update_date = $row['UPDATE_DATE'];
-	    $post_update_username = $row['UPDATE_USERNAME'];
 
 	} } 
 
 if(isset($_POST['update_post'])) {
-	    $post_title = $_POST['post_title'];
-	    $post_author = $_POST['post_author'];
-	    $post_category_id = $_POST['post_category'];    
-	    $post_status = $_POST['post_status'];
-	    $post_image = $_FILES['post_image']['name'];
-	    $post_image_temp = $_FILES['post_image']['tmp_name'];
-	    $post_featured = $_POST['post_featured'];
-	    $post_content = $_POST['post_content'];
-	    $post_tags = $_POST['post_tags'];  
-	    $post_update_date = date('d-m-y');
-	    $post_update_username = "adminjcb";
 
-        move_uploaded_file($post_image_temp, "../img/novidades/$post_image");
-        
-        if(empty($post_image)) {
-            $query = "SELECT * FROM posts WHERE ID = $the_post_id ";
-            $select_image = mysqli_query($connection, $query);
-            
-            while($row = mysqli_fetch_array($select_image)) {
-                $post_image = $row['IMAGE'];
-            }
-        }
-        
-        $query = "UPDATE posts SET ";
-        $query .="TITLE = '{$post_title}', ";
-        $query .="AUTHOR = '{$post_author}', ";
-        $query .="CATEGORY_ID = '{$post_category_id}', ";
-        $query .="STATUS = '{$post_status}', ";
-        $query .="FEATURED = '{$post_featured}', ";
-        $query .="TAGS = '{$post_tags}', ";
-        $query .="CONTENT = '{$post_content}', ";
-        $query .="IMAGE = '{$post_image}', ";
-        $query .="UPDATE_DATE = '{$post_update_date}', ";
-		$query .="UPDATE_USERNAME = '{$post_update_username}' ";
-        $query .="WHERE ID = '{$the_post_id}' ";    
-        
-        $update_post = mysqli_query($connection, $query);
-        
-        confirmQuery($update_post);
-	}; ?>
+    if(isset($_POST['post_title'])){$post_title = escape($_POST['post_title']);}else{$post_title = "";}
+    if(isset($_POST['post_category'])){$post_category_id = escape($_POST['post_category']);}else{$post_category_id = "";}
+    if(isset($_POST['post_status'])){$post_status = escape($_POST['post_status']);}else{$post_status = "";}
+    if(isset($_FILES['post_image']['name'])){$post_image = escape($_FILES['post_image']['name']);}else{$post_image = "";}
+    if(isset($_FILES['post_image']['tmp_name'])){$post_image_temp = escape($_FILES['post_image']['tmp_name']);}else{$post_image_temp = "";}
+    if(isset($_POST['post_featured'])){$post_featured = escape($_POST['post_featured']);}else{$post_featured = "";}
+    if(isset($_POST['post_content'])){$post_content = escape($_POST['post_content']);}else{$post_content = "";}
+
+    $post_update_username = $_SESSION['username'];
+
+  	try {
+
+  		//Caso não haja inserção de nova imagem, busca a atual
+	    if(empty($post_image)) {
+	        $query = "SELECT * FROM posts WHERE ID = $the_post_id ";
+	        $select_image = mysqli_query($connection, $query);
+	        
+	        while($row = mysqli_fetch_array($select_image)) {
+	            $post_image = $row['IMAGE'];
+	        }
+	    } else {
+		    move_uploaded_file($post_image_temp, "../img/novidades/$post_image");
+		}
+
+		if(empty($post_title) || $post_title == "") {
+			$bad_message = "Campo texto vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_category_id) || $post_category_id == "") {
+			$bad_message = "Campo categoria vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_status) || $post_status == "") {
+			$bad_message = "Campo status vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_featured) || $post_featured == "") {
+			$bad_message = "Campo destaque vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_content) || $post_content == "") {
+			$bad_message = "Campo texto vazio. Preencha-o para prosseguir.";
+		} 
+			
+			if(empty($bad_message)) {
+				if($_FILES['post_image']['error'] === UPLOAD_ERR_OK || $_FILES['post_image']['error'] === UPLOAD_ERR_NO_FILE) {
+				    $query = "UPDATE posts SET ";
+				    $query .="TITLE = '{$post_title}', ";
+				    $query .="CATEGORY_ID = '{$post_category_id}', ";
+				    $query .="STATUS = '{$post_status}', ";
+				    $query .="FEATURED = '{$post_featured}', ";
+				    $query .="CONTENT = '{$post_content}', ";
+				    $query .="IMAGE = '{$post_image}', ";
+				    $query .="UPDATE_DATE = CURRENT_TIMESTAMP, ";
+					$query .="UPDATE_USERNAME = '{$post_update_username}' ";
+				    $query .="WHERE ID = '{$the_post_id}' ";    
+	    
+				    $update_post = mysqli_query($connection, $query);
+
+			        $edit_post = mysqli_query($connection, $query);
+			        if(!$edit_post) {
+			            die('QUERY FAILED = ' . mysqli_error($connection));
+			        } else {
+			        	$good_message = "A novidade foi alterada.";
+			        }
+
+		        } else { 
+		            throw new UploadException($_FILES['post_image']['error']); 
+		        } 
+			}
+
+    } catch (UploadException $e) {
+        $bad_message = $e->message;
+
+    }
+    
+}; ?>
+
+<?php if(isset($good_message) && !empty($good_message)) {?>
+<div class="alert alert-success">
+		<strong>Sucesso!</strong><?php echo " ".$good_message; ?>
+</div>	
+<?php } else if(isset($bad_message) && !empty($bad_message)) { ?>
+<div class="alert alert-danger">
+		<strong>Erro!</strong><?php echo " ".$bad_message; ?>
+</div>	
+<?php } ?>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+</div>
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -74,12 +120,8 @@ if(isset($_POST['update_post'])) {
 		    
 		    <div class="form-group">
 		        <label for="post_title">Título</label>
-		        <input type="text" name="post_title" class="form-control" value="<?php if(isset($post_id)) {echo $post_title;} ?>">
-		    </div>
-
-		    <div class="form-group">
-		        <label for="post_author">Autor</label>
-		        <input type="text" name="post_author" class="form-control" value="<?php if(isset($post_id)) {echo $post_author;} ?>">
+		        <input type="text" name="post_title" class="form-control" maxlength="100" value="<?php if(isset($post_title) && !empty($post_title)) {echo $post_title;} ?>">
+		        <p class="help-block">Máx 100 caracteres.</p>
 		    </div>
 		    
 		    <div class="form-group">
@@ -118,12 +160,14 @@ if(isset($_POST['update_post'])) {
 		        <select name="post_status" id="">
 		        	<?php 
 		        	//Busca o status desta postagem e deixa ativo no select input
-		        	if($post_status == 'A') {
-		        		echo "<option value='A'>Ativo</option>";
-		        		echo "<option value='I'>Inativo</option>";
-		        	} else {
-		        		echo "<option value='I'>Inativo</option>";
-		        		echo "<option value='A'>Ativo</option>";
+		        	if(isset($post_status) && !empty($post_status)) {
+		        		if($post_status == 'A') {
+		        			echo "<option value='A'>Ativo</option>";
+		        			echo "<option value='I'>Inativo</option>";
+		        		} else {
+		        			echo "<option value='I'>Inativo</option>";
+		        			echo "<option value='A'>Ativo</option>";
+		        		}
 		        	} ?>
 		        </select>
 		    </div>
@@ -132,49 +176,49 @@ if(isset($_POST['update_post'])) {
 		    	<label for="post_featured">Destaque na Página de Novidades</label>
 		        <select name="post_featured" id="">
 		        	<?php 
-
-		        	if($post_featured == 'DP') {
-		        		echo "<option value='DP'>Destaque Principal</option>";
-		        		echo "<option value='D1'>Destaque 1</option>";
-		        		echo "<option value='D2'>Destaque 2</option>";
-		        		echo "<option value='SD'>Sem destaque</option>";
-		        		
-		        	} else if($post_featured == 'D1') {
-		        		echo "<option value='D1'>Destaque 1</option>";
-		        		echo "<option value='D2'>Destaque 2</option>";
-		        		echo "<option value='DP'>Destaque Principal</option>";
-		        		echo "<option value='SD'>Sem destaque</option>";
-		        	} else if($post_featured == 'D2') {
-						echo "<option value='D2'>Destaque 2</option>";
-		        		echo "<option value='D1'>Destaque 1</option>";
-		        		echo "<option value='DP'>Destaque Principal</option>";
-		        		echo "<option value='SD'>Sem destaque</option>";
-		        	} else {
-		        		echo "<option value='SD'>Sem destaque</option>";
-		        		echo "<option value='DP'>Destaque Principal</option>";
-		        		echo "<option value='D1'>Destaque 1</option>";
-		        		echo "<option value='D2'>Destaque 2</option>";
+		        	if(isset($post_featured) && !empty($post_featured)) {
+			        	if($post_featured == 'DP') {
+			        		echo "<option value='DP'>Destaque Principal</option>";
+			        		echo "<option value='D1'>Destaque 1</option>";
+			        		echo "<option value='D2'>Destaque 2</option>";
+			        		echo "<option value='SD'>Sem destaque</option>";
+			        		
+			        	} else if($post_featured == 'D1') {
+			        		echo "<option value='D1'>Destaque 1</option>";
+			        		echo "<option value='D2'>Destaque 2</option>";
+			        		echo "<option value='DP'>Destaque Principal</option>";
+			        		echo "<option value='SD'>Sem destaque</option>";
+			        	} else if($post_featured == 'D2') {
+							echo "<option value='D2'>Destaque 2</option>";
+			        		echo "<option value='D1'>Destaque 1</option>";
+			        		echo "<option value='DP'>Destaque Principal</option>";
+			        		echo "<option value='SD'>Sem destaque</option>";
+			        	} else {
+			        		echo "<option value='SD'>Sem destaque</option>";
+			        		echo "<option value='DP'>Destaque Principal</option>";
+			        		echo "<option value='D1'>Destaque 1</option>";
+			        		echo "<option value='D2'>Destaque 2</option>";
+			        	} 
 		        	} ?>
 		        </select>
 		    </div>
 		    
 		    <div class="form-group">
-		    	<img width="150" src="../img/novidades/<?php echo $post_image; ?>" alt="">
+		   		<img id="myImg" src="../img/novidades/<?php if(isset($post_image) && !empty($post_image)){echo $post_image;}else{echo 'imagem-nao-disponivel.png';} ?>" width="200">
+		    	<p class="help-block">Clique na imagem para visualizá-la.</p>
 		        <input type="file" name="post_image" class="form-control">
-		    </div>
-		    
-		    <div class="form-group">
-		        <label for="post_tags">Tags de Pesquisa</label>
-		        <input type="text" name="post_tags" class="form-control" value="<?php if(isset($post_tags)) {echo $post_tags;} ?>">
+		       	<p class="help-block">Resolução máxima indicada: 1024x768 pixels. Formatos de imagens aceitos: jpg/jpeg. Tamanho Máximo: 1MB.</p>
 		    </div>
 		    
 		    <div class="form-group">
 		        <label for="post_content">Conteúdo</label>
-		        <textarea type="text" name="post_content" class="form-control" cols="30" rows="10"><?php if(isset($post_content)) {echo $post_content;} ?></textarea>
+		        <textarea id="summernote" type="text" name="post_content" class="form-control" cols="30" rows="10"><?php if(isset($post_content) && !empty($post_content)) {echo $post_content;} ?></textarea>
+		        <p class="help-block">Aumente a caixa de texto arrastando sua borda inferior para baixo. Use somente esta caixa para edição de texto. Aviso: imagens, vídeos e outros conteúdos que forem adicionados poderão afetar a estrutura da página e danificá-la.</p>
 		    </div>
 		    
 		    <div class="form-group">
-		        <input type="submit" class="btn btn-primary" name="update_post" value="Salvar">
+		        <input type="submit" class="btn botao-crud" name="update_post" value="Atualizar">
+		        <span><a class="link-voltar" href="novidades.php?source=listar">Voltar</a></span>
 		    </div>
 		    
 		</form>

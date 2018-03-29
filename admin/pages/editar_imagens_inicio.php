@@ -136,7 +136,7 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 		    </div>
 
 		    <div class="form-group">
-		        <input type="submit" class="btn botao-crud" name="edit_home_content" value="Publicar">
+		        <input type="submit" class="btn botao-crud" name="edit_home_content" value="Atualizar">
 		        <span><a class="link-voltar" href="imagens_inicio.php?source=listar">Voltar</a></span>
 		    </div>
 		    

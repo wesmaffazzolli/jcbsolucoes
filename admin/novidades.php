@@ -16,7 +16,7 @@
 				<?php 
 
 				if(isset($_GET['source'])) {
-					$option = $_GET['source'];
+					$option = escape($_GET['source']);
 
 					switch ($option) {
 						case 'adicionar':
@@ -26,13 +26,32 @@
 							include "pages/editar_novidade.php";
 							break;
 						case 'delete':
-				            $the_post_id = $_GET['p_id'];
+				            $the_post_id = escape($_GET['p_id']);
 				            $query = "DELETE FROM posts WHERE ID = {$the_post_id} ";
 				            $delete_query = mysqli_query($connection, $query);
 				            confirmQuery($delete_query);
 
 						    header("Location: novidades.php"); 
 						    break;
+						case 'trocar_status':
+							$the_post_id = escape($_GET['p_id']);
+				            $the_status = escape($_GET['status']);
+
+				            if($the_status == 'Ativo'){
+				            	$query = "UPDATE posts SET ";
+					        	$query .= "STATUS = 'I' ";  
+					            $query .= "WHERE ID = '{$the_post_id}' ";
+				            } else {
+					           	$query = "UPDATE posts SET ";
+					        	$query .= "STATUS = 'A' ";  
+					            $query .= "WHERE ID = '{$the_post_id}' ";
+				            }
+
+				           	$change_status_post_query = mysqli_query($connection, $query);
+				            confirmQuery($change_status_post_query);
+				            
+						    header("Location: novidades.php?source=listar"); 
+						break;
 						default:
 							include "pages/listar_novidades.php";
 							break;

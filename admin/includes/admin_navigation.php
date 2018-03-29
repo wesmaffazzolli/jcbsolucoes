@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Acesso Interno JCB</a>
+                <a class="navbar-brand" href="index.php">Acesso Interno JCB v1.0</a>
             </div>
             <!-- /.navbar-header -->
 
