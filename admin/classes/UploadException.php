@@ -15,7 +15,7 @@ class UploadException extends Exception
         switch ($code) { 
             case UPLOAD_ERR_INI_SIZE: 
                 //$message = "The uploaded file exceeds the upload_max_filesize directive in php.ini"; 
-                $message = "A imagem excede o tamanho máximo de 1M (1 megabyte). Por gentileza, insira outra imagem com um tamanho menor.";
+                $message = "A imagem excede o tamanho máximo de 1MB (1 megabyte). Por gentileza, insira outra imagem com um tamanho menor.";
                 break; 
             case UPLOAD_ERR_FORM_SIZE: 
                 $message = "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form";

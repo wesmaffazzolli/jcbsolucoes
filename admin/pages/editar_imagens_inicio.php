@@ -4,7 +4,6 @@
 if(isset($_GET['source']) && isset($_GET['h_id'])) {
 		
 	$the_home_id = escape($_GET['h_id']); //id do conteúdo
-	$home_update_username = "adminjcb";
 
     $query = "SELECT INICIO_ID, TITLE, DESCR, POSITION, IMG_PATH, URL ";
     $query .="FROM inicio WHERE INICIO_ID = $the_home_id ";
@@ -30,7 +29,7 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 		if(isset($_FILES['home_img']['name'])){$home_img = escape($_FILES['home_img']['name']);}else{$home_img = "";}
 		if(isset($_FILES['home_img']['name'])){$home_img_temp = escape($_FILES['home_img']['tmp_name']);}else{$home_img_temp = "";}
 
-		$home_update_username = $row['UPDATE_USERNAME'];
+		$home_update_username = $_SESSION['username'];
 
 	  	try {
 
