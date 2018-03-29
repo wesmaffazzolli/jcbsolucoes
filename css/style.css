@@ -619,15 +619,16 @@ header h1 {
 }
 
 .nav-item {
-    background: grey;
+    background: #D8D8D8;
     margin-right: 5px;
+    margin-bottom: 5px;
     border-radius: .25rem;
 }
 
 @media (max-width: 768px) {
     .nav-item {
     margin-bottom: 10px;
-}
+    }
 }
 
 .nav-link-about {
@@ -846,14 +847,10 @@ _nav.scss:15
     color: #000 !important; 
 }
 
-.tab-content>.tab-pane {
-    margin-left: 20px;
-}
-
 @media (max-width: 768px) {
     .tab-content>.tab-pane {
     margin-top: 50px;
-}
+    }
 }
 
 
