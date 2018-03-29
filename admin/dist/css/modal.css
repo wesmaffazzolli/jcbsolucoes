@@ -11,6 +11,12 @@
     opacity: 0;
 }
 
+.myImg-services {
+    max-width: 300px !important;
+    /*max-height: 300px !important;*/
+    margin: 0px 10px 10px 0px;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

@@ -108,7 +108,8 @@
                      <h2><?php echo $service_title; ?></h2>
                         <p style="text-align: justify;"><?php echo $service_content; ?></p>
                               <div class="row">
-                                  <div class="col-sm-6 col-md-6">
+                                  <div class="col-sm-12 col-md-12">
+                                    <p>Veja as imagens:</p>
                                     <?php 
 
                                     $query = "SELECT A.ID, A.IMG_PATH, B.TITLE FROM services_images A, services B ";
@@ -121,7 +122,7 @@
                                       $service_image_path = $row['IMG_PATH'];
                                       $service_image_title = $row['TITLE']; ?>
 
-                                    <?php echo "<img id='myImg' class='myImg' src='img/servicos/{$service_image_path}' alt='{$service_image_title}' style='width: 300px;'>"; ?>
+                                    <?php echo "<img id='myImg' class='myImg-services' src='img/servicos/{$service_image_path}' alt='{$service_image_title}'>"; ?>
                                   
                                     <?php } ?>
                                </div>
