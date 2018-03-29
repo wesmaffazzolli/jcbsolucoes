@@ -26,7 +26,7 @@
 							include "pages/editar_categoria.php";
 							break;
 						case 'delete':
-						    $the_category_id = $_GET['p_id'];
+						    $the_category_id = escape($_GET['p_id']);
 						    echo $the_category_id;
 						    $query = "DELETE FROM categories WHERE ID = {$the_category_id} ";
 						    $delete_category_query = mysqli_query($connection, $query);

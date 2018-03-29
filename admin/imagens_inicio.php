@@ -16,7 +16,7 @@
 				<?php 
 
 				if(isset($_GET['source'])) {
-					$option = $_GET['source'];
+					$option = escape($_GET['source']);
 
 					switch ($option) {
 						/*case 'adicionar':
@@ -26,8 +26,8 @@
 							include "pages/editar_imagens_inicio.php";
 							break;
 						case 'trocar_status':
-							$the_home_id = $_GET['h_id'];
-				            $the_status = $_GET['status'];
+							$the_home_id = escape($_GET['h_id']);
+				            $the_status = escape($_GET['status']);
 
 				            if($the_status == 'A'){
 				            	$query = "UPDATE inicio SET ";

@@ -16,7 +16,7 @@
 				<?php 
 
 				if(isset($_GET['source'])) {
-					$option = $_GET['source'];
+					$option = escape($_GET['source']);
 
 					switch ($option) {
 						case 'adicionar':
@@ -26,7 +26,7 @@
 							include "pages/editar_timeline.php";
 							break;
 						case 'delete':
-				            $the_timeline_id = $_GET['t_id'];
+				            $the_timeline_id = escape($_GET['t_id']);
 				            $query = "DELETE FROM timeline WHERE TIMELINE_ID = {$the_timeline_id} ";
 				            $delete_timeline_query = mysqli_query($connection, $query);
 				            confirmQuery($delete_timeline_query);
@@ -34,8 +34,8 @@
 						    header("Location: timeline.php?source=listar"); 
 						    break;
 						case 'trocar_status':
-							$the_timeline_id = $_GET['t_id'];
-				            $the_timeline_status = $_GET['status'];
+							$the_timeline_id = escape($_GET['t_id']);
+				            $the_timeline_status = escape($_GET['status']);
 
 				            if($the_timeline_status == 'A'){
 				            	$query = "UPDATE timeline SET ";

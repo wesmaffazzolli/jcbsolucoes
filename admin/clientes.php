@@ -26,7 +26,7 @@
 							include "pages/editar_cliente.php";
 							break;
 						case 'delete':
-				            $the_client_id = $_GET['c_id'];
+				            $the_client_id = escape($_GET['c_id']);
 				            $query = "DELETE FROM clients WHERE CLIENTS_ID = {$the_client_id} ";
 				            $delete_client_query = mysqli_query($connection, $query);
 				            confirmQuery($delete_client_query);

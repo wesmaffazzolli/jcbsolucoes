@@ -16,7 +16,7 @@
 				<?php 
 
 				if(isset($_GET['source'])) {
-					$option = $_GET['source'];
+					$option = escape($_GET['source']);
 
 					switch ($option) {
 						case 'institucional':

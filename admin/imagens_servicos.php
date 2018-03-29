@@ -16,7 +16,7 @@
 				<?php 
 
 				if(isset($_GET['source'])) {
-					$option = $_GET['source'];
+					$option = escape($_GET['source']);
 
 					switch ($option) {
 						case 'adicionar':
@@ -26,8 +26,8 @@
 							include "pages/editar_imagens_servico.php";
 							break;
 						case 'delete':
-							$the_service_id = $_GET['s_id'];
-				            $the_img_id = $_GET['img_id'];
+							$the_service_id = escape($_GET['s_id']);
+				            $the_img_id = escape($_GET['img_id']);
 				            $query = "DELETE FROM services_images WHERE ID = {$the_img_id} ";
 				            $delete_img_service_query = mysqli_query($connection, $query);
 				            confirmQuery($delete_img_service_query);

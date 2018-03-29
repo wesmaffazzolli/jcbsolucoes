@@ -17,7 +17,7 @@
 				<?php 
 
 				if(isset($_GET['source'])) {
-					$option = $_GET['source'];
+					$option = escape($_GET['source']);
 
 					switch ($option) {
 						case 'adicionar':
@@ -30,7 +30,7 @@
 							include "pages/editar_cabecalho_servicos.php";
 							break;
 						case 'delete':
-				            $the_service_id = $_GET['p_id'];
+				            $the_service_id = escape($_GET['p_id']);
 				            $query = "DELETE FROM services WHERE ID = {$the_service_id} ";
 				            $delete_service_query = mysqli_query($connection, $query);
 				            confirmQuery($delete_service_query);
