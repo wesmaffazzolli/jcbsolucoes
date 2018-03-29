@@ -2,7 +2,9 @@
 
 	//Adicionar Categoria     
     if(isset($_POST['create_category'])) {
-    $cat_title = $_POST['cat_title']; 
+
+    $cat_title = escape($_POST['cat_title']); 
+
         if($cat_title == "" || empty($cat_title)) {
             echo "Preencha o nome da categoria para prosseguir.";
         } else {
@@ -13,11 +15,21 @@
             if(!$create_category_query) {
                 die('QUERY FAILED' . mysqli_error($connection));
             } else {
-                header("Location: categorias.php?source=listar");
+                $good_message = "A categoria foi inserida.";
             }
         }
     }
 ?>
+
+<?php if(isset($good_message) && !empty($good_message)) {?>
+<div class="alert alert-success">
+        <strong>Sucesso!</strong><?php echo " ".$good_message; ?>
+</div>  
+<?php } else if(isset($bad_message) && !empty($bad_message)) { ?>
+<div class="alert alert-danger">
+        <strong>Erro!</strong><?php echo " ".$bad_message; ?>
+</div>  
+<?php } ?>
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -32,7 +44,7 @@
 		        <input type="text" class="form-control" name="cat_title" placeholder="Digite o nome da categoria...">
 		    </div>
 		    <div class="form-group">
-		        <input class="btn btn-primary" type="submit" name="create_category" value="Adicionar">
+		        <input class="btn botao-crud" type="submit" name="create_category" value="Adicionar">
 		    </div>
 		</form>
 

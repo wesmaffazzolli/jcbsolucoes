@@ -23,7 +23,9 @@
 
 					        echo "<tr>";    
 					        echo "<td>{$cat_title}</td>";
-					        echo "<td><a href='categorias.php?source=editar&p_id={$cat_id}'>Editar</a>&nbsp;&nbsp;&nbsp;<a href='categorias.php?source=delete&p_id={$cat_id}'>Excluir</a></td>";
+					        echo "<td><ul class='lista-no-style'><li class='link-no-style'><a class='link-crud' href='categorias.php?source=editar&p_id={$cat_id}'>Editar</a></li>
+                            <li class='link-no-style'><a class='link-crud' href='categorias.php?source=delete&p_id={$cat_id}'>Excluir</a></li>
+                            </ul></td>";
 					        echo "</tr>";
 					    } ?>
 				    </tbody>
