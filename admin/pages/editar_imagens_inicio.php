@@ -30,6 +30,8 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 		if(isset($_FILES['home_img']['name'])){$home_img = escape($_FILES['home_img']['name']);}else{$home_img = "";}
 		if(isset($_FILES['home_img']['name'])){$home_img_temp = escape($_FILES['home_img']['tmp_name']);}else{$home_img_temp = "";}
 
+		$home_update_username = $row['UPDATE_USERNAME'];
+
 	  	try {
 
 	  		//Caso não haja inserção de nova imagem, busca a atual

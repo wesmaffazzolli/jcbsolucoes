@@ -22,12 +22,14 @@ if(isset($_POST['update_timeline'])) {
     if(isset($_POST['timeline_year'])) {$timeline_year = $_POST['timeline_year'];} else {$timeline_year = "";}
     if(isset($_POST['timeline_content'])) {$timeline_content = $_POST['timeline_content'];} else {$timeline_content = "";}
 
+    $timeline_update_username = $_SESSION['username'];
+
     if($timeline_title == "" || empty($timeline_title)) {
-        echo "Preencha o título para prosseguir.";
+        $bad_message = "Preencha o título para prosseguir.";
     } else if($timeline_year == "" || empty($timeline_year)) {
-        echo "Preencha o ano para prosseguir.";
+        $bad_message = "Preencha o ano para prosseguir.";
     } else if($timeline_content == "" || empty($timeline_content)) {
-        echo "Preencha o texto para prosseguir.";
+        $bad_message = "Preencha o texto para prosseguir.";
     } else {
 
         $query = "UPDATE timeline SET ";
@@ -42,19 +44,21 @@ if(isset($_POST['update_timeline'])) {
         if(!$update_timeline_query) {
             die('QUERY FAILED = ' . mysqli_error($connection));
         } else {
-            echo "A história foi alterada.";
+            $good_message = "A história foi alterada.";
         }
     }
 }
 ?>
 
+<?php if(isset($good_message) && !empty($good_message)) {?>
 <div class="alert alert-success">
-    <strong>Success!</strong> Indicates a successful or positive action.
-</div>
-
+        <strong>Sucesso!</strong><?php echo " ".$good_message; ?>
+</div>  
+<?php } else if(isset($bad_message) && !empty($bad_message)) { ?>
 <div class="alert alert-danger">
-    <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-</div>
+        <strong>Erro!</strong><?php echo " ".$bad_message; ?>
+</div>  
+<?php } ?>
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -67,7 +71,8 @@ if(isset($_POST['update_timeline'])) {
             
 			<label for="timelime_title">Título:</label>
 		    <div class="form-group">
-		        <input type="text" class="form-control" name="timelime_title" value="<?php if(isset($timeline_title)){echo $timeline_title;}else{echo '';} ?>">
+		        <input type="text" class="form-control" name="timelime_title" maxlength="100" value="<?php if(isset($timeline_title)){echo $timeline_title;}else{echo '';} ?>">
+                <p class="help-block">Máx 100 caracteres.</p>
 		    </div>
 
             <div class="form-group">
@@ -84,11 +89,13 @@ if(isset($_POST['update_timeline'])) {
 
             <div class="form-group">
                 <label for="timeline_content">Conteúdo:</label>
-                <textarea type="text" name="timeline_content" class="form-control" cols="30" rows="10"><?php if(isset($timeline_content)){echo $timeline_content;}{echo "";}?></textarea>
+                <textarea type="text" name="timeline_content" class="form-control" cols="30" rows="10" maxlength="300"><?php if(isset($timeline_content)){echo $timeline_content;}{echo "";}?></textarea>
+                <p class="help-block">Máx 300 caracteres.</p>
             </div>
 
 		    <div class="form-group">
-		        <input class="btn btn-primary" type="submit" name="update_timeline" value="Atualizar">
+		        <input class="btn botao-crud" type="submit" name="update_timeline" value="Atualizar">
+                <span><a class="link-voltar" href="timeline.php?source=listar">Voltar</a></span>
 		    </div>
 		</form>
 

@@ -18,7 +18,7 @@ if(isset($_GET['source'])) {
         $date = new DateTime($row['UPDATE_DATE']);
         $institucional_update_date = $date->format('d/m/Y H:i');
 
-        $institucional_update_username = "adminjcb";
+        $institucional_update_username = $_SESSION['username'];
 	}
 
 	//Mecanismo de atualização da imagem do serviço
@@ -28,6 +28,8 @@ if(isset($_GET['source'])) {
         if(isset($_POST['missao_text'])){$institucional_missao_text = escape($_POST['missao_text']);}else{$institucional_missao_text = "";};
         if(isset($_POST['visao_text'])){$institucional_visao_text = escape($_POST['visao_text']);}else{$institucional_visao_text = "";};
         if(isset($_POST['objetivos_text'])){$institucional_objetivos_text = escape($_POST['objetivos_text']);}else{$institucional_objetivos_text = "";};
+
+        $institucional_update_username = $row['UPDATE_USERNAME'];
 
         if(isset($_POST['update_institucional'])){
 

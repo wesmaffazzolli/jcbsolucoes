@@ -18,6 +18,7 @@ if(isset($_GET['source'])) {
                         <th>Ano</th>
                         <th>Status</th>
                         <th>Texto</th>
+                        <th>Última Atualização</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -50,6 +51,12 @@ if(isset($_GET['source'])) {
                         $timeline_status = $row['STATUS'];
                         $timeline_content = $row['CONTENT'];
 
+                        /* Format Date */
+                        $date = new DateTime($row['UPDATE_DATE']);
+                        $timeline_update_date = $date->format('d/m/Y H:i');
+
+                        $timeline_update_username = $row['UPDATE_USERNAME'];
+
                         //Descrição do Status
                         if($timeline_status == 'A') {
                             $timeline_status_descr = 'Ativo';
@@ -58,29 +65,27 @@ if(isset($_GET['source'])) {
                         }
 
 		                echo "<tr>";
-		                if(isset($timeline_title)) {echo "<td>{$timeline_title}</td>";} else {echo "<td>Título vazio.</td>" ;}
-                        if(isset($timeline_year)) {echo "<td>{$timeline_year}</td>";} else {echo "<td>Ano vazio.</td>" ;}
-                        if(isset($timeline_status_descr)) {echo "<td>{$timeline_status_descr}</td>";} else {echo "<td>Status vazio.</td>" ;}
-                        if(isset($timeline_content)) {echo "<td>{$timeline_content}</td>";} else {echo "<td>Texto vazio.</td>" ;}
+		                if(isset($timeline_title) && !empty($timeline_title)) {echo "<td>{$timeline_title}</td>";} else {echo "<td>Título vazio.</td>" ;}
+                        if(isset($timeline_year) && !empty($timeline_year)) {echo "<td>{$timeline_year}</td>";} else {echo "<td>Ano vazio.</td>" ;}
+                        if(isset($timeline_status_descr) && !empty($timeline_status_descr)) {echo "<td>{$timeline_status_descr}</td>";} else {echo "<td>Status vazio.</td>" ;}
+                        if(isset($timeline_content) && !empty($timeline_content)) {echo "<td>{$timeline_content}</td>";} else {echo "<td>Texto vazio.</td>" ;}
 
-                        echo "<td>";
+                        if(isset($timeline_update_date) && !empty($timeline_update_date) && isset($timeline_update_username) && !empty($timeline_update_username)) {echo "<td>{$timeline_update_date} por {$timeline_update_username}</td>";} else {echo "<td>===//===</td>" ;}                        
 
-                        echo"<a href='timeline.php?source=editar&t_id={$timeline_id}'>Editar</a>
-                            &nbsp;&nbsp;";
+                        echo "<td><ul class='lista-no-style'>";
+
+                        echo"<li class='link-no-style'><a class='link-crud' href='timeline.php?source=editar&t_id={$timeline_id}'>Editar</a></li>";
 
                         if($timeline_year != $timeline_max_year && $timeline_year != $timeline_min_year) {                        
-                        echo "<a href='timeline.php?source=delete&t_id={$timeline_id}'>Excluir</a>
-                            &nbsp;&nbsp;";
+                        echo "<li class='link-no-style'><a class='link-crud' href='timeline.php?source=delete&t_id={$timeline_id}'>Excluir</a></li>";
 
                             if($timeline_status == 'A') {
-                                echo "<a href='timeline.php?source=trocar_status&t_id={$timeline_id}&status={$timeline_status}'>Inativar</a>
-                                    &nbsp;&nbsp;";                                
+                                echo "<li class='link-no-style'><a class='link-crud' href='timeline.php?source=trocar_status&t_id={$timeline_id}&status={$timeline_status}'>Inativar</a></li>";                                
                             } else {
-                                echo "<a href='timeline.php?source=trocar_status&t_id={$timeline_id}&status={$timeline_status}'>Ativar</a>
-                                    &nbsp;&nbsp;";
+                                echo "<li class='link-no-style'><a class='link-crud' href='timeline.php?source=trocar_status&t_id={$timeline_id}&status={$timeline_status}'>Ativar</a></li>";
                             }
                         }
-                        echo "</td>";
+                        echo "</ul></td>";
 		                echo "</tr>";
 
 		            } ?>

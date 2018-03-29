@@ -19,22 +19,27 @@ if(isset($_GET['source'])) {
         $nossos_numeros_text3 = $row['TEXT3'];
         $nossos_numeros_text4 = $row['TEXT4'];
         $nossos_numeros_creation_date = $row['CREATION_DATE'];
-        $nossos_numeros_update_date = $row['UPDATE_DATE'];
-        $nossos_numeros_update_username = "adminjcb";
+
+        $date = new DateTime($row['UPDATE_DATE']);
+        $nossos_numeros_update_date = $date->format('d/m/Y H:i');
+
+        $nossos_numeros_update_username = $row['UPDATE_USERNAME'];
 	}
 
 	//Mecanismo de atualização da imagem do serviço
 	if(isset($_POST['update_nossos_numeros1']) || isset($_POST['update_nossos_numeros2']) || isset($_POST['update_nossos_numeros3']) || isset($_POST['update_nossos_numeros4']) || isset($_POST['update_nossos_numeros_text_main'])) {
 
-        if(isset($_POST['num1'])){$nossos_numeros_num1 = $_POST['num1'];}else{$nossos_numeros_num1 = "";};
-        if(isset($_POST['num2'])){$nossos_numeros_num2 = $_POST['num2'];}else{$nossos_numeros_num2 = "";};
-        if(isset($_POST['num3'])){$nossos_numeros_num3 = $_POST['num3'];}else{$nossos_numeros_num3 = "";};
-        if(isset($_POST['num4'])){$nossos_numeros_num4 = $_POST['num4'];}else{$nossos_numeros_num4 = "";};
-        if(isset($_POST['text1'])){$nossos_numeros_text1 = $_POST['text1'];}else{$nossos_numeros_text1 = "";};
-        if(isset($_POST['text2'])){$nossos_numeros_text2 = $_POST['text2'];}else{$nossos_numeros_text2 = "";};
-        if(isset($_POST['text3'])){$nossos_numeros_text3 = $_POST['text3'];}else{$nossos_numeros_text3 = "";};
-        if(isset($_POST['text4'])){$nossos_numeros_text4 = $_POST['text4'];}else{$nossos_numeros_text4 = "";};
-       	if(isset($_POST['text_main'])){$nossos_numeros_text_main = $_POST['text_main'];}else{$nossos_numeros_text_main = "";};
+        if(isset($_POST['num1'])){$nossos_numeros_num1 = escape($_POST['num1']);}else{$nossos_numeros_num1 = "";};
+        if(isset($_POST['num2'])){$nossos_numeros_num2 = escape($_POST['num2']);}else{$nossos_numeros_num2 = "";};
+        if(isset($_POST['num3'])){$nossos_numeros_num3 = escape($_POST['num3']);}else{$nossos_numeros_num3 = "";};
+        if(isset($_POST['num4'])){$nossos_numeros_num4 = escape($_POST['num4']);}else{$nossos_numeros_num4 = "";};
+        if(isset($_POST['text1'])){$nossos_numeros_text1 = escape($_POST['text1']);}else{$nossos_numeros_text1 = "";};
+        if(isset($_POST['text2'])){$nossos_numeros_text2 = escape($_POST['text2']);}else{$nossos_numeros_text2 = "";};
+        if(isset($_POST['text3'])){$nossos_numeros_text3 = escape($_POST['text3']);}else{$nossos_numeros_text3 = "";};
+        if(isset($_POST['text4'])){$nossos_numeros_text4 = escape($_POST['text4']);}else{$nossos_numeros_text4 = "";};
+       	if(isset($_POST['text_main'])){$nossos_numeros_text_main = escape($_POST['text_main']);}else{$nossos_numeros_text_main = "";};
+
+       	$nossos_numeros_update_username = $_SESSION['username'];
 
         if(isset($_POST['update_nossos_numeros1'])){
 
@@ -88,14 +93,6 @@ if(isset($_GET['source'])) {
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="alert alert-success">
-  				<strong>Success!</strong> Indicates a successful or positive action.
-			</div>	
-
-			<div class="alert alert-danger">
-  				<strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-			</div>		
-
 		<div class="panel panel-default"> <!--Painel Texto Principal: INÍCIO -->
 			    <div class="panel-heading"> 
 			        Texto da Seção dos Nossos Números
@@ -108,7 +105,7 @@ if(isset($_GET['source'])) {
 					        <textarea type="text" name="text_main" class="form-control" cols="30" rows="3"><?php if(isset($nossos_numeros_text_main)){echo $nossos_numeros_text_main;}else{echo "Uma história fundada em competência e dedicação: ";} ?></textarea>
 					    </div>
 					    <div class="form-group">
-					        <input class="btn btn-primary" type="submit" name="update_nossos_numeros_text_main" value="Atualizar">
+					        <input class="btn botao-crud" type="submit" name="update_nossos_numeros_text_main" value="Atualizar">
 					    </div>
 					</form>
 				</div>
@@ -130,10 +127,11 @@ if(isset($_GET['source'])) {
 					    </div>
 						<label for="text1">Texto:</label>
 					    <div class="form-group">
-					        <input type="text" class="form-control" name="text1" value="<?php if(isset($nossos_numeros_text1)){echo $nossos_numeros_text1;} else {echo '';}?>">
+					        <input type="text" class="form-control" name="text1" value="<?php if(isset($nossos_numeros_text1)){echo $nossos_numeros_text1;} else {echo '';}?>" maxlength="100">
+					        <p class="help-block">Max 100 caracteres.</p>
 					    </div>
 					    <div class="form-group">
-					        <input class="btn btn-primary" type="submit" name="update_nossos_numeros1" value="Atualizar">
+					        <input class="btn botao-crud" type="submit" name="update_nossos_numeros1" value="Atualizar">
 					    </div>
 					</form>
 				</div>
@@ -155,10 +153,11 @@ if(isset($_GET['source'])) {
 					    </div>
 						<label for="text2">Texto:</label>
 					    <div class="form-group">
-					        <input type="text" class="form-control" name="text2" value="<?php if(isset($nossos_numeros_text2)){echo $nossos_numeros_text2;} else {echo '';}?>">
+					        <input type="text" class="form-control" name="text2" value="<?php if(isset($nossos_numeros_text2)){echo $nossos_numeros_text2;} else {echo '';}?>" maxlength="100">
+					         <p class="help-block">Max 100 caracteres.</p>
 					    </div>
 					    <div class="form-group">
-					        <input class="btn btn-primary" type="submit" name="update_nossos_numeros2" value="Atualizar">
+					        <input class="btn botao-crud" type="submit" name="update_nossos_numeros2" value="Atualizar">
 					    </div>
 					</form>
 				</div>
@@ -184,10 +183,11 @@ if(isset($_GET['source'])) {
 					    </div>
 						<label for="text3">Texto:</label>
 					    <div class="form-group">
-					        <input type="text" class="form-control" name="text3" value="<?php if(isset($nossos_numeros_text3)){echo $nossos_numeros_text3;} else {echo '';}?>">
+					        <input type="text" class="form-control" name="text3" value="<?php if(isset($nossos_numeros_text3)){echo $nossos_numeros_text3;} else {echo '';}?>" maxlength="100">
+					        <p class="help-block">Max 100 caracteres.</p>
 					    </div>
 					    <div class="form-group">
-					        <input class="btn btn-primary" type="submit" name="update_nossos_numeros3" value="Atualizar">
+					        <input class="btn botao-crud" type="submit" name="update_nossos_numeros3" value="Atualizar">
 					    </div>
 					</form>
 				</div>
@@ -209,10 +209,11 @@ if(isset($_GET['source'])) {
 					    </div>
 						<label for="text4">Texto:</label>
 					    <div class="form-group">
-					        <input type="text" class="form-control" name="text4" value="<?php if(isset($nossos_numeros_text4)){echo $nossos_numeros_text4;} else {echo '';}?>">
+					        <input type="text" class="form-control" name="text4" value="<?php if(isset($nossos_numeros_text4)){echo $nossos_numeros_text4;} else {echo '';}?>" maxlength="100">
+					        <p class="help-block">Max 100 caracteres.</p>
 					    </div>
 					    <div class="form-group">
-					        <input class="btn btn-primary" type="submit" name="update_nossos_numeros4" value="Atualizar">
+					        <input class="btn botao-crud" type="submit" name="update_nossos_numeros4" value="Atualizar">
 					    </div>
 					</form>
 				</div>
