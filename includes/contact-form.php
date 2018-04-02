@@ -1,61 +1,24 @@
 <?php
-/**
- * PHPMailer simple contact form example.
- * If you want to accept and send uploads in your form, look at the send_file_upload example.
- */
-//Import the PHPMailer class into the global namespace
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+    // the message
+  //$msg = "First line of text\nSecond line of text";
 
-require 'lib/phpmailer/src/Exception.php';
-//require 'lib/phpmailer/src/PHPMailer.php';
-require 'lib/phpmailer/src/SMTP.php';
+  // use wordwrap() if lines are longer than 70 characters
+  //$msg = wordwrap($msg,70);
 
-require_once('lib/phpmailer/src/PHPMailer.php'); //chama a classe de onde você a colocou.
+  // send email
+  //mail("wesley.maffazzolli@gmail.com","My subject",$msg);
+
 
 if(isset($_POST['submit'])) {
+  $to = "wesley.maffazzolli@gmail.com";
+  $subject = $_POST['subject'];
+  $body = $_POST['body'];
 
-  echo "passei aqui!!";
+}
 
-  $mail = new PHPMailer(); // instancia a classe PHPMailer
-
-  $mail->IsSMTP();
-
-  //configuração do gmail
-  $mail->Port = '465'; //porta usada pelo gmail.
-  $mail->Host = 'smtp.gmail.com'; 
-  $mail->IsHTML(true); 
-  $mail->Mailer = 'smtp'; 
-  $mail->SMTPSecure = 'ssl';
-
-  //configuração do usuário do gmail
-  $mail->SMTPAuth = true; 
-  $mail->Username = 'wesley.maffazzolli@gmail.com'; // usuario gmail.   
-  $mail->Password = '5918669bertoldo'; // senha do email.
-
-  $mail->SingleTo = true; 
-
-  // configuração do email a ver enviado.
-  $mail->From = "Mensagem de email, pode vim por uma variavel."; 
-  $mail->FromName = $_POST['name']; 
-
-  $mail->addAddress("wesley.maffazzolli@gmail.com"); // email do destinatario.
-
-  $mail->Subject = $_POST['subject']; 
-  $mail->Body = $_POST['message'];
-
-  if(!$mail->Send()) {
-    echo "Erro ao enviar Email:" . $mail->ErrorInfo;
-  } else {
-    var_dump($mail);
-  }
-
-  $teste = "esta é a variável que vou fazer var_dump!";
-
-  var_dump($teste);
     
-} ?>
+ ?>
 
 <div class="form">
   <div id="sendmessage">A sua mensagem foi enviada. Obrigado!</div>
@@ -85,7 +48,7 @@ if(isset($_POST['submit'])) {
       <div class="validation"></div>
     </div>
     <div class="form-group">
-      <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensagem"></textarea>
+      <textarea class="form-control" name="body" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensagem"></textarea>
       <div class="validation"></div>
     </div>
     <div class="text-center"><button type="submit">Enviar Mensagem</button></div>

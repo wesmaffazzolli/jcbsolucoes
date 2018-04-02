@@ -24,7 +24,7 @@ if(isset($_POST['update_post'])) {
     if(isset($_POST['post_category'])){$post_category_id = escape($_POST['post_category']);}else{$post_category_id = "";}
     if(isset($_POST['post_status'])){$post_status = escape($_POST['post_status']);}else{$post_status = "";}
     if(isset($_FILES['post_image']['name'])){$post_image = escape($_FILES['post_image']['name']);}else{$post_image = "";}
-    if(isset($_FILES['post_image']['tmp_name'])){$post_image_temp = escape($_FILES['post_image']['tmp_name']);}else{$post_image_temp = "";}
+    if(isset($_FILES['post_image']['tmp_name'])){$post_image_temp = $_FILES['post_image']['tmp_name'];}else{$post_image_temp = "";}
     if(isset($_POST['post_featured'])){$post_featured = escape($_POST['post_featured']);}else{$post_featured = "";}
     if(isset($_POST['post_content'])){$post_content = escape($_POST['post_content']);}else{$post_content = "";}
 
@@ -174,32 +174,57 @@ if(isset($_POST['update_post'])) {
 
 		    <div class="form-group">
 		    	<label for="post_featured">Destaque na Página de Novidades</label>
-		        <select name="post_featured" id="">
-		        	<?php 
-		        	if(isset($post_featured) && !empty($post_featured)) {
-			        	if($post_featured == 'DP') {
-			        		echo "<option value='DP'>Destaque Principal</option>";
-			        		echo "<option value='D1'>Destaque 1</option>";
-			        		echo "<option value='D2'>Destaque 2</option>";
-			        		echo "<option value='SD'>Sem destaque</option>";
-			        		
-			        	} else if($post_featured == 'D1') {
-			        		echo "<option value='D1'>Destaque 1</option>";
-			        		echo "<option value='D2'>Destaque 2</option>";
-			        		echo "<option value='DP'>Destaque Principal</option>";
-			        		echo "<option value='SD'>Sem destaque</option>";
-			        	} else if($post_featured == 'D2') {
-							echo "<option value='D2'>Destaque 2</option>";
-			        		echo "<option value='D1'>Destaque 1</option>";
-			        		echo "<option value='DP'>Destaque Principal</option>";
-			        		echo "<option value='SD'>Sem destaque</option>";
-			        	} else {
-			        		echo "<option value='SD'>Sem destaque</option>";
-			        		echo "<option value='DP'>Destaque Principal</option>";
-			        		echo "<option value='D1'>Destaque 1</option>";
-			        		echo "<option value='D2'>Destaque 2</option>";
-			        	} 
-		        	} ?>
+		        <select name="post_featured">
+		        	<?php
+
+		        		//Destaque do Post
+		        		$select_my_feature_query = "SELECT DISTINCT FEATURED FROM posts WHERE ID = $the_post_id ";
+		        		$my_feature_selected = mysqli_query($connection, $select_my_feature_query); 
+		        		$my_feature_row = mysqli_fetch_array($my_feature_selected);
+		        		$my_post_feature = $my_feature_row['FEATURED'];
+
+		        		if($my_post_feature == 'DP') {
+		        			echo "<option value='DP'>Destaque Principal</option>";	
+		        		} else if($my_post_feature == 'D1') {
+		        			echo "<option value='D1'>Destaque 1</option>";	
+		        		} else if($my_post_feature == 'D2') {
+		        			echo "<option value='D2'>Destaque 2</option>";	
+		        		} else if($my_post_feature == 'SD') {
+		        			echo "<option value='SD'>Sem Destaque</option>";	
+		        		}	  
+
+		        		//Outros destaques que já não estiverem ativos
+		        		$select_featured_posts_query = "SELECT DISTINCT FEATURED FROM posts WHERE STATUS = 'A' ";
+		            	$selected_featured_posts = mysqli_query($connection, $select_featured_posts_query); 
+
+		            	while($row = mysqli_fetch_assoc($selected_featured_posts)) { 
+							if($row['FEATURED'] == 'DP') {
+								$dp_post = $row['FEATURED'];
+							} else if($row['FEATURED'] == 'D1') {
+								$d1_post = $row['FEATURED'];
+							} else if($row['FEATURED'] == 'D2') {
+								$d2_post = $row['FEATURED'];
+							} 
+						}
+
+						if(!isset($dp_post)) {
+							echo "<option value='DP'>Destaque Principal</option>";	
+						}
+
+						if(!isset($d1_post)) {
+							echo "<option value='D1'>Destaque 1</option>";		
+						}
+
+						if(!isset($d2_post)) {
+							echo "<option value='D2'>Destaque 2</option>";			
+						}
+
+						//Sem destaque haverá de qualquer jeito, mas não pode repetir na lista
+						if($my_post_feature != 'SD') {
+							echo "<option value='SD'>Sem destaque</option>";			
+						}
+
+		        	?>
 		        </select>
 		    </div>
 		    

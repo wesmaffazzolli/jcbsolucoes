@@ -33,7 +33,7 @@
 				<tbody>
 
 		            <?php                                
-		            $query = "SELECT * FROM posts";
+		            $query = "SELECT * FROM posts ORDER BY FEATURED = 'DP' DESC, FEATURED, STATUS, CREATION_DATE DESC, UPDATE_DATE DESC";
 		            $select_posts = mysqli_query($connection, $query); 
 
 		            while($row = mysqli_fetch_assoc($select_posts)) {
@@ -108,9 +108,7 @@
 		                
 		                echo "<td><ul class='lista-no-style'>
 	                	<li class='link-no-style'><a class='link-crud' href='novidades.php?source=editar&p_id={$post_id}'>Editar</a>";
-		                if($post_featured == 'Sem destaque') {
-                        	echo "<li class='link-no-style'><a class='link-crud' href='novidades.php?source=delete&p_id={$post_id}'>Excluir</a>";    	
-                        } 
+                        echo "<li class='link-no-style'><a class='link-crud' href='novidades.php?source=delete&p_id={$post_id}'>Excluir</a>";    	
 
                         if($post_status == 'Ativo'){
                         	echo "<li class='link-no-style'><a class='link-crud' href='novidades.php?source=trocar_status&p_id={$post_id}&status={$post_status}'>Inativar</a></li>";                       

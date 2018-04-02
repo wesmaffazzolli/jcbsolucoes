@@ -4,30 +4,34 @@
 <?php
 
     //Query dos posts com destaque
-    $query = "SELECT * FROM posts WHERE FEATURED IN('DP','D1','D2') ";
-    $select_posts_featured = mysqli_query($connection, $query); 
+    $query = "SELECT * FROM posts WHERE FEATURED = 'DP' AND STATUS = 'A' ";
+    $select_posts_featured_dp = mysqli_query($connection, $query); 
 
-    while($row = mysqli_fetch_assoc($select_posts_featured)) {
-        $post_id = $row['ID'];    
-        $post_title = $row['TITLE'];
-        $post_image = $row['IMAGE'];
-        $post_featured = $row['FEATURED'];
-        $post_content = $row['CONTENT']; ?>
+    $row = mysqli_fetch_array($select_posts_featured_dp);
+    
+    if(!is_null($row)) {
+      $post_id_dp = $row['ID'];    
+      $post_title_dp = $row['TITLE'];
+      $post_image_dp = $row['IMAGE'];
+      $post_content_dp = $row['CONTENT'];
+    } ?>
 
-    <?php if($post_featured == 'DP') { ?>
+
     <!-- Page Content -->
     <div class="container">
       <!-- Heading Row -->
       <div class="row my-4">
         <div class="col-lg-8">
           <!--<img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">-->
-          <img class="img-fluid rounded" src="img/novidades/<?php echo $post_image; ?>" alt="">
+          <img class="img-fluid rounded" src="img/novidades/<?php if(isset($post_image_dp)){echo $post_image_dp;}else{echo 'imagem-nao-disponivel.png';}?>">
         </div>
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
-          <h1><?php echo $post_title; ?></h1>
-          <p><?php echo substr($post_content, 0, 200)."..."; ?></p>
-          <a class="btn btn-primary btn-jcb btn-lg" href="blog-post.php?p_id=<?php echo $post_id; ?>" style="background-color: #FF9900; border-color: #FF9900;">Saber mais</a>
+          <h1><?php if(isset($post_title_dp)){echo $post_title_dp;}else{echo "Novidade em construção.";} ?></h1>
+          <p><?php if(isset($post_content_dp)){echo substr($post_content_dp, 0, 200)."...";}else{echo "Conteúdo da novidade em construção. Aguarde...";}?></p>
+          <?php if(isset($post_id_dp)) { ?>
+          <a class="btn btn-primary btn-jcb btn-lg" href="blog-post.php?p_id=<?php echo $post_id_dp; ?>" style="background-color: #FF9900; border-color: #FF9900;">Saber mais</a>
+          <?php } ?>
         </div>
         <!-- /.col-md-4 -->
       </div>
@@ -35,47 +39,67 @@
      
      </div>
     <!-- /.container -->
-    <?php } ?>
+    <!-- Fim do Destaque Principal -->
 
-    <?php if($post_featured == 'D1') { ?>
+    <?php
+    //Query do post destaque 1
+    $query = "SELECT * FROM posts WHERE FEATURED = 'D1' AND STATUS = 'A' ";
+    $select_posts_featured_d1 = mysqli_query($connection, $query); 
+
+    $row = mysqli_fetch_array($select_posts_featured_d1);
+
+    if(!is_null($row)) {
+      $post_id_d1 = $row['ID'];    
+      $post_title_d1 = $row['TITLE'];
+      $post_content_d1 = $row['CONTENT'];
+    } ?>
+
      <div class="container">
       <!-- Content Row -->
       <div class="row">
         <div class="col-md-4 mb-4">
           <div class="card h-100">
             <div class="card-body">
-              <h2 class="card-title"><?php echo $post_title; ?></h2>
-              <p class="card-text"><?php echo substr($post_content, 0, 200)."..."; ?></p>
+              <h2 class="card-title"><?php if(isset($post_title_d1)){echo $post_title_d1;}else{echo "Novidade em construção.";} ?></h2>
+              <p class="card-text"><?php if(isset($post_content_d1)){echo substr($post_content_d1, 0, 200)."...";}else{echo "Conteúdo da novidade em construção. Aguarde...";} ?></p>
             </div>
             <div class="card-footer">
-              <a href="blog-post.php?p_id=<?php echo $post_id; ?>" class="btn btn-primary" style="background-color: #FF9900; border-color: #FF9900;">Saber mais</a>
+              <?php if(isset($post_id_d1)) { ?>
+              <a class="btn btn-primary btn-jcb btn-lg" href="blog-post.php?p_id=<?php echo $post_id_d1; ?>" style="background-color: #FF9900; border-color: #FF9900;">Saber mais</a>
+              <?php } ?>
             </div>
           </div>
         </div>
-
-        <?php } ?>
         <!-- Fim do Destaque 1 -->
 
+        <?php
+        //Query do post destaque 2
+        $query = "SELECT * FROM posts WHERE FEATURED = 'D2' AND STATUS = 'A' ";
+        $select_posts_featured_d2 = mysqli_query($connection, $query); 
 
-        <?php if($post_featured == 'D2') { ?>
+        $row = mysqli_fetch_array($select_posts_featured_d2);
+
+        if(!is_null($row)) {
+          $post_id_d2 = $row['ID'];    
+          $post_title_d2 = $row['TITLE'];
+          $post_content_d2 = $row['CONTENT'];
+        } ?>
+
         <!-- /.col-md-4 -->
         <div class="col-md-4 mb-4">
           <div class="card h-100">
             <div class="card-body">
-              <h2 class="card-title"><?php echo $post_title; ?></h2>
-              <p class="card-text"><?php echo substr($post_content, 0, 200)."..."; ?></p>
+              <h2 class="card-title"><?php if(isset($post_title_d2)){echo $post_title_d2;}else{echo "Novidade em construção.";} ?></h2>
+              <p class="card-text"><?php if(isset($post_content_d2)){echo substr($post_content_d2, 0, 200)."...";}else{echo "Conteúdo da novidade em construção. Aguarde...";} ?></p>
             </div>
             <div class="card-footer">
-              <a href="blog-post.php?p_id=<?php echo $post_id; ?>" class="btn btn-primary" style="background-color: #FF9900; border-color: #FF9900;">Saber mais</a>
+              <?php if(isset($post_id_d2)) { ?>
+              <a class="btn btn-primary btn-jcb btn-lg" href="blog-post.php?p_id=<?php echo $post_id_d2; ?>" style="background-color: #FF9900; border-color: #FF9900;">Saber mais</a>
+              <?php } ?>
             </div>
           </div>
         </div>
-
-        <?php } ?>
         <!-- Fim da condicional D2 -->
-
-        <?php } ?>
-         <!-- Fim do Loop -->
 
 
         <!-- /.col-md-4 -->
@@ -152,14 +176,14 @@
           }
 
           //Pagination System
-          $post_query_count = "SELECT * FROM posts WHERE FEATURED = 'SD' ";
+          $post_query_count = "SELECT * FROM posts WHERE FEATURED = 'SD' AND STATUS = 'A' ";
           $find_count = mysqli_query($connection, $post_query_count);
           $count = mysqli_num_rows($find_count);
           $count = ceil($count / $per_page);
 
 
           //Query dos posts SEM DESTAQUE                            
-          $query = "SELECT * FROM posts WHERE FEATURED = 'SD' LIMIT {$page_1}, $per_page";
+          $query = "SELECT * FROM posts WHERE FEATURED = 'SD' AND STATUS = 'A' ORDER BY CREATION_DATE DESC LIMIT {$page_1}, $per_page";
           $select_posts_not_featured = mysqli_query($connection, $query); 
 
           while($row = mysqli_fetch_assoc($select_posts_not_featured)) {
@@ -177,10 +201,6 @@
               <p class="card-text"><?php echo substr($post_content, 0, 200)."..."; ?></p>
               <a href="blog-post.php?p_id=<?php echo $post_id; ?>" class="btn" style="background-color: #FF9900; border-color: #FF9900;">Saiba mais &rarr;</a>
             </div>
-            <!--<div class="card-footer text-muted">
-              Postado em 2 de março de 2018 por
-              <a href="#" style="color: #FF9900;">Rogério</a>
-            </div>-->
           </div>
 
           <?php } ?>

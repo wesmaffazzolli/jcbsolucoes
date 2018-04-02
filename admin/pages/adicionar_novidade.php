@@ -3,11 +3,12 @@
 if(isset($_POST['create_post'])) {
 
     if(isset($_POST['post_title'])) {$post_title = escape($_POST['post_title']);}else{$post_title="";}
+    if(isset($_POST['post_author'])) {$post_author = escape($_POST['post_author']);}else{$post_author="";}
     if(isset($_POST['post_category'])) {$post_category_id = escape($_POST['post_category']);}else{$post_category_id="";}
     if(isset($_POST['post_status'])) {$post_status = escape($_POST['post_status']);}else{$post_status="";}
     if(isset($_POST['post_featured'])) {$post_featured = escape($_POST['post_featured']);}else{$post_featured="";}
     if(isset($_FILES['post_image']['name'])) {$post_image = escape($_FILES['post_image']['name']);}else{$post_image="";}
-    if(isset($_FILES['post_image']['tmp_name'])) {$post_image_tmp = escape($_FILES['post_image']['tmp_name']);} {$post_image_tmp="";}
+    if(isset($_FILES['post_image']['tmp_name'])) {$post_image_tmp = $_FILES['post_image']['tmp_name'];} {$post_image_tmp="";}
     if(isset($_POST['post_content'])) {$post_content = escape($_POST['post_content']);}else{$post_content="";}
 
     $post_update_username = $_SESSION['username'];
@@ -16,6 +17,8 @@ if(isset($_POST['create_post'])) {
 
 		if(empty($post_title) || $post_title == "") {
 			$bad_message = "Campo título vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_author) || $post_author == "") {
+			$bad_message = "Campo autor está vazio. Preencha-o para prosseguir.";
 		} else if(empty($post_category_id) || $post_category_id == "") {
 			$bad_message = "Campo categoria vazio. Preencha-o para prosseguir.";
 		} else if(empty($post_status) || $post_status == "") {
@@ -31,8 +34,8 @@ if(isset($_POST['create_post'])) {
 			move_uploaded_file($post_image_tmp, "../img/novidades/$post_image");
         
 	        if ($_FILES['post_image']['error'] === UPLOAD_ERR_OK) { 
-	            $query = "INSERT INTO posts(TITLE, AUTHOR, CATEGORY_ID, STATUS, IMAGE, FEATURED, CONTENT) ";
-	            $query .= "VALUES('{$post_title}','{$post_update_username}','{$post_category_id}','{$post_status}','{$post_image}','{$post_featured}','{$post_content}') ";
+	            $query = "INSERT INTO posts(TITLE, AUTHOR, CATEGORY_ID, STATUS, IMAGE, FEATURED, CONTENT, CREATION_DATE) ";
+	            $query .= "VALUES('{$post_title}','{$post_author}','{$post_category_id}','{$post_status}','{$post_image}','{$post_featured}','{$post_content}', CURRENT_TIMESTAMP) ";
 	 
 	            $create_post_query = mysqli_query($connection, $query);
 	            if(!$create_post_query) {
@@ -79,6 +82,12 @@ if(isset($_POST['create_post'])) {
 		    </div>
 
 		    <div class="form-group">
+		        <label for="post_author">Autor</label>
+		        <input type="text" maxlength="100" name="post_author" class="form-control">
+		        <p class="help-block">Máx 100 caracteres.</p>
+		    </div>
+
+		    <div class="form-group">
 		    	<label for="post_category">Categoria</label>
 		        <select name="post_category" id="">
 		            <?php
@@ -109,10 +118,38 @@ if(isset($_POST['create_post'])) {
 		    <div class="form-group">
 		    	<label for="post_featured">Destaque na Página de Novidades</label>
 		        <select name="post_featured">
-		        	<option value="DP">Destaque Principal</option>
-					<option value="D1">Destaque 1</option>
-					<option value="D2">Destaque 2</option>
-					<option value="SD">Sem destaque</option>
+
+		        	<?php
+
+		        		$select_featured_posts_query = "SELECT FEATURED FROM posts WHERE FEATURED IN('DP', 'D1', 'D2') AND STATUS = 'A' ";
+		            	$selected_featured_posts = mysqli_query($connection, $select_featured_posts_query); 
+
+		            	while($row = mysqli_fetch_assoc($selected_featured_posts)) { 
+							if($row['FEATURED'] == 'DP') {
+								$dp_post = $row['FEATURED'];
+							} else if($row['FEATURED'] == 'D1') {
+								$d1_post = $row['FEATURED'];
+							} else if($row['FEATURED'] == 'D2') {
+								$d2_post = $row['FEATURED'];
+							}
+						}
+
+						if(!isset($dp_post)) {
+							echo "<option value='DP'>Destaque Principal</option>";	
+						}
+
+						if(!isset($d1_post)) {
+							echo "<option value='D1'>Destaque 1</option>";		
+						}
+
+						if(!isset($d2_post)) {
+							echo "<option value='D2'>Destaque 2</option>";			
+						}
+
+						echo "<option value='SD'>Sem destaque</option>";
+
+		        	?>
+
 		        </select>
 		    </div>
 		    
