@@ -13,8 +13,20 @@
     <script>
         $(document).ready(function() {
             $('#summernote').summernote();
-        });
+
+            $editor.summernote({
+                onpaste: function (e) {
+                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                    e.preventDefault();
+
+                    document.execCommand('insertText', false, bufferText);
+                }
+            });
+
     </script> 
+
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
