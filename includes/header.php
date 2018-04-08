@@ -1,9 +1,7 @@
 <?php include "db.php"; ?>
-<?php //include "functions.php"; ?>
-<?php //include "classes/UploadException.php"; ?>
+<?php include "admin/includes/functions.php"; ?>
 
 <?php ob_start(); ?>
-<?php //session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +11,16 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116554787-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116554787-2');
+  </script>
 
   <!-- Favicons -->
   <!--<link href="img/favicon.png" rel="icon">
@@ -37,6 +45,9 @@
   <!-- Modal CSS -->
   <link href="admin/dist/css/modal.css" rel="stylesheet">
 
+  <!-- Blog CSS -->
+  <link href="css/blog-post.css" rel="stylesheet">
+
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
@@ -49,6 +60,6 @@
 
 </head>
 
-<body>
+<body">
 
 

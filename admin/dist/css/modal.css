@@ -12,9 +12,15 @@
 }
 
 .myImg-services {
-    max-width: 300px !important;
-    /*max-height: 300px !important;*/
+    max-height: 300px !important;
     margin: 0px 10px 10px 0px;
+}
+
+@media (max-width: 768px) {
+    .myImg-services {
+        max-height: 250px !important;
+        margin: 0px 0px 10px 0px;
+    }
 }
 
 /* The Modal (background) */

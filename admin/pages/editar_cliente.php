@@ -26,7 +26,7 @@ if(isset($_GET['source']) && isset($_GET['c_id'])) {
         if(isset($_POST['clients_grupo'])){$clients_group = escape($_POST['clients_grupo']);}else{$clients_group="";}
         if(isset($_POST['clients_position'])){$clients_position = escape($_POST['clients_position']);}else{$clients_position="";}
         if(isset($_FILES['clients_image']['name'])){$clients_image = escape($_FILES['clients_image']['name']);}else{$clients_image="";}
-        if(isset($_FILES['clients_image']['tmp_name'])){$clients_image_temp = escape($_FILES['clients_image']['tmp_name']);}else{$clients_image_temp="";}
+        if(isset($_FILES['clients_image']['tmp_name'])){$clients_image_temp = $_FILES['clients_image']['tmp_name'];}else{$clients_image_temp="";}
 
         $clients_update_username = $_SESSION['username'];
 
@@ -129,7 +129,7 @@ if(isset($_GET['source']) && isset($_GET['c_id'])) {
                 </select>
             </div>
 
-            <img id="myImg" src="../img/clients/<?php if(isset($clients_image) && !empty($clients_image)){echo $clients_image;}else{echo 'imagem-nao-disponivel.png'; }?>" width="200">
+            <img id="myImg" class="myImg" src="../img/clients/<?php if(isset($clients_image) && !empty($clients_image)){echo $clients_image;}else{echo 'imagem-nao-disponivel.png'; }?>" width="200">
             <p class="help-block">Clique na imagem para visualizá-la.</p>
 		    <div class="form-group">
 		        <input type="file" name="clients_image" class="form-control">

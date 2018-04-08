@@ -7,8 +7,8 @@
     <div class="intro-container">
       <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
 
-        <ol class="carousel-indicators">
-        </ol>
+        <!--<ol class="carousel-indicators">
+        </ol>-->
 
         <div class="carousel-inner" role="listbox">
 
@@ -39,9 +39,11 @@
          <div class="carousel-item<?php if($home_id == $home_first_id) {echo ' active';} ?>" style="background-image: url('img/intro-carousel/<?php if(isset($home_image_path) && !empty($home_image_path)){echo $home_image_path;}else{echo "";} ?>');">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2><?php if(isset($home_title) && !empty($home_title)){echo $home_title;}else{echo "Título aqui";} ?></h2>
-                <p><?php if(isset($home_descr) && !empty($home_descr)){echo $home_descr;}else{echo "Texto aqui";} ?></p>
-                <a href="<?php if(isset($home_url) && !empty($home_url)){echo $home_url;}else{echo "";} ?>" class="btn-get-started scrollto">Saiba mais</a>
+                <h2><?php if(isset($home_title) && !empty($home_title)){echo $home_title;} ?></h2>
+                <p><?php if(isset($home_descr) && !empty($home_descr)){echo $home_descr;} ?></p>
+                <?php if(isset($home_url) && !empty($home_url)){ ?>
+                <a href="<?php echo $home_url; ?>" class="btn-get-started scrollto">Saiba mais</a>
+                <?php } ?>
               </div>
             </div>
           </div>
@@ -69,7 +71,16 @@
     <!--==========================
       QUEM SOMOS
     ============================-->
-    <section id="about">
+    <?php 
+
+    $query_img = "SELECT BACKGROUND_IMG FROM institucional ";
+    $select_background_institucional = mysqli_query($connection, $query_img); 
+    $row = mysqli_fetch_array($select_background_institucional);
+    $institucional_background_img = $row['BACKGROUND_IMG'];    
+
+    ?>
+
+    <section id="about" style="background: url('img/backgrounds/<?php if(isset($institucional_background_img) && !empty($institucional_background_img)) {echo $institucional_background_img;} ?>') center top no-repeat fixed;">
       <div class="container">
           <header class="section-header">
                <a href="#about"><h3>Sobre nós</h3></a>
@@ -91,7 +102,7 @@
                       } ?>
 
                    <h3 class="about-title-content">Institucional</h3>  
-                    <p><?php if(isset($institucional_text) && !empty($institucional_text)){echo $institucional_text;}else{echo "Buscar soluções que se adaptem a cada necessidade e que possam ser implementadas com segurança, agilidade, responsabilidade técnica e com alta performance em qualidade na prestação de serviços, são os principais objetivos da JCB Soluções Industriais. Uma empresa especializada em fornecimento de mão de obra especializada, treinamentos em Segurança, Saúde e Meio Ambiente (SMS) e na prestação de serviços envolvendo técnicas em alpinismo industrial, predial e limpeza técnica aérea e em espaços confinados.";} ?></p>
+                    <p><?php if(isset($institucional_text) && !empty($institucional_text)){echo $institucional_text;}else{echo "Sem conteúdo.";} ?></p>
                 </div>
                 <div class="col-md-6 align-items-center">
                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="padding-top:30px;">
@@ -134,12 +145,21 @@
    <!--==========================
       Timeline
     ============================-->
-          <?php include "includes/timeline3.php"; ?>
+    <?php include "includes/timeline3.php"; ?>
           
     <!--==========================
       Facts Section
     ============================-->
-    <section id="facts"  class="wow fadeIn">
+    <?php 
+
+    $query_img = "SELECT BACKGROUND_IMG FROM nossos_numeros  ";
+    $select_background_nossos_numeros = mysqli_query($connection, $query_img); 
+    $row = mysqli_fetch_array($select_background_nossos_numeros);
+    $nossos_numeros_background_img = $row['BACKGROUND_IMG'];    
+
+    ?>
+    
+    <section id="facts"  class="wow fadeIn" style="background: url('img/<?php if(isset($nossos_numeros_background_img) && !empty($nossos_numeros_background_img)) {echo $nossos_numeros_background_img;} ?>') center top no-repeat fixed;">
       <div class="container">
 
       <?php 
@@ -196,11 +216,48 @@
 
   			</div>
 
-        <div class="facts-img">
-          <img src="img/imagem3.jpg" alt="" class="img-fluid">
-        </div>
-
         <?php } ?>
+
+        <div id="carouselNossosNumeros" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+
+              <?php 
+
+                $query = "SELECT ID ";
+                $query .="FROM nossos_numeros_imagens WHERE STATUS = 'A' ";
+                $query .="ORDER BY POSITION LIMIT 1";
+
+                $select_first_active_nossos_numeros_imagens_id = mysqli_query($connection, $query); 
+                $row = mysqli_fetch_array($select_first_active_nossos_numeros_imagens_id);
+                $nossos_numeros_imagens_first_id = $row['ID'];
+
+                $query = "SELECT ID, POSITION, IMG_PATH ";
+                $query .="FROM nossos_numeros_imagens WHERE STATUS = 'A'";
+                $query .="ORDER BY POSITION ";
+
+                $select_nossos_numeros_imagens = mysqli_query($connection, $query); 
+                while($row = mysqli_fetch_assoc($select_nossos_numeros_imagens)) { 
+                    $nossos_numeros_imagens_id = $row['ID'];
+                    $nossos_numeros_imagens_position = $row['POSITION'];
+                    $nossos_numeros_imagens_image_path = $row['IMG_PATH']; ?>
+
+
+            <div class="carousel-item<?php if($nossos_numeros_imagens_id == $nossos_numeros_imagens_first_id) {echo ' active';} ?>">
+              <img class="d-block img-fluid" src="img/nossos-numeros/<?php if(isset($nossos_numeros_imagens_image_path) && !empty($nossos_numeros_imagens_image_path)){echo $nossos_numeros_imagens_image_path;}else{echo "imagem-nao-disponivel.png";} ?>">
+            </div>
+
+          <?php  } ?>   
+
+          </div>
+          <a class="carousel-control-prev" href="#carouselNossosNumeros" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselNossosNumeros" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
 
       </div>
     </section><!-- #facts -->
@@ -215,7 +272,7 @@
           <h3>Nossos Clientes</h3>
         </header>
 
-        <div class="owl-carousel clients-carousel">
+        <div id="carroussel1" class="owl-carousel clients-carousel">
           <?php 
           //Listagem dos clientes                
           $query_group_1 = "SELECT IMG_PATH, GRUPO, POSITION FROM clients WHERE GRUPO = 1 ORDER BY GRUPO, POSITION"; 
@@ -232,7 +289,7 @@
           <?php } } ?>
         </div>
 
-        <div class="owl-carousel clients-carousel">
+        <div id="carroussel2" class="owl-carousel clients-carousel">
 
          <?php 
           //Listagem dos clientes                
@@ -284,7 +341,7 @@
             <div class="contact-address">
               <i class="ion-ios-location-outline"></i>
               <h3>Endereço</h3>
-              <address><?php if(isset($contact_address) && !empty($contact_address)){echo $contact_address;}else{echo "R. Lídia Wosch, 155, Santa Candida, Curitiba - PR - Brasil";} ?></address>
+              <address><?php if(isset($contact_address) && !empty($contact_address)){echo $contact_address;} ?></address>
             </div>
             <div class="contact-address">
 
@@ -295,8 +352,8 @@
             <div class="contact-phone">
               <i class="ion-ios-telephone-outline"></i>
               <h3>Telefone</h3>
-              <p><a href=""><?php if(isset($contact_phone1) && !empty($contact_phone1)){echo $contact_phone1;}else{echo "(41) 3257-0454";} ?></a></p>
-              <p><a href=""><?php if(isset($contact_phone2) && !empty($contact_phone2)){echo $contact_phone2;}else{echo "(41) 3256-7812";} ?></a></p>
+              <p><?php if(isset($contact_phone1) && !empty($contact_phone1)){echo $contact_phone1;} ?></p>
+              <p><?php if(isset($contact_phone2) && !empty($contact_phone2)){echo $contact_phone2;} ?></p>
             </div>
           </div>
 
@@ -308,7 +365,7 @@
             <div class="contact-address">
               <i class="ion-ios-email-outline"></i>
               <h3>Email</h3>
-              <p><a href=""><?php if(isset($contact_email) && !empty($contact_email)){echo $contact_email;}else{echo "comercial@jcbsolucoes.com.br";} ?></a></p>
+              <p><?php if(isset($contact_email) && !empty($contact_email)){echo $contact_email;} ?></p>
             </div>
           </div>
 

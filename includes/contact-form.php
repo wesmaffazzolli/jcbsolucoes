@@ -29,9 +29,8 @@ if(isset($_POST['submit'])) {
     <div class="form-group">
         <select name="to" class="form-control" required>
           <option disabled selected value>Departamento</option>
-          <option value="wesley.maffazzolli@gmail.com">Meu Email</option>
-          <option value="comercial@jcbsolucoes.com.br">Comercial</option>
-          <option value="rh@jcbsolucoes.com.br">Recursos Humanos</option>
+          <option value="contato@jcbsolucoes.com.br">Comercial</option>
+          <option value="rh@jcbsolucoes.com.br">Trabalhe Conosco</option>
         </select>
    </div>
     <div class="form-group">
@@ -40,6 +39,6 @@ if(isset($_POST['submit'])) {
     <div class="form-group">
       <textarea class="form-control" name="body" rows="5" placeholder="Mensagem" required></textarea>
     </div>
-    <input type="submit" name="submit" />
+    <input class="btn" type="submit" name="submit" value="Enviar Mensagem" />
   </form>
 </div>

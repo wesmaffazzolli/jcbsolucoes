@@ -28,13 +28,16 @@
                                     <a href="imagens_inicio.php?source=listar"> Início</a>
                                 </li>
                                 <li>
-                                    <a href="#"> Sobre nós<span class="fa arrow"></span></a>
+                                    <a href="sobre.php?source=institucional"> Sobre nós</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"> Nossos Números<span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="sobre.php?source=institucional">Institucional</a>
+                                            <a href="nossos_numeros.php?source=atualizar_numeros">Atualizar Números</a>
                                         </li>
                                         <li>
-                                            <a href="sobre.php?source=nossos_numeros">Nossos Números</a>
+                                            <a href="nossos_numeros.php?source=listar">Listar Imagens</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->
@@ -70,7 +73,6 @@
                         </li>
                         <!-- Página Inicial FIM -->
 
-
                         <!-- Novidades INÍCIO -->
                         <li>
                             <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Novidades<span class="fa arrow"></span></a>
@@ -102,9 +104,6 @@
                         <li>
                             <a href=""><i class="fa fa-wrench fa-fw"></i> Serviços<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="servicos.php?source=editar_cabecalho">Atualizar Cabeçalho</a>
-                                </li>
                                 <li>
                                     <a href="servicos.php?source=listar">Listar</a>
                                 </li>
@@ -151,6 +150,24 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <!-- Usuário FIM -->
+
+                        <!-- Planos de Fundo INÍCIO -->
+                        <li>
+                            <a href=""><i class="fa fa-map fa-fw"></i> Planos de Fundo<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="planos_de_fundo.php?source=editar&p_id=n"> Nossos Números</a>
+                                </li>
+                                <li>
+                                    <a href="planos_de_fundo.php?source=editar&p_id=s"> Serviços</a>
+                                </li>
+                                <li>
+                                    <a href="planos_de_fundo.php?source=editar&p_id=i"> Sobre nós</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <!-- Planos de Fundo FIM -->
 
                     </ul>
                 </div>

@@ -10,6 +10,16 @@
 
     <title>Blog Post - Start Bootstrap Template</title>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116554787-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-116554787-2');
+    </script>
+
     <!-- Bootstrap core CSS -->
     <link href="lib/bootstrap-blog/css/bootstrap.min.css" rel="stylesheet">
 

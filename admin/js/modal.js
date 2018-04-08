@@ -5,7 +5,15 @@ var modal = document.getElementById('myModal');
 //var img = document.getElementById('myImg');
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
-$('img').on('click', function() {
+
+$(".myImg").on('click', function() {
+    var image = $(this).attr("src");
+    modal.style.display = "block";
+    modalImg.src = image;
+    captionText.innerHTML = this.alt;
+})
+
+$(".myImg-services").on('click', function() {
     var image = $(this).attr("src");
     modal.style.display = "block";
     modalImg.src = image;

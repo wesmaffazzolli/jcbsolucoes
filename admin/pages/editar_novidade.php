@@ -10,6 +10,7 @@ if(isset($_GET['source'])) {
 	while($row = mysqli_fetch_assoc($select_posts_by_id)) {
 	    $post_id = $row['ID'];    
 	    $post_title = $row['TITLE'];
+	    $post_author = $row['AUTHOR'];
 	    $post_category_id = $row['CATEGORY_ID'];    
 	    $post_status = $row['STATUS'];
 	    $post_image = $row['IMAGE'];
@@ -21,6 +22,7 @@ if(isset($_GET['source'])) {
 if(isset($_POST['update_post'])) {
 
     if(isset($_POST['post_title'])){$post_title = escape($_POST['post_title']);}else{$post_title = "";}
+    if(isset($_POST['post_author'])){$post_author = escape($_POST['post_author']);}else{$post_author = "";}
     if(isset($_POST['post_category'])){$post_category_id = escape($_POST['post_category']);}else{$post_category_id = "";}
     if(isset($_POST['post_status'])){$post_status = escape($_POST['post_status']);}else{$post_status = "";}
     if(isset($_FILES['post_image']['name'])){$post_image = escape($_FILES['post_image']['name']);}else{$post_image = "";}
@@ -46,6 +48,8 @@ if(isset($_POST['update_post'])) {
 
 		if(empty($post_title) || $post_title == "") {
 			$bad_message = "Campo texto vazio. Preencha-o para prosseguir.";
+		} else if(empty($post_author) || $post_author == "") {
+			$bad_message = "Campo autor vazio. Preencha-o para prosseguir.";
 		} else if(empty($post_category_id) || $post_category_id == "") {
 			$bad_message = "Campo categoria vazio. Preencha-o para prosseguir.";
 		} else if(empty($post_status) || $post_status == "") {
@@ -60,6 +64,7 @@ if(isset($_POST['update_post'])) {
 				if($_FILES['post_image']['error'] === UPLOAD_ERR_OK || $_FILES['post_image']['error'] === UPLOAD_ERR_NO_FILE) {
 				    $query = "UPDATE posts SET ";
 				    $query .="TITLE = '{$post_title}', ";
+				    $query .="AUTHOR = '{$post_author}', ";
 				    $query .="CATEGORY_ID = '{$post_category_id}', ";
 				    $query .="STATUS = '{$post_status}', ";
 				    $query .="FEATURED = '{$post_featured}', ";
@@ -120,7 +125,13 @@ if(isset($_POST['update_post'])) {
 		    
 		    <div class="form-group">
 		        <label for="post_title">Título</label>
-		        <input type="text" name="post_title" class="form-control" maxlength="100" value="<?php if(isset($post_title) && !empty($post_title)) {echo $post_title;} ?>">
+		        <input type="text" name="post_title" class="form-control" maxlength="98" value="<?php if(isset($post_title) && !empty($post_title)) {echo $post_title;} ?>">
+		        <p class="help-block">Máx 100 caracteres.</p>
+		    </div>
+
+		    <div class="form-group">
+		        <label for="post_author">Autor</label>
+		        <input type="text" name="post_author" class="form-control" maxlength="98" value="<?php if(isset($post_author) && !empty($post_author)) {echo $post_author;} ?>">
 		        <p class="help-block">Máx 100 caracteres.</p>
 		    </div>
 		    
@@ -229,7 +240,7 @@ if(isset($_POST['update_post'])) {
 		    </div>
 		    
 		    <div class="form-group">
-		   		<img id="myImg" src="../img/novidades/<?php if(isset($post_image) && !empty($post_image)){echo $post_image;}else{echo 'imagem-nao-disponivel.png';} ?>" width="200">
+		   		<img id="myImg" class="myImg" src="../img/novidades/<?php if(isset($post_image) && !empty($post_image)){echo $post_image;}else{echo 'imagem-nao-disponivel.png';} ?>" width="200">
 		    	<p class="help-block">Clique na imagem para visualizá-la.</p>
 		        <input type="file" name="post_image" class="form-control">
 		       	<p class="help-block">Resolução máxima indicada: 1024x768 pixels. Formatos de imagens aceitos: jpg/jpeg. Tamanho Máximo: 1MB.</p>

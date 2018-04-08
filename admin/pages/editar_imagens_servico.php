@@ -99,7 +99,7 @@ if(isset($_GET['source']) && isset($_GET['s_id']) && isset($_GET['img_id'])) {
             </div>
 
 		    <div class="form-group">
-		    	<img id="myImg" src="../img/servicos/<?php if(isset($service_img_path)) {echo $service_img_path;} ?>" style="width: 150px;">
+		    	<img id="myImg" class="myImg" src="../img/servicos/<?php if(isset($service_img_path)) {echo $service_img_path;} ?>" style="width: 150px;">
 		    	<p class="help-block">Clique na imagem para visualizá-la.</p>
 		        <input type="file" name="service_img" class="form-control">
 		        <p class="help-block">Resolução máxima indicada: 1920x1468 pixels. Formatos de imagens aceitos: jpg/jpeg. Tamanho Máximo: 1MB.</p>

@@ -6,7 +6,7 @@ if(isset($_POST['create_client'])) {
     if(isset($_POST['clients_grupo'])) {$clients_grupo = escape($_POST['clients_grupo']);} else {$clients_grupo = "";} 
     if(isset($_POST['clients_position'])) {$clients_position = escape($_POST['clients_position']);} else {$clients_position = "";}
     if(isset($_FILES['clients_image']['name'])) {$clients_image = escape($_FILES['clients_image']['name']);} else {$clients_image = "";}
-    if(isset($_FILES['clients_image']['tmp_name'])) {$clients_image_temp = escape($_FILES['clients_image']['tmp_name']);} else {$clients_image_temp = "";}
+    if(isset($_FILES['clients_image']['tmp_name'])) {$clients_image_temp = $_FILES['clients_image']['tmp_name'];} else {$clients_image_temp = "";}
     
     $clients_username = $_SESSION['username'];
 

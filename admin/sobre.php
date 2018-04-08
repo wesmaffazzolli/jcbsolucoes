@@ -22,9 +22,6 @@
 						case 'institucional':
 							include "pages/institucional.php";
 							break;
-						case 'nossos_numeros':
-							include "pages/nossos_numeros.php";
-							break;
 						case 'clientes':
 							include "pages/clientes.php";
 						    break;

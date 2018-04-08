@@ -1,6 +1,6 @@
-<?php include "includes-blog/header.php"; ?>
-<?php include "includes/navigation.php"; ?>
+<?php include "includes-blog/navigation.php"; ?>
 
+  <section id="blog-search">
     <!-- Page Content -->
     <div class="container">
 
@@ -11,11 +11,23 @@
 
          <?php
 
-
           if(isset($_GET['search'])) {
-            $the_search = $_GET['search'];
+            $the_search = escape($_GET['search']);
 
-            echo "<h1 class='my-4'>Pesquisa: {$the_search}</h1>";
+            $post_query_count = "SELECT * FROM posts WHERE TITLE LIKE '%{$the_search}%' ";
+            $find_count = mysqli_query($connection, $post_query_count);
+            $num_rows = mysqli_num_rows($find_count); 
+            if($num_rows > 0) {
+
+              if($num_rows == 1) {
+                echo "<div class='alert alert-info'>
+                  <strong>{$num_rows} resultado</strong> foi encontrado para a pesquisa: <strong>{$the_search}.</strong>
+                  </div>";    
+              } else {
+                echo "<div class='alert alert-info'>
+                  <strong>{$num_rows} resultados</strong> foram encontrados para a pesquisa: <strong>{$the_search}.</strong>
+                  </div>"; 
+              }
 
               //Pagination System configuration begin
               $per_page = 5;
@@ -47,25 +59,25 @@
 
               while($row = mysqli_fetch_assoc($select_posts_by_search)) {
                   $post_id = $row['ID'];    
-                  $post_title = $row['TITLE'];
+
+
+                  if(strlen($row['TITLE']) >= 70) {
+                    $post_title = substr($row['TITLE'], 0, 70)."...";
+                  } else {
+                    $post_title = $row['TITLE'];
+                  }
+
+                  if(strlen($row['CONTENT']) >= 300) {
+                    $post_content = substr($row['CONTENT'], 0, 300)."...";
+                  } else {
+                    $post_content = $row['CONTENT'];
+                  } 
+
                   $post_image = $row['IMAGE'];
-                  $post_featured = $row['FEATURED'];
-                  $post_content = $row['CONTENT']; ?>
+                  $post_featured = $row['FEATURED']; ?>
   
 
-              <!-- Blog Post -->
-              <div class="card mb-4">
-                <img class="card-img-top" src="img/novidades/<?php echo $post_image; ?>" alt="Card image cap">
-                <div class="card-body">
-                  <h2 class="card-title"><?php echo $post_title; ?></h2>
-                  <p class="card-text"><?php echo substr($post_content, 0, 200)."..."; ?></p>
-                  <a href="blog-post.php?p_id=<?php echo $post_id; ?>" class="btn" style="background-color: #FF9900; border-color: #FF9900;">Saiba mais &rarr;</a>
-                </div>
-                <!--<div class="card-footer text-muted">
-                  Postado em 2 de março de 2018 por
-                  <a href="#" style="color: #FF9900;">Rogério</a>
-                </div>-->
-              </div>
+                  <?php include "includes-blog/blog-post-card.php"; ?>
 
           <?php } ?>
 
@@ -82,61 +94,24 @@
               echo "</li>"; } ?>
           </ul>
 
-        <?php } ?>
+        <?php  } else {
+
+          echo "<div class='alert alert-danger'>
+          <strong>Nenhum resultado</strong> foi encontrado para a pesquisa: <strong>{$the_search}.</strong> <a href='blog-main-page.php'><span class='link-search-fail'>Voltar para o Blog.</span></a>
+          </div>"; 
+
+        } } ?>
 
         </div>
 
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-        <!-- /.col-md-4 -->
-          <div class="card">
-            <h5 class="card-header">Pesquisar</h5>
-            <div class="card-body">
-              <form action="search.php" method="GET">
-                <div class="input-group">
-                  <input type="text" class="form-control" name="search" placeholder="Pesquisar notícia...">
-                  <span class="input-group-btn">
-                    <button class="btn" type="submit" style="background-color: #FF9900; border-color: #FF9900; font-size:16px;"><i class="material-icons" style="font-size: 26px; color: #fff; margin-top: 5px;">search</i></button>
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <!-- Categories Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Categorias</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-12">
-                  <ul class="list-unstyled mb-0 categorias" >
-
-                    <?php
-                    //Descrição da categoria
-                    $query = "SELECT * FROM categories ";
-                    $select_categories = mysqli_query($connection, $query); 
-                      while($row = mysqli_fetch_assoc($select_categories)) { 
-                      $cat_id = $row['ID'];
-                      $cat_title = $row['TITLE']; ?> 
-
-                    <li>
-                      <a href="search-categorias.php?cat_id=<?php echo $cat_id; ?>&cat_title=<?php echo $cat_title; ?>" style="color: #FF9900;"><?php echo $cat_title; ?></a>
-                    </li>
-
-                    <?php } ?>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php include "includes-blog/sidebar.php"; ?>
 
       </div>
       <!-- /.row -->
 
     </div>
     <!-- /.container -->
+    </section>
 
     <!-- Footer -->
     <?php include "includes-blog/footer.php"; ?>

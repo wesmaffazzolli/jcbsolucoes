@@ -1,142 +1,115 @@
-<?php include "includes-blog/header.php"; ?>
-<?php include "includes/navigation.php"; ?>
+<?php include "includes-blog/navigation.php"; ?>
 
-    <!-- Page Content -->
-    <div class="container">
+    <section id="blog-search-categorias">
+      <!-- Page Content -->
+      <div class="container">
 
-      <div class="row">
+        <div class="row">
 
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
+          <!-- Blog Entries Column -->
+          <div class="col-md-8">
 
-         <?php
+           <?php
 
+            if(isset($_GET['cat_id']) && isset($_GET['cat_title'])) {
+              $the_cat_id = escape($_GET['cat_id']);
+              $the_cat_title = escape($_GET['cat_title']);
 
-          if(isset($_GET['cat_id']) && isset($_GET['cat_title'])) {
-            $the_cat_id = $_GET['cat_id'];
-            $the_cat_title = $_GET['cat_title'];
+              $post_query_count = "SELECT * FROM posts WHERE CATEGORY_ID = $the_cat_id ";
+              $find_count = mysqli_query($connection, $post_query_count);
+              $num_rows = mysqli_num_rows($find_count); 
 
-            echo "<h1 class='my-4'>Categoria: {$the_cat_title}</h1>";
+              if($num_rows > 0) {
 
-          //Pagination System configuration begin
-            $per_page = 5;
+                if($num_rows == 1) {
+                  echo "<div class='alert alert-info'>
+                    <strong>{$num_rows} resultado</strong> foi encontrado para a categoria: <strong>{$the_cat_title}.</strong> Confira abaixo: 
+                    </div>";    
+                } else {
+                  echo "<div class='alert alert-info'>
+                    <strong>{$num_rows} resultados</strong> foram encontrados para a categoria: <strong>{$the_cat_title}.</strong> Confira abaixo: 
+                    </div>"; 
+                }
 
-            if(isset($_GET['page'])) {
-
+                //Pagination System configuration begin
                 $per_page = 5;
 
-                $page = $_GET['page'];
-            } else {
-                $page = "";
-            }
+                if(isset($_GET['page'])) {
 
-            if($page == "" || $page == 1) {
-                $page_1 = 0;
-            } else {
-                $page_1 = ($page * $per_page) - $per_page;
-            }
+                    $per_page = 5;
 
-            $post_query_count = "SELECT * FROM posts WHERE CATEGORY_ID = $the_cat_id ";
-            $find_count = mysqli_query($connection, $post_query_count);
-            $count = mysqli_num_rows($find_count);
-            $count = ceil($count / $per_page);
-            //Pagination System configuration end
+                    $page = $_GET['page'];
+                } else {
+                    $page = "";
+                }
 
-            $query = "SELECT * FROM posts WHERE CATEGORY_ID = $the_cat_id LIMIT {$page_1}, $per_page ";
-            $select_posts_by_category = mysqli_query($connection, $query); 
+                if($page == "" || $page == 1) {
+                    $page_1 = 0;
+                } else {
+                    $page_1 = ($page * $per_page) - $per_page;
+                }
 
-            while($row = mysqli_fetch_assoc($select_posts_by_category)) {
-                $post_id = $row['ID'];    
-                $post_title = $row['TITLE'];
-                $post_image = $row['IMAGE'];
-                $post_featured = $row['FEATURED'];
-                $post_content = $row['CONTENT']; ?>
-  
+                $count = mysqli_num_rows($find_count);
+                $count = ceil($count / $per_page);
+                //Pagination System configuration end
 
-            <!-- Blog Post -->
-            <div class="card mb-4">
-              <img class="card-img-top" src="img/novidades/<?php echo $post_image; ?>" alt="Card image cap">
-              <div class="card-body">
-                <h2 class="card-title"><?php echo $post_title; ?></h2>
-                <p class="card-text"><?php echo substr($post_content, 0, 200)."..."; ?></p>
-                <a href="blog-post.php?p_id=<?php echo $post_id; ?>" class="btn" style="background-color: #FF9900; border-color: #FF9900;">Saiba mais &rarr;</a>
-              </div>
-              <!--<div class="card-footer text-muted">
-                Postado em 2 de março de 2018 por
-                <a href="#" style="color: #FF9900;">Rogério</a>
-              </div>-->
-            </div>
+                $query = "SELECT * FROM posts WHERE CATEGORY_ID = $the_cat_id LIMIT {$page_1}, $per_page ";
+                $select_posts_by_category = mysqli_query($connection, $query); 
 
-          <?php } ?>
+                while($row = mysqli_fetch_assoc($select_posts_by_category)) {
+                    $post_id = $row['ID'];
 
-          <!-- Pagination -->
-          <ul class="pagination justify-content-center mb-4">
-            <?php 
-            for($i = 1; $i <= $count; $i++) {
-              echo "<li class='page-item'>";
-              if($i  == $page) { 
-                echo "<a class='page-link activ_link' href='search-categorias.php?page={$i}' style='color: #fff; background-color: #ff9900;'>{$i}</a>";
-              } else {
-                echo "<a class='page-link' href='search-categorias.php?page={$i}' style='color: #FF9900;'>{$i}</a>";
-              }
-              echo "</li>"; } ?>
-          </ul>
+                    if(strlen($row['TITLE']) >= 70) {
+                      $post_title = substr($row['TITLE'], 0, 70)."...";
+                    } else {
+                      $post_title = $row['TITLE'];
+                    }
 
-          <?php } ?>
+                    if(strlen($row['CONTENT']) >= 300) {
+                      $post_content = substr($row['CONTENT'], 0, 300)."...";
+                    } else {
+                      $post_content = $row['CONTENT'];
+                    } 
 
-        </div>
-
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-        <!-- /.col-md-4 -->
-          <div class="card">
-            <h5 class="card-header">Pesquisar</h5>
-            <div class="card-body">
-              <form action="search.php" method="GET">
-                <div class="input-group">
-                  <input type="text" class="form-control" name="search" placeholder="Pesquisar notícia...">
-                  <span class="input-group-btn">
-                    <button class="btn" type="submit" style="background-color: #FF9900; border-color: #FF9900; font-size:16px;"><i class="material-icons" style="font-size: 26px; color: #fff; margin-top: 5px;">search</i></button>
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <!-- Categories Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Categorias</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-12">
-                  <ul class="list-unstyled mb-0 categorias" >
-
-                    <?php
-                    //Descrição da categoria
-                    $query = "SELECT * FROM categories ";
-                    $select_categories = mysqli_query($connection, $query); 
-                      while($row = mysqli_fetch_assoc($select_categories)) { 
-                      $cat_id = $row['ID'];
-                      $cat_title = $row['TITLE']; ?> 
-
-                    <li>
-                      <a href="search-categorias.php?cat_id=<?php echo $cat_id; ?>&cat_title=<?php echo $cat_title; ?>" style="color: #FF9900;"><?php echo $cat_title; ?></a>
-                    </li>
-
+                    $post_image = $row['IMAGE'];
+                    $post_featured = $row['FEATURED']; ?>
+      
+                    <?php include "includes-blog/blog-post-card.php"; ?>
                     <?php } ?>
-                  </ul>
-                </div>
-              </div>
-            </div>
+
+                    <!-- Pagination -->
+                    <ul class="pagination justify-content-center mb-4">
+                      <?php 
+                      for($i = 1; $i <= $count; $i++) {
+                        echo "<li class='page-item'>";
+                        if($i  == $page) { 
+                          echo "<a class='page-link activ_link' href='search-categorias.php?page={$i}' style='color: #fff; background-color: #ff9900;'>{$i}</a>";
+                        } else {
+                          echo "<a class='page-link' href='search-categorias.php?page={$i}' style='color: #FF9900;'>{$i}</a>";
+                        }
+                        echo "</li>"; } ?>
+                    </ul>              
+
+            <?php } else {
+
+            echo "<div class='alert alert-danger'>
+                  <strong>Nenhum resultado</strong> foi encontrado para a categoria: <strong>{$the_cat_title}.</strong> <a href='blog-main-page.php'><span class='link-search-fail'>Voltar para o Blog.</span></a>
+                  </div>"; 
+
+            }
+
+          } ?>
+
           </div>
+
+          <?php include "includes-blog/sidebar.php"; ?>
+
         </div>
+        <!-- /.row -->
 
       </div>
-      <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
+      <!-- /.container -->
+    </section>
 
     <!-- Footer -->
     <?php include "includes-blog/footer.php"; ?>

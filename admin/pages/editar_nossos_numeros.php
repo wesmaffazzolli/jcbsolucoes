@@ -84,7 +84,7 @@ if(isset($_GET['source'])) {
         if(!$update_nossos_numeros) {
             die('QUERY FAILED = ' . mysqli_error($connection));
         } else {
-        	header("Location: sobre.php?source=nossos_numeros");
+        	header("Location: nossos_numeros.php?source=atualizar_numeros");
         }
     }
 

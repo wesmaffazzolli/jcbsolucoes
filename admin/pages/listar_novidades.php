@@ -37,30 +37,44 @@
 		            $select_posts = mysqli_query($connection, $query); 
 
 		            while($row = mysqli_fetch_assoc($select_posts)) {
-		                $post_id = $row['ID'];    
-		                $post_title = $row['TITLE'];
-		                $post_author = $row['AUTHOR'];
+
+		                $post_id = $row['ID'];
+
+		                if(strlen($row['TITLE']) > 30) {
+		                	$post_title = substr($row['TITLE'], 0, 30)."...";
+		                } else {
+		                	$post_title = $row['TITLE'];
+		                }
+
+		               	if(strlen($row['AUTHOR']) > 20) {
+		                	$post_author = substr($row['AUTHOR'], 0, 20)."...";
+		                } else {
+		                	$post_author = $row['AUTHOR'];
+		                }
+
 		                $post_category_id = $row['CATEGORY_ID'];    
 		                $post_status = $row['STATUS'];
 		                $post_image = $row['IMAGE'];
 		                $post_featured = $row['FEATURED'];
 		                $post_content = $row['CONTENT'];    
 
+						/* Format Date */
 		                $date = new DateTime($row['CREATION_DATE']);
                         $post_creation_date = $date->format('d/m/Y H:i');
 
-		                $post_update_date = $row['UPDATE_DATE'];
-		                $post_update_username = $row['UPDATE_USERNAME'];
-
-		                /* Format Date */
+		               	/* Format Date */
                         $date = new DateTime($row['UPDATE_DATE']);
                         $post_update_date = $date->format('d/m/Y H:i');
 
+		                $post_update_username = $row['UPDATE_USERNAME'];
+
+
+		                /* Preenchimento das linhas e colunas */
 		                echo "<tr>";
 		                if(isset($post_title) && !empty($post_title)) {echo "<td>{$post_title}</td>";} else {echo "<td>Título vazio.</td>" ;}
 		                if(isset($post_author) && !empty($post_author)) {echo "<td>{$post_author}</td>";} else {echo "<td>Autor vazio.</td>" ;}
 		                
-		                if(isset($post_author) && !empty($post_author)) {
+		                if(isset($post_category_id) && !empty($post_category_id)) {
 		                //Descrição da categoria ao invés do código
 		                $query = "SELECT * FROM categories WHERE ID = $post_category_id ";
 		                $select_categories_id = mysqli_query($connection, $query); 

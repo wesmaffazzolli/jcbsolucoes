@@ -27,7 +27,7 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
         if(isset($_POST['home_descr'])){$home_descr = escape($_POST['home_descr']);}else{$home_descr = "";}
         if(isset($_POST['home_url'])){$home_url = escape($_POST['home_url']);}else{$home_url = "";}
 		if(isset($_FILES['home_img']['name'])){$home_img = escape($_FILES['home_img']['name']);}else{$home_img = "";}
-		if(isset($_FILES['home_img']['name'])){$home_img_temp = escape($_FILES['home_img']['tmp_name']);}else{$home_img_temp = "";}
+		if(isset($_FILES['home_img']['name'])){$home_img_temp = $_FILES['home_img']['tmp_name'];}else{$home_img_temp = "";}
 
 		$home_update_username = $_SESSION['username'];
 
@@ -118,7 +118,7 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 			</div>
 		    
 		    <div class="form-group">
-		    	<img id="myImg" src="../img/intro-carousel/<?php if(isset($home_img) && !empty($home_img)){echo $home_img;}else{echo 'imagem-nao-disponivel.png';} ?>" width="200">
+		    	<img id="myImg" class="myImg" src="../img/intro-carousel/<?php if(isset($home_img) && !empty($home_img)){echo $home_img;}else{echo 'imagem-nao-disponivel.png';} ?>" width="200">
 		    	<p class="help-block">Clique na imagem para visualizá-la.</p>
 		        <input type="file" name="home_img" class="form-control">
 		        <p class="help-block">Resolução máxima indicada: 1920x1468 pixels. Formatos de imagens aceitos: jpg/jpeg. Tamanho Máximo: 1MB.</p>

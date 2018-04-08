@@ -59,6 +59,7 @@ if(isset($_GET['source'])) {
 
                         $home_position = $row['POSITION'] + 1;
 		                $home_image_path = $row['IMG_PATH'];
+                        $home_update_username = $_SESSION['username'];
 
                         /* Format Date */
                         $date = new DateTime($row['UPDATE_DATE']);
@@ -80,7 +81,7 @@ if(isset($_GET['source'])) {
 
                         if(isset($home_url) && !empty($home_url)) {echo "<td><a class='link-crud' href='http://{$home_url}'>Ver redirecionamento</a></td>";} else {echo "<td>Sem direcionamento.</td>" ;}
 
-                        if(isset($home_update_date) && !empty($home_update_date)) {echo "<td>{$home_update_date}</td>";} else {echo "<td>===//===</td>" ;}
+                        if(isset($home_update_date) && !empty($home_update_date) && isset($home_update_username) && !empty($home_update_username)) {echo "<td>{$home_update_date} por {$home_update_username}</td>";} else {echo "<td>===//===</td>" ;}
 
                         echo "<td><ul class='lista-no-style'>
                                 <li class='link-no-style'><a class='link-crud' href='imagens_inicio.php?source=editar&h_id={$home_id}'>Editar</a></li>";
