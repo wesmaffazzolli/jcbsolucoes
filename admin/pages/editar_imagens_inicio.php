@@ -25,7 +25,7 @@ if(isset($_GET['source']) && isset($_GET['h_id'])) {
 
         if(isset($_POST['home_title'])){$home_title = escape($_POST['home_title']);}else{$home_title = "";}
         if(isset($_POST['home_descr'])){$home_descr = escape($_POST['home_descr']);}else{$home_descr = "";}
-        if(isset($_POST['home_url'])){$home_url = escape($_POST['home_url']);}else{$home_url = "";}
+        if(isset($_POST['home_url'])){$home_url = $_POST['home_url'];}else{$home_url = "";}
 		if(isset($_FILES['home_img']['name'])){$home_img = escape($_FILES['home_img']['name']);}else{$home_img = "";}
 		if(isset($_FILES['home_img']['name'])){$home_img_temp = $_FILES['home_img']['tmp_name'];}else{$home_img_temp = "";}
 

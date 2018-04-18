@@ -5,7 +5,7 @@ if(isset($_POST['submit'])) {
   $email = $_POST['email']; 
   $to = $_POST['to'];
   $subject = "Contato via website JCB: ".wordwrap($_POST['subject'],70);
-  $body = "Contato via formulário do website diz: ".$_POST['body']." <Nome do contato: ".$name."> <Email: ".$email.">";
+  $body = $_POST['body']." <Nome do contato: ".$name."> <Email: ".$email.">";
   $header = "From: ".$email;
   
   mail($to,$subject,$body,$header); ?>
@@ -29,8 +29,8 @@ if(isset($_POST['submit'])) {
     <div class="form-group">
         <select name="to" class="form-control" required>
           <option disabled selected value>Departamento</option>
-          <option value="contato@jcbsolucoes.com.br">Comercial</option>
-          <option value="rh@jcbsolucoes.com.br">Trabalhe Conosco</option>
+          <option value="encaminhamentojcb1@gmail.com">Comercial</option>
+          <option value="encaminhamentojcb2@gmail.com">Trabalhe Conosco</option>
         </select>
    </div>
     <div class="form-group">

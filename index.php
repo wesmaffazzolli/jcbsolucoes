@@ -159,7 +159,7 @@
 
     ?>
     
-    <section id="facts"  class="wow fadeIn" style="background: url('img/<?php if(isset($nossos_numeros_background_img) && !empty($nossos_numeros_background_img)) {echo $nossos_numeros_background_img;} ?>') center top no-repeat fixed;">
+    <section id="facts"  class="wow fadeIn" style="background: url('img/backgrounds/<?php if(isset($nossos_numeros_background_img) && !empty($nossos_numeros_background_img)) {echo $nossos_numeros_background_img;} ?>') center top no-repeat fixed;">
       <div class="container">
 
       <?php 
@@ -374,9 +374,9 @@
               <i class="ion-ios-person-outline"></i>
               <h3>Redes Sociais</h3>
               <div class="social-links">
-                <a href="<?php if(isset($contact_url_facebook) && !empty($contact_url_facebook)){echo $contact_url_facebook;}else{echo "https://www.facebook.com/jcbsolucoes/";} ?>" class="facebook"><i class="fa fa-facebook" style="font-size: 26px; padding: 10px;"></i></a>
-                <a href="<?php if(isset($contact_url_instagram) && !empty($contact_url_instagram)){echo $contact_url_instagram;}else{echo "https://www.instagram.com/jcbsolucoes/";} ?>" class="instagram"><i class="fa fa-instagram" style="font-size: 30px; padding: 10px;"></i></a>
-                <a href="<?php if(isset($contact_url_linkedin) && !empty($contact_url_linkedin)){echo $contact_url_linkedin;}else{echo "https://pt.linkedin.com/company/jcb-solu-es-industriais";} ?>" class="linkedin"><i class="fa fa-linkedin" style="font-size: 30px; padding: 10px;"></i></a>
+                <a target="_blank" rel="noopener" href="<?php if(isset($contact_url_facebook) && !empty($contact_url_facebook)){echo $contact_url_facebook;}else{echo "https://www.facebook.com/jcbsolucoes/";} ?>" class="facebook"><i class="fa fa-facebook" style="font-size: 26px; padding: 10px;"></i></a>
+                <a target="_blank" rel="noopener" href="<?php if(isset($contact_url_instagram) && !empty($contact_url_instagram)){echo $contact_url_instagram;}else{echo "https://www.instagram.com/jcbsolucoes/";} ?>" class="instagram"><i class="fa fa-instagram" style="font-size: 30px; padding: 10px;"></i></a>
+                <a target="_blank" rel="noopener" href="<?php if(isset($contact_url_linkedin) && !empty($contact_url_linkedin)){echo $contact_url_linkedin;}else{echo "https://pt.linkedin.com/company/jcb-solu-es-industriais";} ?>" class="linkedin"><i class="fa fa-linkedin" style="font-size: 30px; padding: 10px;"></i></a>
             </div>
             </div>
           </div>

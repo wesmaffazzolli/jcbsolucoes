@@ -28,7 +28,7 @@ if(isset($_POST['update_post'])) {
     if(isset($_FILES['post_image']['name'])){$post_image = escape($_FILES['post_image']['name']);}else{$post_image = "";}
     if(isset($_FILES['post_image']['tmp_name'])){$post_image_temp = $_FILES['post_image']['tmp_name'];}else{$post_image_temp = "";}
     if(isset($_POST['post_featured'])){$post_featured = escape($_POST['post_featured']);}else{$post_featured = "";}
-    if(isset($_POST['post_content'])){$post_content = escape($_POST['post_content']);}else{$post_content = "";}
+    if(isset($_POST['post_content'])){$post_content = $_POST['post_content'];}else{$post_content = "";}
 
     $post_update_username = $_SESSION['username'];
 

@@ -9,7 +9,7 @@
       <div id="logo" class="pull-left">
         <!--<h1><a href="#intro" class="scrollto">BizPage</a></h1>-->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.php#intro"><img id="logo-site" class="my-logo" src="img/nova-logo-jcb-2.png" alt="" title="" /></a>
+        <a href="index.php#intro"><img id="logo-site" class="my-logo" src="img/jcb-logo-min.png" alt="" title="" /></a>
       </div>
 
       <nav id="nav-menu-container">

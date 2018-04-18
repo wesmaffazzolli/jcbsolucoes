@@ -35,7 +35,7 @@
 
   ?>
 
-<section id="servicos" style="background: url('img/<?php if(isset($services_background_img) && !empty($services_background_img)) {echo $services_background_img;} ?>') center top no-repeat fixed;"> 
+<section id="servicos" style="background: url('img/backgrounds/<?php if(isset($services_background_img) && !empty($services_background_img)) {echo $services_background_img;} ?>') center top no-repeat fixed;"> 
       <div class="container">
           <header class="section-header">
                <h3>Serviços</h3>
